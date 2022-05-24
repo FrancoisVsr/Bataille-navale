@@ -49,9 +49,9 @@ class Joueur_t{
   	    Joueur_t(char * name);
 
     	//getter
-	    bool get_bool();
-        Plateau_t get_plateau(int plateau);
-        Bateau_t get_bateau(int nb);
+	    bool get_bool() const;
+        Plateau_t get_plateau(int plateau) const;
+        Bateau_t get_bateau(int nb) const;
 
         //setter
 	    bool set_bool(bool vie);

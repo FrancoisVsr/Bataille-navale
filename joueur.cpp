@@ -62,17 +62,74 @@ Joueur_t::Joueur_t(char * name){
     this->torpilleur = torpilleur;   
 }
 
-
-
+/**
+ * @brief       Accesseur pour la vie de l'objet Joueur
+ * @return      bool
+ */
 bool Joueur_t::get_bool(){
-
+    return vie;
 };
+
+/**
+ * @brief       Accesseur pour les plateaux de l'objet Joueur
+ * @return      Plateau_t
+ */
 Plateau_t Joueur_t::get_plateau(int plateau){
+    switch (plateau)
+    {
+        case 0:
+            return plateau_allie;
+            break;
+        case 1:
+            return plateau_ennemi;
+            break
+        default:
+            return 0;
+    }
+};
+
+/**
+ * @brief       Accesseur pour les bateaux de l'objet Joueur
+ * @return      Bateau_t
+ */
+Bateau_t get_bateau(int nb){
+    switch (nb)
+    {
+        case 0:
+            return porte_avion;
+            break;
+        case 1:
+            return croiseur;
+            break
+        case 2:
+            return contre_torpilleurs_1;
+            break;
+        case 3:
+            return contre_torpilleurs_2;
+            break
+        case 4:
+            return torpilleur;
+            break
+        default:
+            return 0;
+    }
+};
+
+/**
+ * @brief       Setter pour la vie de l'objet Joueur
+ * @return
+ */
+bool Joueur_t::set_bool(bool life){
+    vie = life;
+};
+Plateau_t Joueur_t::set_plateau(Plateau_t plateau, char vs){
 
 };
-Bateau_t get_bateau(int nb){
-    
+Bateau_t Joueur_t::set_bateau(Bateau_t bateau, int nb){
+
 };
+  
+
 
 /**
  * @brief       Destructeur d'un objet Joueur
