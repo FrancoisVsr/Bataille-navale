@@ -2,3 +2,6 @@
 bateau.o
 main.o
 main.exe
+fichier_cpp.o
+fichier_h.o
+bateau.o

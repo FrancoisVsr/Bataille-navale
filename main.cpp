@@ -2,7 +2,7 @@
 #include "bateau.hpp"
 
 
-int main(int argc, char const *argv[])
+int main(void)
 {
     std::cout << "Ok ?" << std::endl;
     return 0;
