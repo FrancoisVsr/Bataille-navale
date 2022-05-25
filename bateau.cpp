@@ -56,36 +56,63 @@
  */
 
 //code pour la class bateau 
-//constructeur 
+//constructeur par defaut pour un bateau auquel on donne le nom
 Bateau_t::Bateau_t(int nom_bateau){
-switch (nom_bateau)
+switch (nom_bateau) // 0,1,2,3,4
 {
 case 0: //porte avion
     longueur_bateau = 5;
-    vie = true;
     break;
 case 1: //croiseur
     longueur_bateau = 4;
-    vie = true;
     break;
 case 2: //contre_torpilleur_1
     longueur_bateau = 3;
-    vie = true;
-    for (int i = 0; i < 5; i++)
-    {
-        tab_touche[i] = false;
-    }
     break;
 case 3: //contre_torpilleur_2
     longueur_bateau = 3;
-    vie = true;
     break;
 case 4: //torpilleur
     longueur_bateau = 2;
-    vie = true;
     break;
 default:
     break;
 }
+vie = true;                               //par defaut en vie
+for (int i = 0; i < longueur_bateau; i++) //par defaut pas touche
+    {
+        tab_touche[i] = false;
+    }           
+}
+
+
+Bateau_t::Bateau_t(int nom_bateau, coordinate tab_coord){
+switch (nom_bateau) // 0,1,2,3,4
+{
+case 0: //porte avion
+    longueur_bateau = 5;
+    break;
+case 1: //croiseur
+    longueur_bateau = 4;
+    break;
+case 2: //contre_torpilleur_1
+    longueur_bateau = 3;
+    break;
+case 3: //contre_torpilleur_2
+    longueur_bateau = 3;
+    break;
+case 4: //torpilleur
+    longueur_bateau = 2;
+    break;
+default:
+    break;
+}
+vie = true;                               //par defaut en vie
+for (int i = 0; i < longueur_bateau; i++) //par defaut pas touche
+    {
+        tab_touche[i] = false;
+    }           
 
 }
+
+

@@ -33,20 +33,27 @@ enum nom_bateau {
     torpilleur = 4
 };
 
+struct coordinate
+{
+    string coordX[10]; // de A a J
+    int coordY[10];    // de 1 a 10
+};
+
 class Bateau_t{
 
     private:
 
         int longueur_bateau;    //en fonction du bateau que lon choisit de placer
         bool vie;               //sert a savoir si le bateau est coule ou pas 
-        int tab_coord[5];       //tableau des coord des cases occupees par le bateau
+        coordinate tab_coord[5];     //tableau des coord des cases occupees par le bateau
         bool tab_touche[5];     //sert a savoir si le bateau est touche
         string nom_bateau;      //nom du bateau(enum)
 
     public:
 
         //Constructeur 
-        Bateau_t(int nom_bateau);        
+        Bateau_t(int nom_bateau);  
+        Bateau_t(int nom_bateau, coordinate tab_coord);
 
 	    //Accesseurs
 	    string getNom_Bateau() const;
