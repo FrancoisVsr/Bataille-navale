@@ -25,7 +25,7 @@ using namespace std;
  * @brief       Il s'agit des noms des différents bateaux à disposer sur le plateau, il y en 5 différents avec chacun leurs taille
  */
 
-enum nom_bateau {
+enum nom_bateau { //enumeration des nom de bateau sous forme de int
     porte_avion = 0,
     croiseur = 1,
     contre_torpilleur_1 = 2,
@@ -33,13 +33,13 @@ enum nom_bateau {
     torpilleur = 4
 };
 
-struct coordinate
+struct coordinate //structure coordonnees d'un bateau sur plateau
 {
-    string coordX[10]; // de A a J
-    int coordY[10];    // de 1 a 10
+    string coordX; // de A a J
+    int coordY;    // de 1 a 10
 };
 
-class Bateau_t{
+class Bateau_t{ 
 
     private:
 
@@ -72,6 +72,9 @@ class Bateau_t{
         ~Bateau_t();
 
 };
+
+//fonction entree des coordonnees d'un bateau
+void input_coorinate(coordinate coordonnee);
 
 
 #endif //BATEAU_HPP
