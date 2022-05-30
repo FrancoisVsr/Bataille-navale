@@ -14,6 +14,9 @@
 #include <iostream>
 #include <cstring>
 #include <cstdbool>
+#include <cassert>
+#include <cstdio>
+#include <errno.h>
 using namespace std;
 
 /*******************************
@@ -43,11 +46,12 @@ class Bateau_t{
 
     private:
 
-        int longueur_bateau;    //en fonction du bateau que lon choisit de placer
-        bool vie;               //sert a savoir si le bateau est coule ou pas 
-        coordinate tab_coord[5];     //tableau des coord des cases occupees par le bateau
-        bool tab_touche[5];     //sert a savoir si le bateau est touche
-        string nom_bateau;      //nom du bateau(enum)
+        int longueur_bateau;        //en fonction du bateau que lon choisit de placer
+        bool vie;                   //sert a savoir si le bateau est coule ou pas 
+        coordinate tab_coord[5];    //tableau des coord des cases occupees par le bateau
+        bool tab_touche[5];         //sert a savoir si le bateau est touche
+        string nom_bateau;          //nom du bateau(enum)
+        char* direction;            //direction donnee par utilisateur
 
     public:
 
@@ -65,16 +69,13 @@ class Bateau_t{
         //Mutateurs
         void setVivant(bool v);
 
-
 	    //Méthodes
+        void input_coordinate(coordinate coordonnee);   //fonction entree des coordonnees d'un bateau
+        void input_direction(char* direction);          //fonction entree direction du bateau
 
         //Destructeur
         ~Bateau_t();
 
 };
-
-//fonction entree des coordonnees d'un bateau
-void input_coorinate(coordinate coordonnee);
-
 
 #endif //BATEAU_HPP
