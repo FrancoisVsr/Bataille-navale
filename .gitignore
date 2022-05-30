@@ -1,7 +1,7 @@
 .vscode/
 bateau.o
-main.o
-main.exe
+mainJo.o
+mainJo.exe
 fichier_cpp.o
 fichier_h.o
 bateau.o

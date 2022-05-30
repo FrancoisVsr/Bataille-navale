@@ -14,7 +14,7 @@ clang=0
 no-warn=0
 
 #~~~~ build program ~~~~
-EXE_PREFIX=main
+EXE_PREFIX=mainJo
 
 #~~~~ detect operating system ~~~~
 ifneq (${OS},Windows_NT)

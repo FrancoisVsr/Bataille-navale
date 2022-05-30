@@ -71,33 +71,79 @@ Bateau_t::Bateau_t(int nom_bateau){
     {
     case 0: //porte avion
         longueur_bateau = 5;
+        // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
+        std::cout << "Entrez vos coordonnées pour le porte-avion : " << std::endl;
+        // entree des coordonnees
+        input_coordinate();
+        // input direction
+        std::cin >> direction;        
     break;
     case 1: //croiseur
         longueur_bateau = 4;
+        // Message lorsque le joueur souhaite mettre les coordonnees de son croiseur
+        std::cout << "Entrez vos coordonnées pour le croiseur : " << std::endl;
+        // entree des coordonnees
+        input_coordinate();
+        // input direction
+        std::cin >> direction;
     break;
     case 2: //contre_torpilleur_1
         longueur_bateau = 3;
+        // Message lorsque le joueur souhaite mettre les coordonnees de son contre torpilleur1
+        std::cout << "Entrez vos coordonnées pour le premier contre torpilleur : " << std::endl;
+        // entree des coordonnees
+        input_coordinate();
+        // input direction
+        std::cin >> direction;
     break;
     case 3: //contre_torpilleur_2
         longueur_bateau = 3;
+        // Message lorsque le joueur souhaite mettre les coordonnees de son contre torpilleur2
+        std::cout << "Entrez vos coordonnées pour le deuxième contre torpilleur : " << std::endl;
+        // entree des coordonnees
+        input_coordinate();
+        // input direction        
+        std::cin >> direction;
     break;
     case 4: //torpilleur
         longueur_bateau = 2;
+        // Message lorsque le joueur souhaite mettre les coordonnees de son torpilleur
+        std::cout << "Entrez vos coordonnées pour le torpilleur : " << std::endl;
+        // entree des coordonnees
+        input_coordinate();
+        // input direction
+        std::cin >> direction;
     break;
     default:
     break;
     }
-         
+
+    if(direction = "ESC[64") //gauche
+    {
+
+    }    
+    else if(direction = "ESC[65") //bas 
+    {
+
+    }
+    else if(direction = "ESC[66") //droite
+    {
+
+    }
+    else if(direction = "ESC[67") //droite
+    {
+        
+    }
 }
 
 //constructeur pour un bateau donnee, avec ses coordonnees
 Bateau_t::Bateau_t(int nom_bateau, coordinate tab_coord){
-    
+    /*
     //variable global au constructeur
     char* placementBateau_X;
     char* placementBateau_Y;
     string string_TO_int; // variable intermediaire
-
+    */
     // attributs set de base
     vie = true;                               //par defaut en vie
     for (int i = 0; i < longueur_bateau; i++) //par defaut pas touche
@@ -116,28 +162,28 @@ Bateau_t::Bateau_t(int nom_bateau, coordinate tab_coord){
         break;
         case 1: //croiseur
             longueur_bateau = 4;
-            // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
+            // Message lorsque le joueur souhaite mettre les coordonnees de son croiseur
             std::cout << "Entrez vos coordonnées pour le croisuer : " << std::endl;
             // entree des coordonnees
             input_coordinate(tab_coord);
         break;
         case 2: //contre_torpilleur_1
             longueur_bateau = 3;
-            // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
+            // Message lorsque le joueur souhaite mettre les coordonnees de son contre torpilleur1
             std::cout << "Entrez vos coordonnées pour le 1er contre torpilleur : " << std::endl;
             // entree des coordonnees
             input_coordinate(tab_coord);
         break;
         case 3: //contre_torpilleur_2
             longueur_bateau = 3;
-            // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
+            // Message lorsque le joueur souhaite mettre les coordonnees de son contre torpilleur2
             std::cout << "Entrez vos coordonnées pour le 2ème contre torpilleur : " << std::endl;
             // entree des coordonnees
             input_coordinate(tab_coord);
         break;
         case 4: //torpilleur
             longueur_bateau = 2;
-            // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
+            // Message lorsque le joueur souhaite mettre les coordonnees de son torpilleur
             std::cout << "Entrez vos coordonnées pour le torpilleur : " << std::endl;
             // entree des coordonnees
             input_coordinate(tab_coord);

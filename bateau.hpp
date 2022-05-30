@@ -71,7 +71,7 @@ class Bateau_t{
 
 	    //Méthodes
         void input_coordinate(coordinate coordonnee);   //fonction entree des coordonnees d'un bateau
-        void Bateau_t::input_coordinate(void);
+        void input_coordinate(void);
 
         //Destructeur
         ~Bateau_t();
