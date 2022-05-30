@@ -164,3 +164,18 @@ void Bateau_t::input_coordinate(coordinate coordonnee){
     coordonnee.coordY = stoi(string_TO_int); //stoi : fonction String TO Int
 }
 
+void Bateau_t::input_coordinate(void){
+    //variable global au constructeur
+    coordinate coordonnee;
+    char* placementBateau_X;
+    char* placementBateau_Y;
+    string string_TO_int; // variable intermediaire
+
+    std::cin >> placementBateau_X;
+    coordonnee.coordX.assign(placementBateau_X);
+
+    // Entree de la coordonnees Y (1 ... 10)
+    std::cin >> placementBateau_Y; 
+    string_TO_int.assign(placementBateau_Y);
+    coordonnee.coordY = stoi(string_TO_int); //stoi : fonction String TO Int
+}
