@@ -3,17 +3,21 @@
 #include <vector>
 #include "case.h"
 
+void addLine() {
+    std::cout << "|----";
+}
+
 int main() {
 
     int taille = 10;
 
     Case_t plateau[taille][taille];
-
+    /*
     for (int line = 0; line < taille; line++) {
         for (int row = 0; row < taille; row++){
-            plateau[line][row].setEtat("    ");
+            plateau[line][row].setEtat(' ');
         }
-    }
+    }*/
 
     //le plateau va prendre en paramètre un tableau à 2 dimensions contenant les 5 états possibles des cases
     //on affichera ensuite le tableau de manière graphique en mettant i et j en paramètre
@@ -48,7 +52,7 @@ int main() {
                     } 
                     else {
                         //Délimiteur d'entre colonnes
-                        std::cout <<"|" << plateau[i][j/2].getEtat();
+                        std::cout <<"| " << plateau[i][j/2].getEtat() << "  ";
                     } 
                 }
                 //Gestion retour à la ligne
