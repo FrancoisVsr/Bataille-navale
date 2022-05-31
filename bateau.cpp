@@ -102,12 +102,12 @@ void Bateau_t::input_coordinate(void) {
     int coordX;
     int coordY;
     // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
-    std::cout << "Saisir l'extremité X du bateau (entre A et J) : " << std::endl; 
+    std::cout << "Saisir l'extremite X du bateau (entre A et J) : " << std::endl; 
     char choixUserX;
     std::cin >> choixUserX;
     if(!(choixUserX >= 'A' && choixUserX <= 'J')) {
         do {
-            std::cout << "Incorrect, saisir une lettre majuscule entre A et J" << std::endl;
+            std::cout << "Incorrect, saisir une lettre majuscule entre A et J :" << std::endl;
             std::cin >> choixUserX;
         } while(!(choixUserX >= 'A' && choixUserX <= 'J'));
     }
@@ -115,12 +115,12 @@ void Bateau_t::input_coordinate(void) {
         coordX = (choixUserX - 'A') + 1;
     }
     
-    std::cout << "Saisir l'extremité X du bateau (entre A et J) : " << std::endl; 
+    std::cout << "Saisir un chiffre entre 1 et 10 : " << std::endl; 
     int choixUserY;
     std::cin >> choixUserY;
     if(!(choixUserY >= 1 && choixUserY <= 10)) {
         do {
-            std::cout << "Incorrect, saisir un nombre entre 1 et 10" << std::endl;
+            std::cout << "Incorrect, saisir un nombre entre 1 et 10 : " << std::endl;
             std::cin >> choixUserY;
         } while(!(choixUserY >= 1 && choixUserY <= 10));
     }
@@ -135,7 +135,7 @@ void Bateau_t::input_coordinate(void) {
 
 void Bateau_t::input_direction(void) {
     //Message utilisateur
-    std::cout << "Saisir la direction de votre bateau à l'aide des flèches de votre clavier" << std::endl;
+    std::cout << "Saisir la direction de votre bateau a l'aide des fleches de votre clavier" << std::endl;
 
     std::string direction = "";
     std::cin >> direction;
