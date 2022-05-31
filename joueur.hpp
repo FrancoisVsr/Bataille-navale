@@ -17,7 +17,6 @@
 #include <cstring>
 #include <stdbool.h>
 #include <assert.h>
-using namespace std;
 
 /*******************************
  *       Public methods        *
@@ -49,17 +48,20 @@ class Joueur_t{
   	    Joueur_t(char * name);
 
     	//getter
-	    bool get_bool() const;
+	    bool get_vie() const;
         Plateau_t get_plateau(int plateau) const;
         Bateau_t get_bateau(int nb) const;
 
         //setter
-	    bool set_bool(bool vie);
-        Plateau_t set_plateau(Plateau_t plateau, char vs);
-        Bateau_t set_bateau(Bateau_t bateau, int nb);
+	    void set_vie(bool vie);
+        void set_plateau(Plateau_t plateau, char vs);
+        void set_bateau(Bateau_t bateau, int nb);
+
+        //methodes
+        bool tir(Joueur_t, int x, int y);
   
   	    //Destructeur 
   	    ~Joueur_t();
-}
+};
 
 #endif /*JOUEUR_HPP*/

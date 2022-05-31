@@ -47,8 +47,9 @@ Joueur_t::Joueur_t(char * name){
     
     Plateau_t plateau_allie;
     this->plateau_allie = plateau_allie;
+
     Plateau_t plateau_ennemi;
-    this->plateau_ennemi = plateau_ennemi;
+    this->plateau_allie = plateau_ennemi;
 
     Bateau_t porte_avion(0);
     this->porte_avion = porte_avion;
@@ -59,14 +60,15 @@ Joueur_t::Joueur_t(char * name){
     Bateau_t contre_torpilleurs_2(3);
     this->contre_torpilleurs_1 = contre_torpilleurs_2;
     Bateau_t torpilleur(4);
-    this->torpilleur = torpilleur;   
+    this->torpilleur = torpilleur;
+      
 }
 
 /**
  * @brief       Accesseur pour la vie de l'objet Joueur
  * @return      bool
  */
-bool Joueur_t::get_bool(){
+bool Joueur_t::get_vie() const{
     return vie;
 };
 
@@ -119,16 +121,58 @@ Bateau_t get_bateau(int nb){
  * @brief       Setter pour la vie de l'objet Joueur
  * @return
  */
-bool Joueur_t::set_bool(bool life){
-    vie = life;
+void Joueur_t::set_vie(bool life){
+    this->vie = life;
 };
-Plateau_t Joueur_t::set_plateau(Plateau_t plateau, char vs){
+void Joueur_t::set_plateau(Plateau_t plateau, char vs){
 
 };
-Bateau_t Joueur_t::set_bateau(Bateau_t bateau, int nb){
+void Joueur_t::set_bateau(Bateau_t bateau, int nb){
 
 };
   
+
+bool Joueur_t::tir(Joueur_t *j, int x, int y){
+    int etat;
+    if((x >= 0) && (x <= 9) && (y >= 0) && (y <= 9))
+    {
+        etat = j->plateau_allie.getCase(x,y);
+        if(etat == eau)
+        {
+            j->plateau_allie.setCase(x,y);
+            etat = j->plateau_allie.getCase(x,y);
+            switch(etat)
+            {
+                case touche:
+                    std::cout << "Un bateau a été touché !" << std::endl << std::endl;
+                    break;
+                case coule:
+                    std::cout << "Un bateau a été coulé !" << std::endl << std::endl;
+                    break;
+                case rate:
+                    std::cout << "Sheh ! Essaie encore !" << std::endl << std::endl;
+                    break;
+                default:
+                    break;
+            }
+            j->plateau_allie.Display();
+            std::cout << std::endl << std::endl;
+            j->plateau_ennemi.Display();
+            std::cout << std::endl << std::endl;
+            return true;
+        }
+        else
+        {
+            std::cout << "Sale bigleux sans mémoire t'as déjà tiré ici !" << std::endl;
+            return false;
+        }
+    }
+    else
+    {
+        std::cout << "Les coordonnées doivent être comprises entre 0 et 9 !" << std::endl;
+        return false;
+    }
+}
 
 
 /**
