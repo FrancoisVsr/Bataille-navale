@@ -5,19 +5,18 @@
  * @brief       
  */
 
-/*******************************
- *          Includes           *
- *******************************/
 #ifndef BATEAU_HPP
 #define BATEAU_HPP
 
+/*******************************
+ *          Includes           *
+ *******************************/
+
 #include <iostream>
-#include <cstring>
-#include <cstdbool>
+#include <string>
 #include <cassert>
 #include <cstdio>
-#include <errno.h>
-using namespace std;
+#include "case.h"
 
 /*******************************
  *       Public methods        *
@@ -36,45 +35,44 @@ enum nom_bateau { //enumeration des nom de bateau sous forme de int
     torpilleur = 4
 };
 
-struct coordinate //structure coordonnees d'un bateau sur plateau
-{
-    string coordX; // de A a J
-    int coordY;    // de 1 a 10
+//structure coordonnees d'un bateau sur plateau
+struct coordinate { 
+    std::string coordX; // de A a J
+    int coordY;         // de 1 a 10
 };
 
-class Bateau_t{ 
+class Bateau_t { 
 
     private:
 
         int longueur_bateau;        //en fonction du bateau que lon choisit de placer
         bool vie;                   //sert a savoir si le bateau est coule ou pas 
-        coordinate tab_coord[5];    //tableau des coord des cases occupees par le bateau
-        bool tab_touche[5];         //sert a savoir si le bateau est touche
-        string nom_bateau;          //nom du bateau(enum)
-        char* direction;            //direction donnee par utilisateur
+        Case_t tab_coord[5];    //tableau des coord des cases occupees par le bateau
+        std::string nom_bateau;     //nom du bateau(enum)
 
     public:
 
         //Constructeur 
-        Bateau_t(int nom_bateau);  
-        Bateau_t(int nom_bateau, coordinate tab_coord);
+        Bateau_t(int);  
+        Bateau_t(int, coordinate); //
+        Bateau_t(); //IA
 
 	    //Accesseurs
-	    string getNom_Bateau() const;
-        int *getCoord() const;
-        bool *getTouche() const;
-        bool getVivant() const;
-        int getLongueur_Bateau() const;
+	    std::string getNom_Bateau() const {return nom_bateau;}
+        Case_t getCase1() const {return tab_coord[0];}
+        Case_t getCase2() const {return tab_coord[1];}
+        Case_t getCase3() const {return tab_coord[2];}
+        Case_t getCase4() const {return tab_coord[3];}
+        Case_t getCase5() const {return tab_coord[4];}
+        bool getVivant() const {return vie;}
+        int getLongueur_Bateau() const {return longueur_bateau;}
  
         //Mutateurs
-        void setVivant(bool v);
+        void setVivant(bool v) {this->vie = v;}
 
 	    //Méthodes
-        void input_coordinate(coordinate coordonnee);   //fonction entree des coordonnees d'un bateau
         void input_coordinate(void);
-
-        //Destructeur
-        ~Bateau_t();
+        void input_direction(void);
 
 };
 
