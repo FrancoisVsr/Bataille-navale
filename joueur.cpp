@@ -76,46 +76,50 @@ bool Joueur_t::get_vie() const{
  * @brief       Accesseur pour les plateaux de l'objet Joueur
  * @return      Plateau_t
  */
-Plateau_t Joueur_t::get_plateau(int plateau){
+Plateau_t Joueur_t::get_plateau(int plateau) const{
+    Plateau_t plateau_vide;
     switch (plateau)
     {
         case 0:
-            return plateau_allie;
+            return this->plateau_allie;
             break;
         case 1:
-            return plateau_ennemi;
-            break
+            return this->plateau_ennemi;
+            break;
         default:
-            return 0;
+            return plateau_vide;
+            break;
     }
-};
+}
 
 /**
  * @brief       Accesseur pour les bateaux de l'objet Joueur
  * @return      Bateau_t
  */
-Bateau_t get_bateau(int nb){
+Bateau_t Joueur_t::get_bateau(int nb) const{
+    Bateau_t bateau_vide;
     switch (nb)
     {
         case 0:
-            return porte_avion;
+            return this->porte_avion;
             break;
         case 1:
-            return croiseur;
-            break
+            return this->croiseur;
+            break;
         case 2:
-            return contre_torpilleurs_1;
+            return this->contre_torpilleurs_1;
             break;
         case 3:
-            return contre_torpilleurs_2;
-            break
+            return this->contre_torpilleurs_2;
+            break;
         case 4:
-            return torpilleur;
-            break
+            return this->torpilleur;
+            break;
         default:
+            return bateau_vide;
             return 0;
     }
-};
+}
 
 /**
  * @brief       Setter pour la vie de l'objet Joueur
@@ -123,13 +127,13 @@ Bateau_t get_bateau(int nb){
  */
 void Joueur_t::set_vie(bool life){
     this->vie = life;
-};
+}
 void Joueur_t::set_plateau(Plateau_t plateau, char vs){
 
-};
+}
 void Joueur_t::set_bateau(Bateau_t bateau, int nb){
 
-};
+}
   
 
 bool Joueur_t::tir(Joueur_t *j, int x, int y){
@@ -155,9 +159,9 @@ bool Joueur_t::tir(Joueur_t *j, int x, int y){
                 default:
                     break;
             }
-            j->plateau_allie.Display();
+            j->plateau_allie.display();
             std::cout << std::endl << std::endl;
-            j->plateau_ennemi.Display();
+            j->plateau_ennemi.display();
             std::cout << std::endl << std::endl;
             return true;
         }

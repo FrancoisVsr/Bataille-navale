@@ -1,4 +1,4 @@
-SRC_FILES = $(filter-out joueur.cpp, $(wildcard *.cpp))
+SRC_FILES = $(wildcard *.cpp)
 
 all : prgm
 
