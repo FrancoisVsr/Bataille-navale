@@ -47,15 +47,14 @@ class Bateau_t {
 
         int longueur_bateau;        //en fonction du bateau que lon choisit de placer
         bool vie;                   //sert a savoir si le bateau est coule ou pas 
-        Case_t tab_coord[5];    //tableau des coord des cases occupees par le bateau
+        Case_t tab_coord[5];        //tableau des coord des cases occupees par le bateau
         std::string nom_bateau;     //nom du bateau(enum)
 
     public:
 
         //Constructeur 
-        Bateau_t(int);  
-        Bateau_t(int, coordinate); //
-        Bateau_t(); //IA
+        Bateau_t(); // For IA
+        Bateau_t(int);
 
 	    //Accesseurs
 	    std::string getNom_Bateau() const {return nom_bateau;}

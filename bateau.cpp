@@ -55,15 +55,20 @@
  * @return 
  */
 
-/*code pour la class bateau*/
 
+/*code pour la class bateau*/
+Bateau_t::Bateau_t() {
+    this->vie = true;
+    this->longueur_bateau = 0;
+    
+}
 //constructeur par defaut pour un bateau auquel on donne le nom
-Bateau_t::Bateau_t(int nom_bateau) {
+Bateau_t::Bateau_t(int _nom_bateau) {
 
     // attributs set de base
     this->vie = true;   //par defaut en vie
 
-    switch (nom_bateau) // 0,1,2,3,4
+    switch (_nom_bateau) // 0,1,2,3,4
     {
         case porte_avion: 
             this->longueur_bateau = 5;
@@ -91,24 +96,6 @@ Bateau_t::Bateau_t(int nom_bateau) {
 
     input_coordinate();
     input_direction();
-/*
-    if(direction = "ESC[64") //gauche
-    {
-
-    }    
-    else if(direction = "ESC[65") //bas 
-    {
-
-    }
-    else if(direction = "ESC[66") //droite
-    {
-
-    }
-    else if(direction = "ESC[67") //droite
-    {
-
-    }
-    */
 }
 
 void Bateau_t::input_coordinate(void) {
@@ -142,10 +129,50 @@ void Bateau_t::input_coordinate(void) {
     }
     this->tab_coord[0].setX(coordX);
     this->tab_coord[0].setY(coordY);
-    this->tab_coord[0].setEtat(etat::bateau);
+    this->tab_coord[0].setEtat(etat_t::bateau);
 }
 
 
 void Bateau_t::input_direction(void) {
+    //Message utilisateur
+    std::cout << "Saisir la direction de votre bateau à l'aide des flèches de votre clavier" << std::endl;
 
+    std::string direction = "";
+    std::cin >> direction;
+    if(direction == "g") //gauche
+    {
+        for (int i = 1; i < longueur_bateau; i++)
+        {
+            this->tab_coord[i].setEtat(etat_t::bateau);
+            this->tab_coord[i].setX(this->tab_coord[i-1].getX() - 1);
+            this->tab_coord[i].setY(this->tab_coord[i-1].getY());
+        }
+    }
+    else if(direction == "b") //bas 
+    {
+        for (int i = 1; i < longueur_bateau; i++)
+        {
+            this->tab_coord[i].setEtat(etat_t::bateau);
+            this->tab_coord[i].setX(this->tab_coord[i-1].getX());
+            this->tab_coord[i].setY(this->tab_coord[i-1].getY() + 1);
+        }
+    }
+    else if(direction == "d") //droite
+    {
+        for (int i = 1; i < longueur_bateau; i++)
+        {
+            this->tab_coord[i].setEtat(etat_t::bateau);
+            this->tab_coord[i].setX(this->tab_coord[i-1].getX() + 1);
+            this->tab_coord[i].setY(this->tab_coord[i-1].getY());
+        }
+    }
+    else if(direction == "h") //haut
+    {
+        for (int i = 1; i < longueur_bateau; i++)
+        {
+            this->tab_coord[i].setEtat(etat_t::bateau);
+            this->tab_coord[i].setX(this->tab_coord[i-1].getX());
+            this->tab_coord[i].setY(this->tab_coord[i-1].getY() - 1);
+        }
+    }
 }
