@@ -13,7 +13,11 @@
 /*******************************
  *          Includes           *
  *******************************/
-#include "bateau.h"
+#include "bateau.hpp"
+#include "case.h"
+#include <vector>
+
+void addLine(int tailleTab);
 
 /*******************************
  *      Classe plateau permettant d'afficher un tableau de jeu dynamique   *
@@ -22,20 +26,29 @@ class Plateau_t {
 
     protected:
         int taille;
+        Case_t grid[10][10];
 
     /*******************************
      *       Public methods        *
      *******************************/
     public:
         //Constructeur
+        Plateau_t();
+
+        //Accesseurs
+        int getTaille() const { return this->taille;}
+        //int getBateau() const { return this->bateau;}
+
+        //Setteurs
+        void setCase(int, int, int);
 
 
-    /*******************************
-     *       Private methods       *
-     *******************************/
-    private:
+        //Méthodes
+        void init();
+        void display();
 
-
+       
+        //void addBateau(Bateau bateau);
 
 };
 

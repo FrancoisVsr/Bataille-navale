@@ -1,5 +1,5 @@
-#ifndef PLATEAU_H
-#define PLATEAU_H
+#ifndef CASE_H
+#define CASE_H
 
 #include <string>
 
@@ -8,24 +8,23 @@ class Case_t {
     protected:
         int x;
         int y;
-        std::string etat;
+        int state;
         
-
     public:
         //Constructeurs
         Case_t();
         Case_t(int, int);
-        Case_t(int, int, std::string);
+        Case_t(int, int, int);
 
         //Accesseurs
         int getX() const { return this->x;}
         int getY() const { return this->y;}
-        std::string getEtat() const { return this->etat;}
+        int getState() const { return this->state;}
 
         //Setteurs
         void setX(int x) { this->x = x;}
         void setY(int y) { this->y = y;}
-        void setEtat(std::string etat) { this->etat = etat;}
+        void setState(int state) { this->state = state;}
 };
 
 #endif
