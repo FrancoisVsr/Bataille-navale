@@ -58,13 +58,13 @@
 <script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-Mc2pkINU6rlGF10IG+S/Gq7oIDIiOUE+tIxB2E2EetcNdSBNyELodHrJx1LjqDM/ew8TKZaoNOIn428Pwt+C0Q==" src="https://github.githubassets.com/assets/diffs-31cda9908354.js"></script>
   
 
-  <title>Bataille-navale/plateau.cpp at CGA · FrancoisVsr/Bataille-navale · GitHub</title>
+  <title>Bataille-navale/bateau.h at CGA · FrancoisVsr/Bataille-navale · GitHub</title>
 
 
 
     
 
-  <meta name="request-id" content="CB68:A007:25DF6A2:2860A7E:6297758E" data-pjax-transient="true"/><meta name="html-safe-nonce" content="5b3b24a3883c38020bdcdb1c23dd0e64c8783259e35e220ca558f28468261a70" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9GcmFuY29pc1Zzci9CYXRhaWxsZS1uYXZhbGUvdHJlZS9DR0EiLCJyZXF1ZXN0X2lkIjoiQ0I2ODpBMDA3OjI1REY2QTI6Mjg2MEE3RTo2Mjk3NzU4RSIsInZpc2l0b3JfaWQiOiI4NjU2MjQ4MTI0MTg5Nzg4NjY3IiwicmVnaW9uX2VkZ2UiOiJmcmEiLCJyZWdpb25fcmVuZGVyIjoiZnJhIn0=" data-pjax-transient="true"/><meta name="visitor-hmac" content="a3c6d8f39ff3553bc0031c77ebaa3984d462514bb977ba8f58af8e866fc6239d" data-pjax-transient="true"/>
+  <meta name="request-id" content="CB68:A007:25E07C9:2861CB9:629775A1" data-pjax-transient="true"/><meta name="html-safe-nonce" content="5b3b24a3883c38020bdcdb1c23dd0e64c8783259e35e220ca558f28468261a70" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9GcmFuY29pc1Zzci9CYXRhaWxsZS1uYXZhbGUvdHJlZS9DR0EiLCJyZXF1ZXN0X2lkIjoiQ0I2ODpBMDA3OjI1RTA3Qzk6Mjg2MUNCOTo2Mjk3NzVBMSIsInZpc2l0b3JfaWQiOiI4NjU2MjQ4MTI0MTg5Nzg4NjY3IiwicmVnaW9uX2VkZ2UiOiJmcmEiLCJyZWdpb25fcmVuZGVyIjoiZnJhIn0=" data-pjax-transient="true"/><meta name="visitor-hmac" content="e130273f425559066b5af7cb64d2fec0e3bcbb83c51daa6ee3b4897fc74eece5" data-pjax-transient="true"/>
 
     <meta name="hovercard-subject-tag" content="repository:494344907" data-pjax-transient>
 
@@ -99,8 +99,8 @@
     <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
     <meta property="fb:app_id" content="1401488693436528">
     <meta name="apple-itunes-app" content="app-id=1477376905" />
-      <meta name="twitter:image:src" content="https://opengraph.githubassets.com/c8d49f27e82c01398b1566ecc222de37d4e32fd684fdaaf0452bebc8014aefe4/FrancoisVsr/Bataille-navale" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Bataille-navale/plateau.cpp at CGA · FrancoisVsr/Bataille-navale" /><meta name="twitter:description" content="SEC1 Projet - bataille navale. Contribute to FrancoisVsr/Bataille-navale development by creating an account on GitHub." />
-      <meta property="og:image" content="https://opengraph.githubassets.com/c8d49f27e82c01398b1566ecc222de37d4e32fd684fdaaf0452bebc8014aefe4/FrancoisVsr/Bataille-navale" /><meta property="og:image:alt" content="SEC1 Projet - bataille navale. Contribute to FrancoisVsr/Bataille-navale development by creating an account on GitHub." /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="600" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="Bataille-navale/plateau.cpp at CGA · FrancoisVsr/Bataille-navale" /><meta property="og:url" content="https://github.com/FrancoisVsr/Bataille-navale" /><meta property="og:description" content="SEC1 Projet - bataille navale. Contribute to FrancoisVsr/Bataille-navale development by creating an account on GitHub." />
+      <meta name="twitter:image:src" content="https://opengraph.githubassets.com/c8d49f27e82c01398b1566ecc222de37d4e32fd684fdaaf0452bebc8014aefe4/FrancoisVsr/Bataille-navale" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Bataille-navale/bateau.h at CGA · FrancoisVsr/Bataille-navale" /><meta name="twitter:description" content="SEC1 Projet - bataille navale. Contribute to FrancoisVsr/Bataille-navale development by creating an account on GitHub." />
+      <meta property="og:image" content="https://opengraph.githubassets.com/c8d49f27e82c01398b1566ecc222de37d4e32fd684fdaaf0452bebc8014aefe4/FrancoisVsr/Bataille-navale" /><meta property="og:image:alt" content="SEC1 Projet - bataille navale. Contribute to FrancoisVsr/Bataille-navale development by creating an account on GitHub." /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="600" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="Bataille-navale/bateau.h at CGA · FrancoisVsr/Bataille-navale" /><meta property="og:url" content="https://github.com/FrancoisVsr/Bataille-navale" /><meta property="og:description" content="SEC1 Projet - bataille navale. Contribute to FrancoisVsr/Bataille-navale development by creating an account on GitHub." />
       
     <link rel="assets" href="https://github.githubassets.com/">
     
@@ -129,7 +129,7 @@
 
 
 
-    <link rel="canonical" href="https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp" data-pjax-transient>
+    <link rel="canonical" href="https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h" data-pjax-transient>
 
 
   <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
@@ -180,7 +180,7 @@
       <div class="d-flex flex-items-center">
             <a href="/signup?ref_cta=Sign+up&amp;ref_loc=header+logged+out&amp;ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fblob%2Fshow&amp;source=header-repo"
               class="d-inline-block d-lg-none f5 no-underline border color-border-default rounded-2 px-2 py-1 mr-3 mr-sm-5 color-fg-inherit"
-              data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="99c3c7884911bce6055596fd923c5646becfa517fc4587fa8d5ab08f69c0411a"
+              data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="2a88eb81200720cb684f47e2fa6f31c5b7eb568c462e4e21d7b5037678bf933c"
             >
               Sign&nbsp;up
             </a>
@@ -211,58 +211,58 @@
       <div class="dropdown-menu flex-auto rounded px-0 mt-0 pb-4 p-lg-4 position-relative position-lg-absolute left-0 left-lg-n4">
         <ul class="list-style-none f5 pb-1">
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--primary text-bold py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Features&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Features;&quot;}" href="/features">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--primary text-bold py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Features&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Features;&quot;}" href="/features">
       Features
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Mobile&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Mobile;&quot;}" href="/mobile">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Mobile&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Mobile;&quot;}" href="/mobile">
       Mobile
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Actions&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Actions;&quot;}" href="/features/actions">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Actions&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Actions;&quot;}" href="/features/actions">
       Actions
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Codespaces&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Codespaces;&quot;}" href="/features/codespaces">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Codespaces&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Codespaces;&quot;}" href="/features/codespaces">
       Codespaces
 </a>  </li>
 
             
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Packages&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Packages;&quot;}" href="/features/packages">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Packages&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Packages;&quot;}" href="/features/packages">
       Packages
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Security&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Security;&quot;}" href="/features/security">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Security&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Security;&quot;}" href="/features/security">
       Security
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Code review&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Code review;&quot;}" href="/features/code-review">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Code review&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Code review;&quot;}" href="/features/code-review">
       Code review
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Issues&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Issues;&quot;}" href="/features/issues">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Issues&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Issues;&quot;}" href="/features/issues">
       Issues
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Integrations&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Integrations;&quot;}" href="/features/integrations">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Integrations&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Integrations;&quot;}" href="/features/integrations">
       Integrations
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--primary text-bold border-top pt-4 pb-2 mt-3" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to GitHub Sponsors&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:GitHub Sponsors;&quot;}" href="/sponsors">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--primary text-bold border-top pt-4 pb-2 mt-3" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to GitHub Sponsors&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:GitHub Sponsors;&quot;}" href="/sponsors">
       GitHub Sponsors
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--primary text-bold py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Customer stories&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Customer stories;&quot;}" href="/customer-stories">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--primary text-bold py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Customer stories&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Customer stories;&quot;}" href="/customer-stories">
       Customer stories
 </a>  </li>
 
@@ -273,11 +273,11 @@
 
 
               <li class="mr-0 mr-lg-3 position-relative flex-wrap flex-justify-between flex-items-center border-bottom border-lg-bottom-0 d-block d-lg-flex flex-lg-nowrap flex-lg-items-center">
-    <a class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block" data-analytics-event="{&quot;category&quot;:&quot;Header menu top item (logged out)&quot;,&quot;action&quot;:&quot;click to go to Team&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Team;&quot;}" href="/team">Team</a>
+    <a class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block" data-analytics-event="{&quot;category&quot;:&quot;Header menu top item (logged out)&quot;,&quot;action&quot;:&quot;click to go to Team&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Team;&quot;}" href="/team">Team</a>
 </li>
 
               <li class="mr-0 mr-lg-3 position-relative flex-wrap flex-justify-between flex-items-center border-bottom border-lg-bottom-0 d-block d-lg-flex flex-lg-nowrap flex-lg-items-center">
-    <a class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block" data-analytics-event="{&quot;category&quot;:&quot;Header menu top item (logged out)&quot;,&quot;action&quot;:&quot;click to go to Enterprise&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Enterprise;&quot;}" href="/enterprise">Enterprise</a>
+    <a class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block" data-analytics-event="{&quot;category&quot;:&quot;Header menu top item (logged out)&quot;,&quot;action&quot;:&quot;click to go to Enterprise&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Enterprise;&quot;}" href="/enterprise">Enterprise</a>
 </li>
 
 
@@ -290,61 +290,61 @@
       <div class="dropdown-menu flex-auto rounded px-0 mt-0 pb-4 p-lg-4 position-relative position-lg-absolute left-0 left-lg-n4">
         <ul class="list-style-none f5 pb-1">
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--primary text-bold py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Explore GitHub&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Explore GitHub;&quot;}" href="/explore">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--primary text-bold py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Explore GitHub&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Explore GitHub;&quot;}" href="/explore">
       Explore GitHub
 </a>  </li>
 
               <li class="color-fg-muted text-normal f6 text-mono mb-1 border-top pt-3 mt-3 mb-1">Learn and contribute</li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Topics&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Topics;&quot;}" href="/topics">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Topics&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Topics;&quot;}" href="/topics">
       Topics
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Collections&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Collections;&quot;}" href="/collections">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Collections&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Collections;&quot;}" href="/collections">
       Collections
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Trending&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Trending;&quot;}" href="/trending">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Trending&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Trending;&quot;}" href="/trending">
       Trending
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Learning Lab&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Learning Lab;&quot;}" href="https://lab.github.com/">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Learning Lab&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Learning Lab;&quot;}" href="https://lab.github.com/">
       Learning Lab
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Open source guides&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Open source guides;&quot;}" href="https://opensource.guide">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Open source guides&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Open source guides;&quot;}" href="https://opensource.guide">
       Open source guides
 </a>  </li>
 
               <li class="color-fg-muted text-normal f6 text-mono mb-1 border-top pt-3 mt-3 mb-1">Connect with others</li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to The ReadME Project&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:The ReadME Project;&quot;}" href="/readme">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to The ReadME Project&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:The ReadME Project;&quot;}" href="/readme">
       The ReadME Project
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Events&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Events;&quot;}" href="/events">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Events&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Events;&quot;}" href="/events">
       Events
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Community forum&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Community forum;&quot;}" href="https://github.community">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to Community forum&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Community forum;&quot;}" href="https://github.community">
       Community forum
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to GitHub Education&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:GitHub Education;&quot;}" href="https://education.github.com">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to GitHub Education&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:GitHub Education;&quot;}" href="https://education.github.com">
       GitHub Education
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to GitHub Stars program&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:GitHub Stars program;&quot;}" href="https://stars.github.com">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Explore&quot;,&quot;action&quot;:&quot;click to go to GitHub Stars program&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:GitHub Stars program;&quot;}" href="https://stars.github.com">
       GitHub Stars program
 </a>  </li>
 
@@ -355,7 +355,7 @@
 
 
             <li class="mr-0 mr-lg-3 position-relative flex-wrap flex-justify-between flex-items-center border-bottom border-lg-bottom-0 d-block d-lg-flex flex-lg-nowrap flex-lg-items-center">
-    <a class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block" data-analytics-event="{&quot;category&quot;:&quot;Header menu top item (logged out)&quot;,&quot;action&quot;:&quot;click to go to Marketplace&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Marketplace;&quot;}" href="/marketplace">Marketplace</a>
+    <a class="HeaderMenu-link no-underline py-3 d-block d-lg-inline-block" data-analytics-event="{&quot;category&quot;:&quot;Header menu top item (logged out)&quot;,&quot;action&quot;:&quot;click to go to Marketplace&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Marketplace;&quot;}" href="/marketplace">Marketplace</a>
 </li>
 
 
@@ -368,22 +368,22 @@
       <div class="dropdown-menu flex-auto rounded px-0 mt-0 pb-4 p-lg-4 position-relative position-lg-absolute left-0 left-lg-n4">
         <ul class="list-style-none f5 pb-1">
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--primary text-bold py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Pricing&quot;,&quot;action&quot;:&quot;click to go to Plans&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Plans;&quot;}" href="/pricing">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--primary text-bold py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Pricing&quot;,&quot;action&quot;:&quot;click to go to Plans&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Plans;&quot;}" href="/pricing">
       Plans
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Pricing&quot;,&quot;action&quot;:&quot;click to go to Compare plans&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Compare plans;&quot;}" href="/pricing#compare-features">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Pricing&quot;,&quot;action&quot;:&quot;click to go to Compare plans&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Compare plans;&quot;}" href="/pricing#compare-features">
       Compare plans
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Pricing&quot;,&quot;action&quot;:&quot;click to go to Contact Sales&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Contact Sales;&quot;}" href="https://github.com/enterprise/contact">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--secondary py-2" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Pricing&quot;,&quot;action&quot;:&quot;click to go to Contact Sales&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Contact Sales;&quot;}" href="https://github.com/enterprise/contact">
       Contact Sales
 </a>  </li>
 
               <li>
-    <a class="lh-condensed-ultra d-block no-underline position-relative Link--primary text-bold border-top pt-4 pb-2 mt-3" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Pricing&quot;,&quot;action&quot;:&quot;click to go to Education&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp;ref_cta:Education;&quot;}" href="https://education.github.com">
+    <a class="lh-condensed-ultra d-block no-underline position-relative Link--primary text-bold border-top pt-4 pb-2 mt-3" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Pricing&quot;,&quot;action&quot;:&quot;click to go to Education&quot;,&quot;label&quot;:&quot;ref_page:/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h;ref_cta:Education;&quot;}" href="https://education.github.com">
       Education
 </a>  </li>
 
@@ -425,7 +425,7 @@
           spellcheck="false"
           autocomplete="off"
         >
-        <input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="g/AkcxxmO2n8IXnPIPJU0wQfiE24b5b+FmcDRvq0z8vEEe5DcIacjEv0jtnMB3JXt7SE4GhLhN/coGuA70ViXQ==" />
+        <input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="4wO8QaDPtyH2TOhCfIcb8bOkJwoLHF1ol1gjfROlNd2k4nZxzC8QxEGZH1SQcj11AA8rp9s4T0ldn0u7BlSYSw==" />
         <input type="hidden" class="js-site-search-type-field" name="type" >
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" aria-hidden="true" class="mr-1 header-search-key-slash"><path fill="none" stroke="#979A9C" opacity=".4" d="M3.5.5h12c1.7 0 3 1.3 3 3v13c0 1.7-1.3 3-3 3h-12c-1.7 0-3-1.3-3-3v-13c0-1.7 1.3-3 3-3z"></path><path fill="#979A9C" d="M11.8 6L8 15.1h-.9L10.8 6h1z"></path></svg>
 
@@ -605,9 +605,9 @@
           </div>
 
         <div class="position-relative mr-3 mb-4 mb-lg-0 d-inline-block">
-          <a href="/login?return_to=https%3A%2F%2Fgithub.com%2FFrancoisVsr%2FBataille-navale%2Fblob%2FCGA%2Fplateau.cpp"
+          <a href="/login?return_to=https%3A%2F%2Fgithub.com%2FFrancoisVsr%2FBataille-navale%2Fblob%2FCGA%2Fbateau.h"
             class="HeaderMenu-link flex-shrink-0 no-underline"
-            data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="0656b43be1b9f84ab060eba64843e5c08e61fa8fe1948f77f1bad52339272219"
+            data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="6aecd711459514440b3376e91facae0795c7c994b8dd5d41d361c2994fded490"
             data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">
             Sign in
           </a>
@@ -615,7 +615,7 @@
 
           <a href="/signup?ref_cta=Sign+up&amp;ref_loc=header+logged+out&amp;ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fblob%2Fshow&amp;source=header-repo&amp;source_repo=FrancoisVsr%2FBataille-navale"
             class="HeaderMenu-link flex-shrink-0 d-inline-block no-underline border color-border-default rounded px-2 py-1"
-            data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="0656b43be1b9f84ab060eba64843e5c08e61fa8fe1948f77f1bad52339272219"
+            data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="6aecd711459514440b3376e91facae0795c7c994b8dd5d41d361c2994fded490"
             data-analytics-event="{&quot;category&quot;:&quot;Sign up&quot;,&quot;action&quot;:&quot;click to sign up for account&quot;,&quot;label&quot;:&quot;ref_page:/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show;ref_cta:Sign up;ref_loc:header logged out&quot;}"
           >
             Sign up
@@ -707,7 +707,7 @@
     
 
   <li>
-      <a href="/login?return_to=%2FFrancoisVsr%2FBataille-navale" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;notification subscription menu watch&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="4ba0ad251f2baacc624ce9b89b2aaf7d68e661db4aa58468da85e5391983eee4" aria-label="You must be signed in to change notification settings" data-view-component="true" class="tooltipped tooltipped-s btn-sm btn">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bell mr-2">
+      <a href="/login?return_to=%2FFrancoisVsr%2FBataille-navale" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;notification subscription menu watch&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="f99dfa5217ede8253a9d7dc08872cd225c86f050eca01e2553e5e277a007cdb2" aria-label="You must be signed in to change notification settings" data-view-component="true" class="tooltipped tooltipped-s btn-sm btn">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bell mr-2">
     <path d="M8 16a2 2 0 001.985-1.75c.017-.137-.097-.25-.235-.25h-3.5c-.138 0-.252.113-.235.25A2 2 0 008 16z"></path><path fill-rule="evenodd" d="M8 1.5A3.5 3.5 0 004.5 5v2.947c0 .346-.102.683-.294.97l-1.703 2.556a.018.018 0 00-.003.01l.001.006c0 .002.002.004.004.006a.017.017 0 00.006.004l.007.001h10.964l.007-.001a.016.016 0 00.006-.004.016.016 0 00.004-.006l.001-.007a.017.017 0 00-.003-.01l-1.703-2.554a1.75 1.75 0 01-.294-.97V5A3.5 3.5 0 008 1.5zM3 5a5 5 0 0110 0v2.947c0 .05.015.098.042.139l1.703 2.555A1.518 1.518 0 0113.482 13H2.518a1.518 1.518 0 01-1.263-2.36l1.703-2.554A.25.25 0 003 7.947V5z"></path>
 </svg>Notifications
   
@@ -715,7 +715,7 @@
   </li>
 
   <li>
-        <a href="/login?return_to=%2FFrancoisVsr%2FBataille-navale" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;repo details fork button&quot;,&quot;repository_id&quot;:494344907,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="7b87264391ce9b3692d652150588c969e181f3b4175dd1dbe9c6c816b38b837b" aria-label="You must be signed in to fork a repository" data-view-component="true" class="tooltipped tooltipped-s btn-sm btn">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-2">
+        <a href="/login?return_to=%2FFrancoisVsr%2FBataille-navale" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;repo details fork button&quot;,&quot;repository_id&quot;:494344907,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="132a781d1758eb36f621fc1f744065feb3db3ea7cc8fa8c6c01fce9643b3be07" aria-label="You must be signed in to fork a repository" data-view-component="true" class="tooltipped tooltipped-s btn-sm btn">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-2">
     <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
 </svg>Fork
     <span id="repo-network-counter" data-pjax-replace="true" title="0" data-view-component="true" class="Counter">0</span>
@@ -725,7 +725,7 @@
 
   <li>
         <div data-view-component="true" class="BtnGroup d-flex">
-      <a href="/login?return_to=%2FFrancoisVsr%2FBataille-navale" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;star button&quot;,&quot;repository_id&quot;:494344907,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="776ca7a72e1fa796470578d607423d4c31ad9caa9fc5c178508fd9a4395206b1" aria-label="You must be signed in to star a repository" data-view-component="true" class="tooltipped tooltipped-s btn-sm btn BtnGroup-item">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star v-align-text-bottom d-inline-block mr-2">
+      <a href="/login?return_to=%2FFrancoisVsr%2FBataille-navale" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;star button&quot;,&quot;repository_id&quot;:494344907,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="0af227da22dc0c96ce20522616cbd64021aaf7bddb9abf01d8d870c2aed05c64" aria-label="You must be signed in to star a repository" data-view-component="true" class="tooltipped tooltipped-s btn-sm btn BtnGroup-item">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star v-align-text-bottom d-inline-block mr-2">
     <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
 </svg><span data-view-component="true" class="d-inline">
           Star
@@ -919,7 +919,7 @@
 
 
     
-<a class="d-none js-permalink-shortcut" data-hotkey="y" href="/FrancoisVsr/Bataille-navale/blob/a6620a722b22bfe43a20ced492d82b97f03cffa8/plateau.cpp">Permalink</a>
+<a class="d-none js-permalink-shortcut" data-hotkey="y" href="/FrancoisVsr/Bataille-navale/blob/a6620a722b22bfe43a20ced492d82b97f03cffa8/bateau.h">Permalink</a>
 
 <div class="d-flex flex-items-start flex-shrink-0 pb-3 flex-wrap flex-md-nowrap flex-justify-between flex-md-justify-start">
   
@@ -1003,7 +1003,7 @@
             </div>
 
               <template data-target="ref-selector.itemTemplate">
-  <a href="https://github.com/FrancoisVsr/Bataille-navale/blob/{{ urlEncodedRefName }}/plateau.cpp" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}">
+  <a href="https://github.com/FrancoisVsr/Bataille-navale/blob/{{ urlEncodedRefName }}/bateau.h" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}">
     <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
     <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
 </svg>
@@ -1043,7 +1043,7 @@
             </template>
 
               <template data-target="ref-selector.itemTemplate">
-  <a href="https://github.com/FrancoisVsr/Bataille-navale/blob/{{ urlEncodedRefName }}/plateau.cpp" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}">
+  <a href="https://github.com/FrancoisVsr/Bataille-navale/blob/{{ urlEncodedRefName }}/bateau.h" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}">
     <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
     <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
 </svg>
@@ -1074,7 +1074,7 @@
 </div>
 
   <h2 id="blob-path" class="breadcrumb flex-auto flex-self-center min-width-0 text-normal mx-2 width-full width-md-auto flex-order-1 flex-md-order-none mt-3 mt-md-0">
-    <span class="js-repo-root text-bold"><span class="js-path-segment d-inline-block wb-break-all"><a data-pjax="#repo-content-pjax-container" href="/FrancoisVsr/Bataille-navale/tree/CGA"><span>Bataille-navale</span></a></span></span><span class="separator">/</span><strong class="final-path">plateau.cpp</strong>
+    <span class="js-repo-root text-bold"><span class="js-path-segment d-inline-block wb-break-all"><a data-pjax="#repo-content-pjax-container" href="/FrancoisVsr/Bataille-navale/tree/CGA"><span>Bataille-navale</span></a></span></span><span class="separator">/</span><strong class="final-path">bateau.h</strong>
   </h2>
   <a href="/FrancoisVsr/Bataille-navale/find/CGA" data-pjax="" data-hotkey="t" data-view-component="true" class="btn mr-2 d-none d-md-block">  Go to file
   
@@ -1087,7 +1087,7 @@
 </summary>
   <div data-view-component="true">      <ul class="dropdown-menu dropdown-menu-sw">
         <li class="d-block d-md-none">
-          <a class="dropdown-item d-flex flex-items-baseline" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FIND_FILE_BUTTON&quot;,&quot;repository_id&quot;:494344907,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="820d265e73775ddda334abf03dd8f3b5857215378b736f5b30219e038e1ebbd2" data-ga-click="Repository, find file, location:repo overview" data-hotkey="t" data-pjax="true" href="/FrancoisVsr/Bataille-navale/find/CGA">
+          <a class="dropdown-item d-flex flex-items-baseline" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FIND_FILE_BUTTON&quot;,&quot;repository_id&quot;:494344907,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="608191c4a12f90acd976b281ca5951599b1386911b24f9cd18fc31e5b8eb0b98" data-ga-click="Repository, find file, location:repo overview" data-hotkey="t" data-pjax="true" href="/FrancoisVsr/Bataille-navale/find/CGA">
             <span class="flex-auto">Go to file</span>
             <span class="text-small color-fg-muted" aria-hidden="true">T</span>
 </a>        </li>
@@ -1100,13 +1100,13 @@
 </button>        </li>
         <li class="dropdown-divider" role="none"></li>
         <li>
-          <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy path" value="plateau.cpp" data-view-component="true" class="dropdown-item cursor-pointer">
+          <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy path" value="bateau.h" data-view-component="true" class="dropdown-item cursor-pointer">
     
             Copy path
 
 </clipboard-copy>        </li>
         <li>
-          <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy permalink" value="https://github.com/FrancoisVsr/Bataille-navale/blob/a6620a722b22bfe43a20ced492d82b97f03cffa8/plateau.cpp" data-view-component="true" class="dropdown-item cursor-pointer">
+          <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy permalink" value="https://github.com/FrancoisVsr/Bataille-navale/blob/a6620a722b22bfe43a20ced492d82b97f03cffa8/bateau.h" data-view-component="true" class="dropdown-item cursor-pointer">
     
             <span class="d-flex flex-items-baseline">
               <span class="flex-auto">Copy permalink</span>
@@ -1138,7 +1138,7 @@
     <include-fragment src="/FrancoisVsr/Bataille-navale/spoofed_commit_check/a6620a722b22bfe43a20ced492d82b97f03cffa8" data-test-selector="spoofed-commit-check"></include-fragment>
 
     <div class="Box d-flex flex-column flex-shrink-0 mb-3">
-  <include-fragment src="/FrancoisVsr/Bataille-navale/contributors/CGA/plateau.cpp" class="commit-loader">
+  <include-fragment src="/FrancoisVsr/Bataille-navale/contributors/CGA/bateau.h" class="commit-loader">
     <div class="Box-header d-flex flex-items-center">
       <div class="Skeleton avatar avatar-user flex-shrink-0 ml-n1 mr-n1 mt-n1 mb-n1" style="width:24px;height:24px;"></div>
       <div class="Skeleton Skeleton--text col-5 ml-2">&nbsp;</div>
@@ -1167,18 +1167,18 @@
 
   <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1">
 
-      108 lines (95 sloc)
+      79 lines (62 sloc)
       <span class="file-info-divider"></span>
-    3.09 KB
+    2.05 KB
   </div>
 
   <div class="d-flex py-1 py-md-0 flex-auto flex-order-1 flex-md-order-2 flex-sm-grow-0 flex-justify-between hide-sm hide-md">
       
 
     <div class="BtnGroup">
-      <a data-permalink-href="/FrancoisVsr/Bataille-navale/raw/a6620a722b22bfe43a20ced492d82b97f03cffa8/plateau.cpp" href="/FrancoisVsr/Bataille-navale/raw/CGA/plateau.cpp" id="raw-url" data-view-component="true" class="js-permalink-replaceable-link btn-sm btn BtnGroup-item">  Raw
+      <a data-permalink-href="/FrancoisVsr/Bataille-navale/raw/a6620a722b22bfe43a20ced492d82b97f03cffa8/bateau.h" href="/FrancoisVsr/Bataille-navale/raw/CGA/bateau.h" id="raw-url" data-view-component="true" class="js-permalink-replaceable-link btn-sm btn BtnGroup-item">  Raw
   
-</a>        <a data-permalink-href="/FrancoisVsr/Bataille-navale/blame/a6620a722b22bfe43a20ced492d82b97f03cffa8/plateau.cpp" href="/FrancoisVsr/Bataille-navale/blame/CGA/plateau.cpp" data-hotkey="b" data-view-component="true" class="js-update-url-with-hash js-permalink-replaceable-link btn-sm btn BtnGroup-item">  Blame
+</a>        <a data-permalink-href="/FrancoisVsr/Bataille-navale/blame/a6620a722b22bfe43a20ced492d82b97f03cffa8/bateau.h" href="/FrancoisVsr/Bataille-navale/blame/CGA/bateau.h" data-hotkey="b" data-view-component="true" class="js-update-url-with-hash js-permalink-replaceable-link btn-sm btn BtnGroup-item">  Blame
   
 </a>    </div>
 
@@ -1193,11 +1193,11 @@
 </svg>
           </a>
 
-        <remote-clipboard-copy class="d-inline-block btn-octicon" style="height: 26px" data-src="/FrancoisVsr/Bataille-navale/raw/CGA/plateau.cpp" data-action="click:remote-clipboard-copy#remoteCopy">
+        <remote-clipboard-copy class="d-inline-block btn-octicon" style="height: 26px" data-src="/FrancoisVsr/Bataille-navale/raw/CGA/bateau.h" data-action="click:remote-clipboard-copy#remoteCopy">
   
 
 
-  <span data-target="remote-clipboard-copy.idle">            <span class="tooltipped tooltipped-nw cursor-pointer" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;COPY_RAW_CONTENTS_BUTTON&quot;,&quot;repository_id&quot;:494344907,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="88126147b8d60a9839f40edfe03e44fbe9df98b622df7028ba1285d052993941" aria-label="Copy raw contents">
+  <span data-target="remote-clipboard-copy.idle">            <span class="tooltipped tooltipped-nw cursor-pointer" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;COPY_RAW_CONTENTS_BUTTON&quot;,&quot;repository_id&quot;:494344907,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="5da9e510f25a71ced31acb04d1644fb71eb14fc6db8f9c0fce0df4a14e2321db" aria-label="Copy raw contents">
               <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy">
     <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
 </svg>
@@ -1253,15 +1253,15 @@
                 </a>
             </li>
           <li>
-            <a class="dropdown-item" href="/FrancoisVsr/Bataille-navale/raw/CGA/plateau.cpp">
+            <a class="dropdown-item" href="/FrancoisVsr/Bataille-navale/raw/CGA/bateau.h">
               View raw
             </a>
           </li>
             <li>
-              <remote-clipboard-copy class="dropdown-item" data-src="/FrancoisVsr/Bataille-navale/raw/CGA/plateau.cpp" data-action="click:remote-clipboard-copy#remoteCopy">
+              <remote-clipboard-copy class="dropdown-item" data-src="/FrancoisVsr/Bataille-navale/raw/CGA/bateau.h" data-action="click:remote-clipboard-copy#remoteCopy">
   
 
-  <span data-target="remote-clipboard-copy.idle">                  <span class="cursor-pointer" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;COPY_RAW_CONTENTS_BUTTON&quot;,&quot;repository_id&quot;:494344907,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/plateau.cpp&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="88126147b8d60a9839f40edfe03e44fbe9df98b622df7028ba1285d052993941">
+  <span data-target="remote-clipboard-copy.idle">                  <span class="cursor-pointer" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;COPY_RAW_CONTENTS_BUTTON&quot;,&quot;repository_id&quot;:494344907,&quot;originating_url&quot;:&quot;https://github.com/FrancoisVsr/Bataille-navale/blob/CGA/bateau.h&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="5da9e510f25a71ced31acb04d1644fb71eb14fc6db8f9c0fce0df4a14e2321db">
                     Copy raw contents
 </span></span>
   <span data-target="remote-clipboard-copy.fetching" hidden="hidden">                  Copy raw contents
@@ -1284,7 +1284,7 @@
 </span>
 </remote-clipboard-copy>            </li>
             <li>
-              <a class="dropdown-item" href="/FrancoisVsr/Bataille-navale/blame/CGA/plateau.cpp">
+              <a class="dropdown-item" href="/FrancoisVsr/Bataille-navale/blame/CGA/bateau.h">
                 View blame
               </a>
             </li>
@@ -1325,7 +1325,7 @@
 </svg>
 </span></template>
 
-  <table class="highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file" data-tab-size="8" data-paste-markdown-skip data-tagsearch-lang="C++" data-tagsearch-path="plateau.cpp">
+  <table class="highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file" data-tab-size="8" data-paste-markdown-skip data-tagsearch-lang="C++" data-tagsearch-path="bateau.h">
         <tr>
           <td id="L1" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="1"></td>
           <td id="LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">/*</span>*</span></td>
@@ -1357,69 +1357,70 @@
         </tr>
         <tr>
           <td id="L8" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="8"></td>
-          <td id="LC8" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">/*</span>******************************</span></td>
+          <td id="LC8" class="blob-code blob-code-inner js-file-line">#<span class="pl-k">ifndef</span> BATEAU_HPP</td>
         </tr>
         <tr>
           <td id="L9" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="9"></td>
-          <td id="LC9" class="blob-code blob-code-inner js-file-line"><span class="pl-c"> *          Includes           *</span></td>
+          <td id="LC9" class="blob-code blob-code-inner js-file-line">#<span class="pl-k">define</span> <span class="pl-en">BATEAU_HPP</span></td>
         </tr>
         <tr>
           <td id="L10" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="10"></td>
-          <td id="LC10" class="blob-code blob-code-inner js-file-line"><span class="pl-c"> ******************************<span class="pl-c">*/</span></span></td>
+          <td id="LC10" class="blob-code blob-code-inner js-file-line">
+</td>
         </tr>
         <tr>
           <td id="L11" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="11"></td>
-          <td id="LC11" class="blob-code blob-code-inner js-file-line">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&quot;</span>plateau.h<span class="pl-pds">&quot;</span></span></td>
+          <td id="LC11" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">/*</span>******************************</span></td>
         </tr>
         <tr>
           <td id="L12" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="12"></td>
-          <td id="LC12" class="blob-code blob-code-inner js-file-line">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>cstdlib<span class="pl-pds">&gt;</span></span></td>
+          <td id="LC12" class="blob-code blob-code-inner js-file-line"><span class="pl-c"> *          Includes           *</span></td>
         </tr>
         <tr>
           <td id="L13" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="13"></td>
-          <td id="LC13" class="blob-code blob-code-inner js-file-line">
-</td>
+          <td id="LC13" class="blob-code blob-code-inner js-file-line"><span class="pl-c"> ******************************<span class="pl-c">*/</span></span></td>
         </tr>
         <tr>
           <td id="L14" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="14"></td>
-          <td id="LC14" class="blob-code blob-code-inner js-file-line"> <span class="pl-c"><span class="pl-c">//</span>Affichage d&#39;une ligne de délimitation</span></td>
-        </tr>
-        <tr>
-          <td id="L15" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="15"></td>
-          <td id="LC15" class="blob-code blob-code-inner js-file-line"><span class="pl-k">void</span> <span class="pl-en">addLine</span>(<span class="pl-k">int</span> tailleTab) {</td>
-        </tr>
-        <tr>
-          <td id="L16" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="16"></td>
-          <td id="LC16" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span>(<span class="pl-k">int</span> i = <span class="pl-c1">0</span>; i &lt; tailleTab + <span class="pl-c1">1</span>; i++){</td>
-        </tr>
-        <tr>
-          <td id="L17" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="17"></td>
-          <td id="LC17" class="blob-code blob-code-inner js-file-line">        std::cout &lt;&lt; <span class="pl-s"><span class="pl-pds">&quot;</span>|----<span class="pl-pds">&quot;</span></span>;</td>
-        </tr>
-        <tr>
-          <td id="L18" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="18"></td>
-          <td id="LC18" class="blob-code blob-code-inner js-file-line">    }</td>
-        </tr>
-        <tr>
-          <td id="L19" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="19"></td>
-          <td id="LC19" class="blob-code blob-code-inner js-file-line">    std::cout &lt;&lt; <span class="pl-s"><span class="pl-pds">&quot;</span>|<span class="pl-pds">&quot;</span></span> &lt;&lt; std::endl;;</td>
-        </tr>
-        <tr>
-          <td id="L20" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="20"></td>
-          <td id="LC20" class="blob-code blob-code-inner js-file-line">}</td>
-        </tr>
-        <tr>
-          <td id="L21" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="21"></td>
-          <td id="LC21" class="blob-code blob-code-inner js-file-line">
+          <td id="LC14" class="blob-code blob-code-inner js-file-line">
 </td>
         </tr>
         <tr>
+          <td id="L15" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="15"></td>
+          <td id="LC15" class="blob-code blob-code-inner js-file-line">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span></td>
+        </tr>
+        <tr>
+          <td id="L16" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="16"></td>
+          <td id="LC16" class="blob-code blob-code-inner js-file-line">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>string<span class="pl-pds">&gt;</span></span></td>
+        </tr>
+        <tr>
+          <td id="L17" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="17"></td>
+          <td id="LC17" class="blob-code blob-code-inner js-file-line">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>cassert<span class="pl-pds">&gt;</span></span></td>
+        </tr>
+        <tr>
+          <td id="L18" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="18"></td>
+          <td id="LC18" class="blob-code blob-code-inner js-file-line">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>cstdio<span class="pl-pds">&gt;</span></span></td>
+        </tr>
+        <tr>
+          <td id="L19" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="19"></td>
+          <td id="LC19" class="blob-code blob-code-inner js-file-line">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&quot;</span>case.h<span class="pl-pds">&quot;</span></span></td>
+        </tr>
+        <tr>
+          <td id="L20" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="20"></td>
+          <td id="LC20" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L21" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="21"></td>
+          <td id="LC21" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">/*</span>******************************</span></td>
+        </tr>
+        <tr>
           <td id="L22" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="22"></td>
-          <td id="LC22" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">//</span>Constructeurs</span></td>
+          <td id="LC22" class="blob-code blob-code-inner js-file-line"><span class="pl-c"> *       Public methods        *</span></td>
         </tr>
         <tr>
           <td id="L23" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="23"></td>
-          <td id="LC23" class="blob-code blob-code-inner js-file-line"><span class="pl-en">Plateau_t::Plateau_t</span>() {</td>
+          <td id="LC23" class="blob-code blob-code-inner js-file-line"><span class="pl-c"> ******************************<span class="pl-c">*/</span></span></td>
         </tr>
         <tr>
           <td id="L24" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="24"></td>
@@ -1428,220 +1429,225 @@
         </tr>
         <tr>
           <td id="L25" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="25"></td>
-          <td id="LC25" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">taille</span> = <span class="pl-c1">10</span>;</td>
+          <td id="LC25" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">/*</span>*</span></td>
         </tr>
         <tr>
           <td id="L26" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="26"></td>
-          <td id="LC26" class="blob-code blob-code-inner js-file-line">}</td>
+          <td id="LC26" class="blob-code blob-code-inner js-file-line"><span class="pl-c"> * @enum        nom_bateau</span></td>
         </tr>
         <tr>
           <td id="L27" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="27"></td>
-          <td id="LC27" class="blob-code blob-code-inner js-file-line">
-</td>
+          <td id="LC27" class="blob-code blob-code-inner js-file-line"><span class="pl-c"> * @brief       Il s&#39;agit des noms des différents bateaux à disposer sur le plateau, il y en 5 différents avec chacun leurs taille</span></td>
         </tr>
         <tr>
           <td id="L28" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="28"></td>
-          <td id="LC28" class="blob-code blob-code-inner js-file-line">
-</td>
+          <td id="LC28" class="blob-code blob-code-inner js-file-line"><span class="pl-c"> <span class="pl-c">*/</span></span></td>
         </tr>
         <tr>
           <td id="L29" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="29"></td>
-          <td id="LC29" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">/*</span>******************************</span></td>
+          <td id="LC29" class="blob-code blob-code-inner js-file-line">
+</td>
         </tr>
         <tr>
           <td id="L30" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="30"></td>
-          <td id="LC30" class="blob-code blob-code-inner js-file-line"><span class="pl-c"> *       Public methods        *</span></td>
+          <td id="LC30" class="blob-code blob-code-inner js-file-line"><span class="pl-k">enum</span> nom_bateau { <span class="pl-c"><span class="pl-c">//</span>enumeration des nom de bateau sous forme de int</span></td>
         </tr>
         <tr>
           <td id="L31" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="31"></td>
-          <td id="LC31" class="blob-code blob-code-inner js-file-line"><span class="pl-c"> ******************************<span class="pl-c">*/</span></span></td>
+          <td id="LC31" class="blob-code blob-code-inner js-file-line">    porte_avion = <span class="pl-c1">0</span>,</td>
         </tr>
         <tr>
           <td id="L32" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="32"></td>
-          <td id="LC32" class="blob-code blob-code-inner js-file-line"><span class="pl-k">void</span> <span class="pl-en">Plateau_t::display</span>() {</td>
+          <td id="LC32" class="blob-code blob-code-inner js-file-line">    croiseur = <span class="pl-c1">1</span>,</td>
         </tr>
         <tr>
           <td id="L33" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="33"></td>
-          <td id="LC33" class="blob-code blob-code-inner js-file-line">
-</td>
+          <td id="LC33" class="blob-code blob-code-inner js-file-line">    contre_torpilleur_1 = <span class="pl-c1">2</span>,</td>
         </tr>
         <tr>
           <td id="L34" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="34"></td>
-          <td id="LC34" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">//</span>Gestion affichage grille vide</span></td>
+          <td id="LC34" class="blob-code blob-code-inner js-file-line">    contre_torpilleur_2 = <span class="pl-c1">3</span>,</td>
         </tr>
         <tr>
           <td id="L35" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="35"></td>
-          <td id="LC35" class="blob-code blob-code-inner js-file-line">    std::cout &lt;&lt; <span class="pl-s"><span class="pl-pds">&quot;</span>Affichage de la grille<span class="pl-pds">&quot;</span></span> &lt;&lt; std::endl;</td>
+          <td id="LC35" class="blob-code blob-code-inner js-file-line">    torpilleur = <span class="pl-c1">4</span></td>
         </tr>
         <tr>
           <td id="L36" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="36"></td>
-          <td id="LC36" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">addLine</span>(<span class="pl-c1">this</span>-&gt;<span class="pl-smi">taille</span>);</td>
+          <td id="LC36" class="blob-code blob-code-inner js-file-line">};</td>
         </tr>
         <tr>
           <td id="L37" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="37"></td>
-          <td id="LC37" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span>(<span class="pl-k">int</span> line = <span class="pl-c1">0</span>; line &lt; <span class="pl-c1">this</span>-&gt;<span class="pl-smi">taille</span> + <span class="pl-c1">1</span>; line++) {   </td>
+          <td id="LC37" class="blob-code blob-code-inner js-file-line">
+</td>
         </tr>
         <tr>
           <td id="L38" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="38"></td>
-          <td id="LC38" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">for</span> (<span class="pl-k">int</span> row = <span class="pl-c1">0</span>; row &lt; <span class="pl-c1">this</span>-&gt;<span class="pl-smi">taille</span> + <span class="pl-c1">1</span>; row++) {  </td>
+          <td id="LC38" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">//</span>structure coordonnees d&#39;un bateau sur plateau</span></td>
         </tr>
         <tr>
           <td id="L39" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="39"></td>
-          <td id="LC39" class="blob-code blob-code-inner js-file-line">
-</td>
+          <td id="LC39" class="blob-code blob-code-inner js-file-line"><span class="pl-k">struct</span> <span class="pl-en">coordinate</span> { </td>
         </tr>
         <tr>
           <td id="L40" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="40"></td>
-          <td id="LC40" class="blob-code blob-code-inner js-file-line">                <span class="pl-c"><span class="pl-c">//</span>Gestion affichage numéro colonnes</span></td>
+          <td id="LC40" class="blob-code blob-code-inner js-file-line">    std::string coordX; <span class="pl-c"><span class="pl-c">//</span> de A a J</span></td>
         </tr>
         <tr>
           <td id="L41" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="41"></td>
-          <td id="LC41" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span>((line == <span class="pl-c1">0</span>) &amp;&amp; (row != <span class="pl-c1">0</span>)) {</td>
+          <td id="LC41" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">int</span> coordY;         <span class="pl-c"><span class="pl-c">//</span> de 1 a 10</span></td>
         </tr>
         <tr>
           <td id="L42" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="42"></td>
-          <td id="LC42" class="blob-code blob-code-inner js-file-line">                    <span class="pl-c"><span class="pl-c">//</span>Gestion affichage chiffre ou nombre</span></td>
+          <td id="LC42" class="blob-code blob-code-inner js-file-line">};</td>
         </tr>
         <tr>
           <td id="L43" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="43"></td>
-          <td id="LC43" class="blob-code blob-code-inner js-file-line">                    <span class="pl-k">if</span> (row &lt; <span class="pl-c1">10</span>){</td>
-        </tr>
-        <tr>
-          <td id="L44" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="44"></td>
-          <td id="LC44" class="blob-code blob-code-inner js-file-line">                        std::cout &lt;&lt; <span class="pl-s"><span class="pl-pds">&quot;</span>|<span class="pl-pds">&quot;</span></span> &lt;&lt; row &lt;&lt; <span class="pl-s"><span class="pl-pds">&quot;</span>   <span class="pl-pds">&quot;</span></span>;</td>
-        </tr>
-        <tr>
-          <td id="L45" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="45"></td>
-          <td id="LC45" class="blob-code blob-code-inner js-file-line">                    } </td>
-        </tr>
-        <tr>
-          <td id="L46" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="46"></td>
-          <td id="LC46" class="blob-code blob-code-inner js-file-line">                    <span class="pl-k">else</span> {</td>
-        </tr>
-        <tr>
-          <td id="L47" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="47"></td>
-          <td id="LC47" class="blob-code blob-code-inner js-file-line">                        std::cout &lt;&lt; <span class="pl-s"><span class="pl-pds">&quot;</span>|<span class="pl-pds">&quot;</span></span> &lt;&lt; row &lt;&lt; <span class="pl-s"><span class="pl-pds">&quot;</span>  <span class="pl-pds">&quot;</span></span>;</td>
-        </tr>
-        <tr>
-          <td id="L48" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="48"></td>
-          <td id="LC48" class="blob-code blob-code-inner js-file-line">                    }  </td>
-        </tr>
-        <tr>
-          <td id="L49" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="49"></td>
-          <td id="LC49" class="blob-code blob-code-inner js-file-line">                }</td>
-        </tr>
-        <tr>
-          <td id="L50" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="50"></td>
-          <td id="LC50" class="blob-code blob-code-inner js-file-line">               </td>
-        </tr>
-        <tr>
-          <td id="L51" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="51"></td>
-          <td id="LC51" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span> {</td>
-        </tr>
-        <tr>
-          <td id="L52" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="52"></td>
-          <td id="LC52" class="blob-code blob-code-inner js-file-line">                    <span class="pl-c"><span class="pl-c">//</span>Gestion affichage numéro ligne</span></td>
-        </tr>
-        <tr>
-          <td id="L53" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="53"></td>
-          <td id="LC53" class="blob-code blob-code-inner js-file-line">                    <span class="pl-k">if</span> ((row == <span class="pl-c1">0</span>) <span class="pl-c1">and</span> (line &gt;= <span class="pl-c1">0</span>)) {</td>
-        </tr>
-        <tr>
-          <td id="L54" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="54"></td>
-          <td id="LC54" class="blob-code blob-code-inner js-file-line">                        <span class="pl-k">if</span> (line == <span class="pl-c1">0</span>){</td>
-        </tr>
-        <tr>
-          <td id="L55" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="55"></td>
-          <td id="LC55" class="blob-code blob-code-inner js-file-line">                            std::cout &lt;&lt; <span class="pl-s"><span class="pl-pds">&quot;</span>|GRID<span class="pl-pds">&quot;</span></span>; </td>
-        </tr>
-        <tr>
-          <td id="L56" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="56"></td>
-          <td id="LC56" class="blob-code blob-code-inner js-file-line">                        }</td>
-        </tr>
-        <tr>
-          <td id="L57" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="57"></td>
-          <td id="LC57" class="blob-code blob-code-inner js-file-line">                        <span class="pl-k">else</span> <span class="pl-k">if</span> (line &lt; <span class="pl-c1">10</span>){</td>
-        </tr>
-        <tr>
-          <td id="L58" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="58"></td>
-          <td id="LC58" class="blob-code blob-code-inner js-file-line">                            std::cout &lt;&lt; <span class="pl-s"><span class="pl-pds">&quot;</span>|<span class="pl-pds">&quot;</span></span> &lt;&lt; line &lt;&lt; <span class="pl-s"><span class="pl-pds">&quot;</span>   <span class="pl-pds">&quot;</span></span>;</td>
-        </tr>
-        <tr>
-          <td id="L59" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="59"></td>
-          <td id="LC59" class="blob-code blob-code-inner js-file-line">                        } </td>
-        </tr>
-        <tr>
-          <td id="L60" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="60"></td>
-          <td id="LC60" class="blob-code blob-code-inner js-file-line">                        <span class="pl-k">else</span> {</td>
-        </tr>
-        <tr>
-          <td id="L61" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="61"></td>
-          <td id="LC61" class="blob-code blob-code-inner js-file-line">                            std::cout &lt;&lt; <span class="pl-s"><span class="pl-pds">&quot;</span>|<span class="pl-pds">&quot;</span></span> &lt;&lt; line &lt;&lt; <span class="pl-s"><span class="pl-pds">&quot;</span>  <span class="pl-pds">&quot;</span></span>;</td>
-        </tr>
-        <tr>
-          <td id="L62" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="62"></td>
-          <td id="LC62" class="blob-code blob-code-inner js-file-line">                        }</td>
-        </tr>
-        <tr>
-          <td id="L63" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="63"></td>
-          <td id="LC63" class="blob-code blob-code-inner js-file-line">                    } </td>
-        </tr>
-        <tr>
-          <td id="L64" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="64"></td>
-          <td id="LC64" class="blob-code blob-code-inner js-file-line">                    <span class="pl-k">else</span> {</td>
-        </tr>
-        <tr>
-          <td id="L65" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="65"></td>
-          <td id="LC65" class="blob-code blob-code-inner js-file-line">                        <span class="pl-c"><span class="pl-c">//</span>Affichage du délimiteur + du contenu de la case</span></td>
-        </tr>
-        <tr>
-          <td id="L66" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="66"></td>
-          <td id="LC66" class="blob-code blob-code-inner js-file-line">                        std::cout &lt;&lt;<span class="pl-s"><span class="pl-pds">&quot;</span>| <span class="pl-pds">&quot;</span></span> &lt;&lt; <span class="pl-c1">this</span>-&gt;<span class="pl-smi">grid</span>[row-<span class="pl-c1">1</span>][line-<span class="pl-c1">1</span>].<span class="pl-c1">getState</span>() &lt;&lt; <span class="pl-s"><span class="pl-pds">&quot;</span>  <span class="pl-pds">&quot;</span></span>;</td>
-        </tr>
-        <tr>
-          <td id="L67" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="67"></td>
-          <td id="LC67" class="blob-code blob-code-inner js-file-line">                    } </td>
-        </tr>
-        <tr>
-          <td id="L68" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="68"></td>
-          <td id="LC68" class="blob-code blob-code-inner js-file-line">                }</td>
-        </tr>
-        <tr>
-          <td id="L69" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="69"></td>
-          <td id="LC69" class="blob-code blob-code-inner js-file-line">
+          <td id="LC43" class="blob-code blob-code-inner js-file-line">
 </td>
         </tr>
         <tr>
+          <td id="L44" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="44"></td>
+          <td id="LC44" class="blob-code blob-code-inner js-file-line"><span class="pl-k">class</span> <span class="pl-en">Bateau_t</span> { </td>
+        </tr>
+        <tr>
+          <td id="L45" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="45"></td>
+          <td id="LC45" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L46" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="46"></td>
+          <td id="LC46" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">private:</span></td>
+        </tr>
+        <tr>
+          <td id="L47" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="47"></td>
+          <td id="LC47" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L48" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="48"></td>
+          <td id="LC48" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">int</span> longueur_bateau;        <span class="pl-c"><span class="pl-c">//</span>en fonction du bateau que lon choisit de placer</span></td>
+        </tr>
+        <tr>
+          <td id="L49" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="49"></td>
+          <td id="LC49" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">bool</span> vie;                   <span class="pl-c"><span class="pl-c">//</span>sert a savoir si le bateau est coule ou pas </span></td>
+        </tr>
+        <tr>
+          <td id="L50" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="50"></td>
+          <td id="LC50" class="blob-code blob-code-inner js-file-line">        Case_t tab_coord[<span class="pl-c1">5</span>];        <span class="pl-c"><span class="pl-c">//</span>tableau des coord des cases occupees par le bateau</span></td>
+        </tr>
+        <tr>
+          <td id="L51" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="51"></td>
+          <td id="LC51" class="blob-code blob-code-inner js-file-line">        std::string nom_bateau;     <span class="pl-c"><span class="pl-c">//</span>nom du bateau(enum)</span></td>
+        </tr>
+        <tr>
+          <td id="L52" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="52"></td>
+          <td id="LC52" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L53" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="53"></td>
+          <td id="LC53" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">public:</span></td>
+        </tr>
+        <tr>
+          <td id="L54" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="54"></td>
+          <td id="LC54" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L55" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="55"></td>
+          <td id="LC55" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">//</span>Constructeur </span></td>
+        </tr>
+        <tr>
+          <td id="L56" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="56"></td>
+          <td id="LC56" class="blob-code blob-code-inner js-file-line">        <span class="pl-en">Bateau_t</span>(); <span class="pl-c"><span class="pl-c">//</span> For IA</span></td>
+        </tr>
+        <tr>
+          <td id="L57" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="57"></td>
+          <td id="LC57" class="blob-code blob-code-inner js-file-line">        <span class="pl-en">Bateau_t</span>(<span class="pl-k">int</span>);</td>
+        </tr>
+        <tr>
+          <td id="L58" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="58"></td>
+          <td id="LC58" class="blob-code blob-code-inner js-file-line">
+</td>
+        </tr>
+        <tr>
+          <td id="L59" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="59"></td>
+          <td id="LC59" class="blob-code blob-code-inner js-file-line">	    <span class="pl-c"><span class="pl-c">//</span>Accesseurs</span></td>
+        </tr>
+        <tr>
+          <td id="L60" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="60"></td>
+          <td id="LC60" class="blob-code blob-code-inner js-file-line">	    std::string <span class="pl-en">getNom_Bateau</span>() <span class="pl-k">const</span> {<span class="pl-k">return</span> nom_bateau;}</td>
+        </tr>
+        <tr>
+          <td id="L61" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="61"></td>
+          <td id="LC61" class="blob-code blob-code-inner js-file-line">        Case_t <span class="pl-en">getCase1</span>() <span class="pl-k">const</span> {<span class="pl-k">return</span> tab_coord[<span class="pl-c1">0</span>];}</td>
+        </tr>
+        <tr>
+          <td id="L62" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="62"></td>
+          <td id="LC62" class="blob-code blob-code-inner js-file-line">        Case_t <span class="pl-en">getCase2</span>() <span class="pl-k">const</span> {<span class="pl-k">return</span> tab_coord[<span class="pl-c1">1</span>];}</td>
+        </tr>
+        <tr>
+          <td id="L63" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="63"></td>
+          <td id="LC63" class="blob-code blob-code-inner js-file-line">        Case_t <span class="pl-en">getCase3</span>() <span class="pl-k">const</span> {<span class="pl-k">return</span> tab_coord[<span class="pl-c1">2</span>];}</td>
+        </tr>
+        <tr>
+          <td id="L64" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="64"></td>
+          <td id="LC64" class="blob-code blob-code-inner js-file-line">        Case_t <span class="pl-en">getCase4</span>() <span class="pl-k">const</span> {<span class="pl-k">return</span> tab_coord[<span class="pl-c1">3</span>];}</td>
+        </tr>
+        <tr>
+          <td id="L65" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="65"></td>
+          <td id="LC65" class="blob-code blob-code-inner js-file-line">        Case_t <span class="pl-en">getCase5</span>() <span class="pl-k">const</span> {<span class="pl-k">return</span> tab_coord[<span class="pl-c1">4</span>];}</td>
+        </tr>
+        <tr>
+          <td id="L66" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="66"></td>
+          <td id="LC66" class="blob-code blob-code-inner js-file-line">        Case_t <span class="pl-en">getCase</span>(<span class="pl-k">int</span> i) <span class="pl-k">const</span> {<span class="pl-k">return</span> tab_coord[i];}</td>
+        </tr>
+        <tr>
+          <td id="L67" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="67"></td>
+          <td id="LC67" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">bool</span> <span class="pl-en">getVivant</span>() <span class="pl-k">const</span> {<span class="pl-k">return</span> vie;}</td>
+        </tr>
+        <tr>
+          <td id="L68" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="68"></td>
+          <td id="LC68" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">int</span> <span class="pl-en">getLength</span>() <span class="pl-k">const</span> {<span class="pl-k">return</span> longueur_bateau;}</td>
+        </tr>
+        <tr>
+          <td id="L69" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="69"></td>
+          <td id="LC69" class="blob-code blob-code-inner js-file-line"> </td>
+        </tr>
+        <tr>
           <td id="L70" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="70"></td>
-          <td id="LC70" class="blob-code blob-code-inner js-file-line">                <span class="pl-c"><span class="pl-c">//</span>Gestion fin de ligne et insertion ligne</span></td>
+          <td id="LC70" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">//</span>Mutateurs</span></td>
         </tr>
         <tr>
           <td id="L71" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="71"></td>
-          <td id="LC71" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> (row == <span class="pl-c1">this</span>-&gt;<span class="pl-smi">taille</span>) {</td>
+          <td id="LC71" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">void</span> <span class="pl-en">setVivant</span>(<span class="pl-k">bool</span> v) {<span class="pl-c1">this</span>-&gt;<span class="pl-smi">vie</span> = v;}</td>
         </tr>
         <tr>
           <td id="L72" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="72"></td>
-          <td id="LC72" class="blob-code blob-code-inner js-file-line">                    std::cout &lt;&lt;<span class="pl-s"><span class="pl-pds">&quot;</span>|<span class="pl-cce">\n</span><span class="pl-pds">&quot;</span></span>;</td>
+          <td id="LC72" class="blob-code blob-code-inner js-file-line">
+</td>
         </tr>
         <tr>
           <td id="L73" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="73"></td>
-          <td id="LC73" class="blob-code blob-code-inner js-file-line">                    <span class="pl-c1">addLine</span>(<span class="pl-c1">this</span>-&gt;<span class="pl-smi">taille</span>);</td>
+          <td id="LC73" class="blob-code blob-code-inner js-file-line">	    <span class="pl-c"><span class="pl-c">//</span>Méthodes</span></td>
         </tr>
         <tr>
           <td id="L74" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="74"></td>
-          <td id="LC74" class="blob-code blob-code-inner js-file-line">                }  </td>
+          <td id="LC74" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">void</span> <span class="pl-en">input_coordinate</span>(<span class="pl-k">void</span>);</td>
         </tr>
         <tr>
           <td id="L75" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="75"></td>
-          <td id="LC75" class="blob-code blob-code-inner js-file-line">            }</td>
+          <td id="LC75" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">void</span> <span class="pl-en">input_direction</span>(<span class="pl-k">void</span>);</td>
         </tr>
         <tr>
           <td id="L76" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="76"></td>
-          <td id="LC76" class="blob-code blob-code-inner js-file-line">        }</td>
+          <td id="LC76" class="blob-code blob-code-inner js-file-line">
+</td>
         </tr>
         <tr>
           <td id="L77" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="77"></td>
-          <td id="LC77" class="blob-code blob-code-inner js-file-line">}</td>
+          <td id="LC77" class="blob-code blob-code-inner js-file-line">};</td>
         </tr>
         <tr>
           <td id="L78" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="78"></td>
@@ -1650,125 +1656,7 @@
         </tr>
         <tr>
           <td id="L79" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="79"></td>
-          <td id="LC79" class="blob-code blob-code-inner js-file-line"><span class="pl-k">bool</span> <span class="pl-en">Plateau_t::setCase</span>(<span class="pl-k">int</span> x, <span class="pl-k">int</span> y, <span class="pl-k">int</span> state) {</td>
-        </tr>
-        <tr>
-          <td id="L80" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="80"></td>
-          <td id="LC80" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> (<span class="pl-c1">1</span> &lt;= x &amp;&amp; x &lt;= <span class="pl-c1">10</span> &amp;&amp; <span class="pl-c1">1</span> &lt;= y &amp;&amp; y &lt;= <span class="pl-c1">10</span>) {</td>
-        </tr>
-        <tr>
-          <td id="L81" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="81"></td>
-          <td id="LC81" class="blob-code blob-code-inner js-file-line">        <span class="pl-c1">this</span>-&gt;<span class="pl-smi">grid</span>[x - <span class="pl-c1">1</span>][y - <span class="pl-c1">1</span>].<span class="pl-c1">setState</span>(state);</td>
-        </tr>
-        <tr>
-          <td id="L82" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="82"></td>
-          <td id="LC82" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-c1">true</span>;</td>
-        </tr>
-        <tr>
-          <td id="L83" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="83"></td>
-          <td id="LC83" class="blob-code blob-code-inner js-file-line">    }</td>
-        </tr>
-        <tr>
-          <td id="L84" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="84"></td>
-          <td id="LC84" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">else</span> {</td>
-        </tr>
-        <tr>
-          <td id="L85" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="85"></td>
-          <td id="LC85" class="blob-code blob-code-inner js-file-line">        std::cout &lt;&lt;<span class="pl-s"><span class="pl-pds">&quot;</span>ERREUR Coordonnes : Case non modifiee<span class="pl-pds">&quot;</span></span>;</td>
-        </tr>
-        <tr>
-          <td id="L86" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="86"></td>
-          <td id="LC86" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-c1">false</span>;</td>
-        </tr>
-        <tr>
-          <td id="L87" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="87"></td>
-          <td id="LC87" class="blob-code blob-code-inner js-file-line">    }</td>
-        </tr>
-        <tr>
-          <td id="L88" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="88"></td>
-          <td id="LC88" class="blob-code blob-code-inner js-file-line">}</td>
-        </tr>
-        <tr>
-          <td id="L89" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="89"></td>
-          <td id="LC89" class="blob-code blob-code-inner js-file-line">
-</td>
-        </tr>
-        <tr>
-          <td id="L90" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="90"></td>
-          <td id="LC90" class="blob-code blob-code-inner js-file-line"><span class="pl-k">bool</span> <span class="pl-en">Plateau_t::setCase</span>(Case_t new_case) {</td>
-        </tr>
-        <tr>
-          <td id="L91" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="91"></td>
-          <td id="LC91" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> (<span class="pl-c1">1</span> &lt;= new_case.<span class="pl-c1">getX</span>() &amp;&amp; new_case.<span class="pl-c1">getX</span>() &lt;= <span class="pl-c1">10</span> &amp;&amp; <span class="pl-c1">1</span> &lt;= new_case.<span class="pl-c1">getY</span>() &amp;&amp; new_case.<span class="pl-c1">getY</span>() &lt;= <span class="pl-c1">10</span>) {</td>
-        </tr>
-        <tr>
-          <td id="L92" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="92"></td>
-          <td id="LC92" class="blob-code blob-code-inner js-file-line">        <span class="pl-c1">this</span>-&gt;<span class="pl-smi">grid</span>[new_case.<span class="pl-c1">getX</span>() - <span class="pl-c1">1</span>][new_case.<span class="pl-c1">getY</span>() - <span class="pl-c1">1</span>].<span class="pl-c1">setState</span>(new_case.<span class="pl-c1">getState</span>());</td>
-        </tr>
-        <tr>
-          <td id="L93" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="93"></td>
-          <td id="LC93" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-c1">true</span>;</td>
-        </tr>
-        <tr>
-          <td id="L94" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="94"></td>
-          <td id="LC94" class="blob-code blob-code-inner js-file-line">    }</td>
-        </tr>
-        <tr>
-          <td id="L95" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="95"></td>
-          <td id="LC95" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">else</span> {</td>
-        </tr>
-        <tr>
-          <td id="L96" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="96"></td>
-          <td id="LC96" class="blob-code blob-code-inner js-file-line">        std::cout &lt;&lt;<span class="pl-s"><span class="pl-pds">&quot;</span>ERREUR Coordonnes : Case non modifiee<span class="pl-pds">&quot;</span></span>;</td>
-        </tr>
-        <tr>
-          <td id="L97" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="97"></td>
-          <td id="LC97" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-c1">false</span>;</td>
-        </tr>
-        <tr>
-          <td id="L98" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="98"></td>
-          <td id="LC98" class="blob-code blob-code-inner js-file-line">    }</td>
-        </tr>
-        <tr>
-          <td id="L99" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="99"></td>
-          <td id="LC99" class="blob-code blob-code-inner js-file-line">}</td>
-        </tr>
-        <tr>
-          <td id="L100" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="100"></td>
-          <td id="LC100" class="blob-code blob-code-inner js-file-line">
-</td>
-        </tr>
-        <tr>
-          <td id="L101" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="101"></td>
-          <td id="LC101" class="blob-code blob-code-inner js-file-line"><span class="pl-k">bool</span> <span class="pl-en">Plateau_t::addBateau</span>(Bateau_t bateau) {</td>
-        </tr>
-        <tr>
-          <td id="L102" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="102"></td>
-          <td id="LC102" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span>(<span class="pl-k">int</span> i = <span class="pl-c1">0</span>; i &lt; bateau.<span class="pl-c1">getLength</span>(); i++) {</td>
-        </tr>
-        <tr>
-          <td id="L103" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="103"></td>
-          <td id="LC103" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span>(!(<span class="pl-c1">this</span>-&gt;<span class="pl-c1">setCase</span>(bateau.<span class="pl-c1">getCase</span>(i)))) {</td>
-        </tr>
-        <tr>
-          <td id="L104" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="104"></td>
-          <td id="LC104" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">return</span> <span class="pl-c1">false</span>;</td>
-        </tr>
-        <tr>
-          <td id="L105" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="105"></td>
-          <td id="LC105" class="blob-code blob-code-inner js-file-line">        }</td>
-        </tr>
-        <tr>
-          <td id="L106" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="106"></td>
-          <td id="LC106" class="blob-code blob-code-inner js-file-line">    }</td>
-        </tr>
-        <tr>
-          <td id="L107" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="107"></td>
-          <td id="LC107" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> <span class="pl-c1">true</span>;</td>
-        </tr>
-        <tr>
-          <td id="L108" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="108"></td>
-          <td id="LC108" class="blob-code blob-code-inner js-file-line">}</td>
+          <td id="LC79" class="blob-code blob-code-inner js-file-line">#<span class="pl-k">endif</span> <span class="pl-c"><span class="pl-c">//</span>BATEAU_HPP</span></td>
         </tr>
   </table>
 </div>
@@ -1794,7 +1682,7 @@
             Copy permalink
           </clipboard-copy>
         </li>
-        <li><a class="dropdown-item js-update-url-with-hash" id="js-view-git-blame" role="menuitem" href="/FrancoisVsr/Bataille-navale/blame/a6620a722b22bfe43a20ced492d82b97f03cffa8/plateau.cpp">View git blame</a></li>
+        <li><a class="dropdown-item js-update-url-with-hash" id="js-view-git-blame" role="menuitem" href="/FrancoisVsr/Bataille-navale/blame/a6620a722b22bfe43a20ced492d82b97f03cffa8/bateau.h">View git blame</a></li>
           <li><a class="dropdown-item" id="js-new-issue" role="menuitem" href="/FrancoisVsr/Bataille-navale/issues/new">Reference in new issue</a></li>
       </ul>
     </details-menu>

@@ -40,43 +40,42 @@
  * @brief       Constructeur d'un objet Joueur
  * @details     Le constructeur de la classe joueur créé et initialise les plateaux et bateaux
  */
-Joueur_t::Joueur_t(char * name){
-    assert(name != NULL);
-    this->name = name;
+Joueur_t::Joueur_t(std::string name_p) {
+    this->name = name_p;
     this->vie = true;
-    
+
     Plateau_t plateau_allie;
     this->plateau_allie = plateau_allie;
 
     Plateau_t plateau_ennemi;
     this->plateau_allie = plateau_ennemi;
 
-    Bateau_t porte_avion(0);
+    Bateau_t porte_avion(nom_bateau::porte_avion);
     this->porte_avion = porte_avion;
-    Bateau_t croiseur(1);
+    Bateau_t croiseur(nom_bateau::croiseur);
     this->croiseur = croiseur;
-    Bateau_t contre_torpilleurs_1(2);
+    Bateau_t contre_torpilleurs_1(nom_bateau::contre_torpilleur_1);
     this->contre_torpilleurs_1 = contre_torpilleurs_1;
-    Bateau_t contre_torpilleurs_2(3);
+    Bateau_t contre_torpilleurs_2(nom_bateau::contre_torpilleur_2);
     this->contre_torpilleurs_1 = contre_torpilleurs_2;
-    Bateau_t torpilleur(4);
+    Bateau_t torpilleur(nom_bateau::torpilleur);
     this->torpilleur = torpilleur;
-      
 }
 
 /**
  * @brief       Accesseur pour la vie de l'objet Joueur
  * @return      bool
  */
-bool Joueur_t::get_vie() const{
+bool Joueur_t::get_vie() const {
     return vie;
 };
 
 /**
  * @brief       Accesseur pour les plateaux de l'objet Joueur
+ * @param       int plateau (0 allie, 1 ennemi, autre plateau vide)
  * @return      Plateau_t
  */
-Plateau_t Joueur_t::get_plateau(int plateau) const{
+Plateau_t Joueur_t::get_plateau(int plateau) const {
     Plateau_t plateau_vide;
     switch (plateau)
     {
@@ -96,23 +95,23 @@ Plateau_t Joueur_t::get_plateau(int plateau) const{
  * @brief       Accesseur pour les bateaux de l'objet Joueur
  * @return      Bateau_t
  */
-Bateau_t Joueur_t::get_bateau(int nb) const{
+Bateau_t Joueur_t::get_bateau(int nb) const {
     Bateau_t bateau_vide;
     switch (nb)
     {
-        case 0:
+        case nom_bateau::porte_avion:
             return this->porte_avion;
             break;
-        case 1:
+        case nom_bateau::croiseur:
             return this->croiseur;
             break;
-        case 2:
+        case nom_bateau::contre_torpilleur_1:
             return this->contre_torpilleurs_1;
             break;
-        case 3:
+        case nom_bateau::contre_torpilleur_2:
             return this->contre_torpilleurs_2;
             break;
-        case 4:
+        case nom_bateau::torpilleur:
             return this->torpilleur;
             break;
         default:
@@ -125,26 +124,27 @@ Bateau_t Joueur_t::get_bateau(int nb) const{
  * @brief       Setter pour la vie de l'objet Joueur
  * @return
  */
-void Joueur_t::set_vie(bool life){
+void Joueur_t::set_vie(bool life) {
     this->vie = life;
 }
-void Joueur_t::set_plateau(Plateau_t plateau, char vs){
+void Joueur_t::set_plateau(Plateau_t plateau, char vs) {
 
 }
-void Joueur_t::set_bateau(Bateau_t bateau, int nb){
+void Joueur_t::set_bateau(Bateau_t bateau, int nb) {
 
 }
-  
 
-bool Joueur_t::tir(Joueur_t *j, int x, int y){
-    int etat;
-    if((x >= 0) && (x <= 9) && (y >= 0) && (y <= 9))
+
+bool Joueur_t::tir(Joueur_t *j, int x, int y) {
+    Plateau_t plateau_vise(j->get_plateau(0));
+    Case_t case_vise(plateau_vise.getCase(x, y));
+    Case_t case_enemie(plateau_ennemi.getCase(x, y));
+    if((x >= 1) && (x <= 10) && (y > 10) && (y <= 10))
     {
-        etat = j->plateau_allie.getCase(x,y);
-        if(etat == eau)
+        if(etat == etat_t::eau)
         {
-            j->plateau_allie.setCase(x,y);
-            etat = j->plateau_allie.getCase(x,y);
+            j->plateau_allie.setCase(x, y);
+            etat = j->plateau_allie.getCase(x, y);
             switch(etat)
             {
                 case touche:
@@ -182,5 +182,5 @@ bool Joueur_t::tir(Joueur_t *j, int x, int y){
 /**
  * @brief       Destructeur d'un objet Joueur
  */
-Joueur_t::~Joueur_t(){
+Joueur_t::~Joueur_t() {
 }

@@ -12,13 +12,14 @@
  *          Includes           *
  *******************************/
 #include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
-#include <cstring>
-#include <stdbool.h>
+//#include <stdlib.h>
+//#include <stdio.h>
+#include <string>
+//#include <stdbool.h>
 #include <assert.h>
 #include "bateau.hpp"
 #include "plateau.h"
+#include "case.h"
 
 /*******************************
  *       Public methods        *
@@ -33,8 +34,8 @@
  * @post        L'objet est initialisé ou pas 
  * @warning     Une mauvaise utilisation peut faire planter votre application (c'est votre faute)
  */
-class Joueur_t{
-    private :
+class Joueur_t {
+    private:
 		Plateau_t plateau_allie;
         Plateau_t plateau_ennemi;
         Bateau_t porte_avion;
@@ -43,18 +44,19 @@ class Joueur_t{
         Bateau_t contre_torpilleurs_2;
         Bateau_t torpilleur;
         bool vie;
-        char * name;
+        std::string name;
 
-    public :
+    public:
       	//Constructeur
-  	    Joueur_t(char * name);
+  	    Joueur_t(std::string);
 
-    	//getter
+    	//getters
 	    bool get_vie() const;
         Plateau_t get_plateau(int) const;
         Bateau_t get_bateau(int) const;
+        std::string get_name()const {return name;}
 
-        //setter
+        //setters
 	    void set_vie(bool vie);
         void set_plateau(Plateau_t plateau, char vs);
         void set_bateau(Bateau_t bateau, int nb);
