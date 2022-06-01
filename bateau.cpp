@@ -115,7 +115,7 @@ void Bateau_t::input_coordinate(void) {
         coordX = (choixUserX - 'A') + 1;
     }
     
-    std::cout << "Saisir l'extremite X du bateau (entre 1 et 10) : " << std::endl; 
+    std::cout << "Saisir l'extremite Y du bateau (entre 1 et 10) : " << std::endl; 
     int choixUserY;
     std::cin >> choixUserY;
     if(!(choixUserY >= 1 && choixUserY <= 10)) {
@@ -135,7 +135,7 @@ void Bateau_t::input_coordinate(void) {
 
 void Bateau_t::input_direction(void) {
     //Message utilisateur
-    std::cout << "Saisir la direction de votre bateau à l'aide des flèches de votre clavier" << std::endl;
+    std::cout << "Saisir la direction de votre bateau (d, g, b, h) :" << std::endl;
 
     std::string direction = "";
     std::cin >> direction;
