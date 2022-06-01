@@ -3,6 +3,14 @@
 
 #include <string>
 
+enum etat_t { 
+    eau = 0,
+    rate = 1,
+    touche = 2,
+    bateau = 3,
+    coule = 4
+};
+
 class Case_t {
 
     protected:

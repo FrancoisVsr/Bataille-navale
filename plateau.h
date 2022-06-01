@@ -13,7 +13,7 @@
 /*******************************
  *          Includes           *
  *******************************/
-#include "bateau.hpp"
+#include "bateau.h"
 #include "case.h"
 #include <vector>
 
@@ -44,11 +44,8 @@ class Plateau_t {
 
 
         //Méthodes
-        void init();
         void display();
-
-       
-        //void addBateau(Bateau bateau);
+        void addBateau(Bateau_t bateau);
 
 };
 

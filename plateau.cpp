@@ -76,10 +76,20 @@ void Plateau_t::display() {
 }
 
 void Plateau_t::setCase(int x, int y, int state) {
+
     if ((1 < x < 10) && (1 < y < 10)) {
         this->grid[x-1][y-1].setState(state);
     }
     else {
         std::cout <<"ERREUR Coordonnes : Case non modifiee";
     }
+}
+
+void Plateau_t::addBateau(Bateau_t bateau) {
+
+    for (int i=0; i < bateau.getLength(); i++){
+        Case_t case1(bateau.getCase1());
+        this->setCase(case1.getX(), case1.getY(), case1.getState());
+    }
+
 }

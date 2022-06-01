@@ -10,7 +10,7 @@
 /*******************************
  *          Includes           *
  *******************************/
-#include "bateau.hpp"
+#include "bateau.h"
 
 /*******************************
  *      Global definitions     *
@@ -55,127 +55,124 @@
  * @return 
  */
 
+
 /*code pour la class bateau*/
-
-//constructeur par defaut pour un bateau auquel on donne le nom
-Bateau_t::Bateau_t(int nom_bateau){
-
-    // attributs set de base
-    vie = true;                               //par defaut en vie
-    for (int i = 0; i < longueur_bateau; i++) //par defaut pas touche
-    {
-        tab_touche[i] = false;
-    }  
-
-    switch (nom_bateau) // 0,1,2,3,4
-    {
-    case 0: //porte avion
-        longueur_bateau = 5;
-    break;
-    case 1: //croiseur
-        longueur_bateau = 4;
-    break;
-    case 2: //contre_torpilleur_1
-        longueur_bateau = 3;
-    break;
-    case 3: //contre_torpilleur_2
-        longueur_bateau = 3;
-    break;
-    case 4: //torpilleur
-        longueur_bateau = 2;
-    break;
-    default:
-    break;
-    }
-         
-}
-
-//constructeur pour un bateau donnee, avec ses coordonnees
-Bateau_t::Bateau_t(int nom_bateau, coordinate tab_coord){
+Bateau_t::Bateau_t() {
+    this->vie = true;
+    this->longueur_bateau = 0;
     
-    //variable global au constructeur
-    char* placementBateau_X;
-    char* placementBateau_Y;
-    string string_TO_int; // variable intermediaire
+}
+//constructeur par defaut pour un bateau auquel on donne le nom
+Bateau_t::Bateau_t(int _nom_bateau) {
 
     // attributs set de base
-    vie = true;                               //par defaut en vie
-    for (int i = 0; i < longueur_bateau; i++) //par defaut pas touche
-    {
-        tab_touche[i] = false;
-    }           
+    this->vie = true;   //par defaut en vie
 
-    switch(nom_bateau) // 0,1,2,3,4
+    switch (_nom_bateau) // 0,1,2,3,4
     {
-        case 0: //porte avion
-            longueur_bateau = 5;
-            // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
-            std::cout << "Entrez vos coordonnées pour le porte-avion : " << std::endl;
-            // entree des coordonnees
-            input_coordinate(tab_coord);
+        case porte_avion: 
+            this->longueur_bateau = 5;
+            this->nom_bateau = "Porte avion";
         break;
-        case 1: //croiseur
-            longueur_bateau = 4;
-            // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
-            std::cout << "Entrez vos coordonnées pour le croisuer : " << std::endl;
-            // entree des coordonnees
-            input_coordinate(tab_coord);
+        case croiseur:
+            this->longueur_bateau = 4;
+            this->nom_bateau = "croiseur";
         break;
-        case 2: //contre_torpilleur_1
-            longueur_bateau = 3;
-            // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
-            std::cout << "Entrez vos coordonnées pour le 1er contre torpilleur : " << std::endl;
-            // entree des coordonnees
-            input_coordinate(tab_coord);
+        case contre_torpilleur_1: 
+            this->longueur_bateau = 3;
+            this->nom_bateau = "1er Contre torpilleur";
         break;
-        case 3: //contre_torpilleur_2
-            longueur_bateau = 3;
-            // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
-            std::cout << "Entrez vos coordonnées pour le 2ème contre torpilleur : " << std::endl;
-            // entree des coordonnees
-            input_coordinate(tab_coord);
+        case contre_torpilleur_2: 
+            this->longueur_bateau = 3;
+            this->nom_bateau = "2eme Contre torpilleur";
         break;
-        case 4: //torpilleur
-            longueur_bateau = 2;
-            // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
-            std::cout << "Entrez vos coordonnées pour le torpilleur : " << std::endl;
-            // entree des coordonnees
-            input_coordinate(tab_coord);
+        case torpilleur: 
+            this->longueur_bateau = 2;
+            this->nom_bateau = "Torpilleur";
         break;
         default:
         break;
+    }
+
+    input_coordinate();
+    input_direction();
 }
 
+void Bateau_t::input_coordinate(void) {
+    int coordX;
+    int coordY;
+    // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
+    std::cout << "Saisir l'extremité X du bateau (entre A et J) : " << std::endl; 
+    char choixUserX;
+    std::cin >> choixUserX;
+    if(!(choixUserX >= 'A' && choixUserX <= 'J')) {
+        do {
+            std::cout << "Incorrect, saisir une lettre majuscule entre A et J" << std::endl;
+            std::cin >> choixUserX;
+        } while(!(choixUserX >= 'A' && choixUserX <= 'J'));
+    }
+    else {
+        coordX = (choixUserX - 'A') + 1;
+    }
+    
+    std::cout << "Saisir l'extremité X du bateau (entre A et J) : " << std::endl; 
+    int choixUserY;
+    std::cin >> choixUserY;
+    if(!(choixUserY >= 1 && choixUserY <= 10)) {
+        do {
+            std::cout << "Incorrect, saisir un nombre entre 1 et 10" << std::endl;
+            std::cin >> choixUserY;
+        } while(!(choixUserY >= 1 && choixUserY <= 10));
+    }
+    else {
+        coordY = choixUserY;
+    }
+    this->tab_coord[0].setX(coordX);
+    this->tab_coord[0].setY(coordY);
+    this->tab_coord[0].setState(etat_t::bateau);
 }
 
 
-void Bateau_t::input_coordinate(coordinate coordonnee){
-    //variable global au constructeur
-    char* placementBateau_X;
-    char* placementBateau_Y;
-    string string_TO_int; // variable intermediaire
+void Bateau_t::input_direction(void) {
+    //Message utilisateur
+    std::cout << "Saisir la direction de votre bateau à l'aide des flèches de votre clavier" << std::endl;
 
-    std::cin >> placementBateau_X;
-    coordonnee.coordX.assign(placementBateau_X);
-
-    // Entree de la coordonnees Y (1 ... 10)
-    std::cin >> placementBateau_Y; 
-    string_TO_int.assign(placementBateau_Y);
-    coordonnee.coordY = stoi(string_TO_int); //stoi : fonction String TO Int
-}
-
-void Bateau_t::input_coordinate(void){
-    //variable global au constructeur
-    coordinate coordonnee;
-    char* placementBateau_X;
-    char* placementBateau_Y;
-    string string_TO_int; // variable intermediaire
-
-    std::cin >> placementBateau_X;
-    coordonnee.coordX.assign(placementBateau_X);
-
-    // Entree de la coordonnees Y (1 ... 10)
-    std::cin >> placementBateau_Y; 
-    string_TO_int.assign(placementBateau_Y);
-    coordonnee.coordY = stoi(string_TO_int); //stoi : fonction String TO Int
+    std::string direction = "";
+    std::cin >> direction;
+    if(direction == "g") //gauche
+    {
+        for (int i = 1; i < longueur_bateau; i++)
+        {
+            this->tab_coord[i].setState(etat_t::bateau);
+            this->tab_coord[i].setX(this->tab_coord[i-1].getX() - 1);
+            this->tab_coord[i].setY(this->tab_coord[i-1].getY());
+        }
+    }
+    else if(direction == "b") //bas 
+    {
+        for (int i = 1; i < longueur_bateau; i++)
+        {
+            this->tab_coord[i].setState(etat_t::bateau);
+            this->tab_coord[i].setX(this->tab_coord[i-1].getX());
+            this->tab_coord[i].setY(this->tab_coord[i-1].getY() + 1);
+        }
+    }
+    else if(direction == "d") //droite
+    {
+        for (int i = 1; i < longueur_bateau; i++)
+        {
+            this->tab_coord[i].setState(etat_t::bateau);
+            this->tab_coord[i].setX(this->tab_coord[i-1].getX() + 1);
+            this->tab_coord[i].setY(this->tab_coord[i-1].getY());
+        }
+    }
+    else if(direction == "h") //haut
+    {
+        for (int i = 1; i < longueur_bateau; i++)
+        {
+            this->tab_coord[i].setState(etat_t::bateau);
+            this->tab_coord[i].setX(this->tab_coord[i-1].getX());
+            this->tab_coord[i].setY(this->tab_coord[i-1].getY() - 1);
+        }
+    }
 }
