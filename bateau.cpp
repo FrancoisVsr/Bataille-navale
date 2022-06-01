@@ -102,7 +102,7 @@ void Bateau_t::input_coordinate(void) {
     int coordX;
     int coordY;
     // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
-    std::cout << "Saisir l'extremité X du bateau (entre A et J) : " << std::endl; 
+    std::cout << "Saisir l'extremite X du bateau (entre A et J) : " << std::endl; 
     char choixUserX;
     std::cin >> choixUserX;
     if(!(choixUserX >= 'A' && choixUserX <= 'J')) {
@@ -115,7 +115,7 @@ void Bateau_t::input_coordinate(void) {
         coordX = (choixUserX - 'A') + 1;
     }
     
-    std::cout << "Saisir l'extremité X du bateau (entre A et J) : " << std::endl; 
+    std::cout << "Saisir l'extremite X du bateau (entre 1 et 10) : " << std::endl; 
     int choixUserY;
     std::cin >> choixUserY;
     if(!(choixUserY >= 1 && choixUserY <= 10)) {

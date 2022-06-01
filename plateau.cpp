@@ -32,6 +32,7 @@ Plateau_t::Plateau_t() {
 void Plateau_t::display() {
 
     //Gestion affichage grille vide
+    std::cout << "Affichage de la grille" << std::endl;
     addLine(this->taille);
     for(int line = 0; line < this->taille + 1; line++) {   
             for (int row = 0; row < this->taille + 1; row++) {  
@@ -98,8 +99,8 @@ bool Plateau_t::setCase(Case_t new_case) {
 }
 
 bool Plateau_t::addBateau(Bateau_t bateau) {
-    for(int i = 0; i < bateau.getLongueur_Bateau(); i++) {
-        if(!(this->setCase(bateau.getCoord()))) {
+    for(int i = 0; i < bateau.getLength(); i++) {
+        if(!(this->setCase(bateau.getCase(i)))) {
             return false;
         }
     }

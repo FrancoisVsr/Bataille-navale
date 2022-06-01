@@ -2,8 +2,8 @@ all : bataille_navale
 
 rebuild : clean all
 
-bataille_navale : main.o case.o plateau.o #loup.o lion.o ours.o attaque.o
-	g++ -o bataille_navale main.o case.o plateau.o
+bataille_navale : main.o case.o plateau.o bateau.o #lion.o ours.o attaque.o
+	g++ -o bataille_navale main.o case.o plateau.o bateau.o
 	del *.o
 
 main.o : main.cpp 
@@ -14,6 +14,9 @@ case.o : case.cpp
 
 plateau.o : plateau.cpp 
 	g++ -o plateau.o -c plateau.cpp
+
+bateau.o : bateau.cpp 
+	g++ -o bateau.o -c bateau.cpp
 
 clean :
 	del *.o

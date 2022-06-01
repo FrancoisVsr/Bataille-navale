@@ -13,7 +13,7 @@
 /*******************************
  *          Includes           *
  *******************************/
-#include "bateau.hpp"
+#include "bateau.h"
 #include "case.h"
 #include <vector>
 
@@ -37,7 +37,7 @@ class Plateau_t {
 
         //Accesseurs
         int getTaille() const { return this->taille;}
-        //int getBateau() const { return this->bateau;}
+        Case_t getCase(int x, int y) const { return this->grid[x][y];}
 
         //Setteurs
         bool setCase(int, int, int);
@@ -45,9 +45,7 @@ class Plateau_t {
 
         //Méthodes
         void display();
-        bool 
         bool addBateau(Bateau_t);
-
 };
 
 

@@ -13,7 +13,10 @@ int main() {
     plateau1.setCase(3, 3, 4);
     plateau1.display();
 
-    Bateau_t bateau(0);
+    Bateau_t bateau0(0); //La saisie des valeurs se fait directement lors de l'appelle du constructeur
+    plateau1.addBateau(bateau0);
+
+    plateau1.display();
 
     
     
