@@ -40,15 +40,13 @@ class Plateau_t {
         //int getBateau() const { return this->bateau;}
 
         //Setteurs
-        void setCase(int, int, int);
-
+        bool setCase(int, int, int);
+        bool setCase(Case_t);
 
         //Méthodes
-        void init();
         void display();
-
-       
-        //void addBateau(Bateau bateau);
+        bool 
+        bool addBateau(Bateau_t);
 
 };
 
