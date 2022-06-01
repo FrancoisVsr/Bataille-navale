@@ -17,7 +17,7 @@
 #include <string>
 //#include <stdbool.h>
 #include <assert.h>
-#include "bateau.hpp"
+#include "bateau.h"
 #include "plateau.h"
 #include "case.h"
 
