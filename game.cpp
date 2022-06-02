@@ -10,6 +10,7 @@
  *          Includes           *
  *******************************/
 #include <iostream>
+#include <string>
 #include "game.h"
 
 /**
@@ -23,7 +24,7 @@ void start() {
 }
 
 /**
- * @fn void start()
+ * @fn int menu()
  * @brief affiche le menu du jeu pour le choix du mode
  * 
  * @return choix de l'utilisateur, entier 1 pour un joueur ou 2 pour deux joueurs
@@ -48,4 +49,15 @@ int menu() {
         choix = 2;
     }
     return choix;
+}
+
+bool GameLoop_2_player() {
+    std::string joueur1 = "";
+    std::string joueur2 = "";
+    std::cout << "Entrer le nom du premier joueur : ";
+    std::cin >> joueur1;
+
+    std::cout << "Entrer le nom du deuxième joueur : ";
+
+    return true;
 }
