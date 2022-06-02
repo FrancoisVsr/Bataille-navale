@@ -51,6 +51,7 @@ Joueur_t::Joueur_t(std::string name_p) {
     this->plateau_allie = plateau_ennemi;
 
     Bateau_t porte_avion(nom_bateau::porte_avion);
+
     this->porte_avion = porte_avion;
     Bateau_t croiseur(nom_bateau::croiseur);
     this->croiseur = croiseur;
@@ -127,11 +128,8 @@ Bateau_t Joueur_t::get_bateau(int nb) const {
 void Joueur_t::set_vie(bool life) {
     this->vie = life;
 }
-void Joueur_t::set_plateau(Plateau_t plateau, char vs) {
-
-}
-void Joueur_t::set_bateau(Bateau_t bateau, int nb) {
-
+void Joueur_t::set_case_allie(int x, int y, int etat) {
+    plateau_allie.setCase(x, y, etat);
 }
 
 
@@ -139,24 +137,25 @@ bool Joueur_t::tir(Joueur_t *j, int x, int y) {
     Plateau_t plateau_vise(j->get_plateau(0));
     Case_t case_vise(plateau_vise.getCase(x, y));
     Case_t case_enemie(plateau_ennemi.getCase(x, y));
-    if((x >= 1) && (x <= 10) && (y > 10) && (y <= 10))
+    if((x >= 1) && (x <= 10) && (y >= 1) && (y <= 10))
     {
-        if(etat == etat_t::eau)
+        if(case_enemie.getState() == etat_t::eau)
         {
-            j->plateau_allie.setCase(x, y);
-            etat = j->plateau_allie.getCase(x, y);
-            switch(etat)
+            switch(case_vise.getState())
             {
-                case touche:
+                case etat_t::bateau:
                     std::cout << "Un bateau a été touché !" << std::endl << std::endl;
-                    break;
-                case coule:
+                    plateau_ennemi.setCase(x, y, etat_t::touche);
+                    j->set_case_allie(x, y, etat_t::touche);
                     std::cout << "Un bateau a été coulé !" << std::endl << std::endl;
                     break;
-                case rate:
+                case etat_t::eau:
                     std::cout << "Sheh ! Essaie encore !" << std::endl << std::endl;
+                    plateau_ennemi.setCase(x, y, etat_t::rate);
+                    j->set_case_allie(x, y, etat_t::rate);
                     break;
                 default:
+                    std::cerr << "error in state case, x = " << x << "\ty = " << y << std::endl;
                     break;
             }
             j->plateau_allie.display();
@@ -173,11 +172,14 @@ bool Joueur_t::tir(Joueur_t *j, int x, int y) {
     }
     else
     {
-        std::cout << "Les coordonnées doivent être comprises entre 0 et 9 !" << std::endl;
+        std::cout << "Les coordonnées doivent être comprises entre 1 et 10 !" << std::endl;
         return false;
     }
 }
 
+bool Joueur_t::check_bateau() {
+
+}
 
 /**
  * @brief       Destructeur d'un objet Joueur

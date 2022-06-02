@@ -58,11 +58,11 @@ class Joueur_t {
 
         //setters
 	    void set_vie(bool vie);
-        void set_plateau(Plateau_t plateau, char vs);
-        void set_bateau(Bateau_t bateau, int nb);
+        void set_case_allie(int, int, int);
 
         //methodes
         bool tir(Joueur_t*, int, int);
+        bool check_bateau();
   
   	    //Destructeur 
   	    ~Joueur_t();
