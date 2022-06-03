@@ -14,5 +14,6 @@ void start();
 int menu();
 bool GameLoop_1_player();
 bool GameLoop_2_player();
+void clean_display();
 
 #endif
