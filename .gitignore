@@ -1,4 +1,8 @@
 main.o
 game.o
+joueur.o
+plateau.o
+bateau.o
+case.o
 prgm.exe
 .vscode/
