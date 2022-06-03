@@ -19,9 +19,35 @@ void addLine(int tailleTab) {
     std::cout << "|" << std::endl;;
 }
 
+//Traduction de l'affichage des cases en fonction de leur état
+char stateDisplay(int state){
+    char caseContent = ' ';
+    switch (state)
+    {
+        case 0: //Vide
+            caseContent = ' ';
+            break;
+        case 1: //Rate
+            caseContent = 'x';
+            break;
+        case 2: //Touche
+            caseContent = '.';
+            break;
+        case 3: //Bateau
+            caseContent = 'B';
+            break;
+        case 4: //Coule
+            caseContent = 'O';
+            break;
+        default:
+            caseContent = 'E';
+            break;
+    }
+    return caseContent;
+}
+
 //Constructeurs
 Plateau_t::Plateau_t() {
-
     this->taille = 10;
 }
 
@@ -39,13 +65,8 @@ void Plateau_t::display() {
 
                 //Gestion affichage numéro colonnes
                 if((line == 0) && (row != 0)) {
-                    //Gestion affichage chiffre ou nombre
-                    if (row < 10){
-                        std::cout << "|" << row << "   ";
-                    } 
-                    else {
-                        std::cout << "|" << row << "  ";
-                    }  
+                    //Gestion affichage lettres avec decalage pour récupérer tablea ASCII (A=65)
+                    std::cout << "|" << char(row + 64) << "   "; 
                 }
                
                 else {
@@ -63,7 +84,7 @@ void Plateau_t::display() {
                     } 
                     else {
                         //Affichage du délimiteur + du contenu de la case
-                        std::cout <<"| " << this->grid[row-1][line-1].getState() << "  ";
+                        std::cout <<"| " << stateDisplay(this->grid[row-1][line-1].getState()) << "  ";
                     } 
                 }
 
@@ -105,4 +126,47 @@ bool Plateau_t::addBateau(Bateau_t bateau) {
         }
     }
     return true;
+}
+
+
+void Plateau_t::displayShip() {
+
+    //Gestion affichage grille vide
+    std::cout << "Affichage de la grille" << std::endl;
+    addLine(this->taille);
+    for(int line = 0; line < this->taille + 1; line++) {   
+            for (int row = 0; row < this->taille + 1; row++) {  
+
+                //Gestion affichage numéro colonnes
+                if((line == 0) && (row != 0)) {
+                    //Gestion affichage lettres avec decalage pour récupérer tablea ASCII (A=65)
+                    std::cout << "|" << char(row + 64) << "   "; 
+                }
+               
+                else {
+                    //Gestion affichage numéro ligne
+                    if ((row == 0) and (line >= 0)) {
+                        if (line == 0){
+                            std::cout << "|GRID"; 
+                        }
+                        else if (line < 10){
+                            std::cout << "|" << line << "   ";
+                        } 
+                        else {
+                            std::cout << "|" << line << "  ";
+                        }
+                    } 
+                    else {
+                        //Affichage du délimiteur + du contenu de la case
+                        std::cout <<"| " << stateDisplay(this->grid[row-1][line-1].getState()) << "  ";
+                    } 
+                }
+
+                //Gestion fin de ligne et insertion ligne
+                if (row == this->taille) {
+                    std::cout <<"|\n";
+                    addLine(this->taille);
+                }  
+            }
+        }
 }

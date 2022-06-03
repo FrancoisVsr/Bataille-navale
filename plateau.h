@@ -18,6 +18,7 @@
 #include <vector>
 
 void addLine(int tailleTab);
+char stateDisplay(int state);
 
 /*******************************
  *      Classe plateau permettant d'afficher un tableau de jeu dynamique   *
@@ -27,6 +28,7 @@ class Plateau_t {
     protected:
         int taille;
         Case_t grid[10][10];
+        Bateau_t flotte[5];
 
     /*******************************
      *       Public methods        *
@@ -45,6 +47,7 @@ class Plateau_t {
 
         //Méthodes
         void display();
+        void displayShip();
         bool addBateau(Bateau_t);
 };
 

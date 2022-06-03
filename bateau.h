@@ -17,6 +17,8 @@
 #include <cassert>
 #include <cstdio>
 #include "case.h"
+//#include "plateau.h"
+class Plateau_t;
 
 /*******************************
  *       Public methods        *
@@ -54,7 +56,7 @@ class Bateau_t {
 
         //Constructeur 
         Bateau_t(); // For IA
-        Bateau_t(int);
+        Bateau_t(int, Plateau_t);
 
 	    //Accesseurs
 	    std::string getNom_Bateau() const {return nom_bateau;}
@@ -71,7 +73,7 @@ class Bateau_t {
         void setVivant(bool v) {this->vie = v;}
 
 	    //Méthodes
-        void input_coordinate(void);
+        void input_coordinate(Plateau_t);
         void input_direction(void);
 
 };
