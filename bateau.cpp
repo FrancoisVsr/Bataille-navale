@@ -65,12 +65,12 @@ Bateau_t::Bateau_t() {
     
 }
 //constructeur par defaut pour un bateau auquel on donne le nom
-Bateau_t::Bateau_t(int _nom_bateau, Plateau_t plateau) {
+Bateau_t::Bateau_t(int type, int x, int y, char direction) {
 
     // attributs set de base
     this->vie = true;   //par defaut en vie
 
-    switch (_nom_bateau) // 0,1,2,3,4
+    switch (type) // 0,1,2,3,4
     {
         case porte_avion: 
             this->longueur_bateau = 5;
@@ -96,8 +96,48 @@ Bateau_t::Bateau_t(int _nom_bateau, Plateau_t plateau) {
         break;
     }
 
-    input_coordinate(plateau);
-    input_direction();
+    this->tab_coord[0].setX(x);
+    this->tab_coord[0].setY(y);
+    this->tab_coord[0].setState(etat_t::bateau);
+
+    //Maj des cases du bateau en fonction de la direction choisi
+    if(direction == 'g') //gauche
+    {
+        for (int i = 1; i < longueur_bateau; i++)
+        {
+            this->tab_coord[i].setState(etat_t::bateau);
+            this->tab_coord[i].setX(this->tab_coord[i-1].getX() - 1);
+            this->tab_coord[i].setY(this->tab_coord[i-1].getY());
+        }
+    }
+    else if(direction == 'b') //bas 
+    {
+        for (int i = 1; i < longueur_bateau; i++)
+        {
+            this->tab_coord[i].setState(etat_t::bateau);
+            this->tab_coord[i].setX(this->tab_coord[i-1].getX());
+            this->tab_coord[i].setY(this->tab_coord[i-1].getY() + 1);
+        }
+    }
+    else if(direction == 'd') //droite
+    {
+        for (int i = 1; i < longueur_bateau; i++)
+        {
+            this->tab_coord[i].setState(etat_t::bateau);
+            this->tab_coord[i].setX(this->tab_coord[i-1].getX() + 1);
+            this->tab_coord[i].setY(this->tab_coord[i-1].getY());
+        }
+    }
+    else if(direction == 'h') //haut
+    {
+        for (int i = 1; i < longueur_bateau; i++)
+        {
+            this->tab_coord[i].setState(etat_t::bateau);
+            this->tab_coord[i].setX(this->tab_coord[i-1].getX());
+            this->tab_coord[i].setY(this->tab_coord[i-1].getY() - 1);
+        }
+    }
+
 }
 
 void Bateau_t::input_coordinate(Plateau_t plateau) {
