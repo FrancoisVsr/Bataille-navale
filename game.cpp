@@ -108,6 +108,7 @@ bool GameLoop_1_player() {
     std::cout << "Entrer le nom du joueur : ";
     std::cin >> name_joueur;
     Joueur_t joueur(name_joueur);
+    Joueur_t joueur();
     return true;
 }
 

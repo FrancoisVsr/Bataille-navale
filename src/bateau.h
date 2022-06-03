@@ -56,7 +56,7 @@ class Bateau_t {
 
         //Constructeur 
         Bateau_t(); // For IA
-        Bateau_t(int, Plateau_t);
+        Bateau_t(int, int, int, char);
 
 	    //Accesseurs
 	    std::string getNom_Bateau() const {return nom_bateau;}

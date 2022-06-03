@@ -18,10 +18,7 @@
 #include <vector>
 
 void addLine(int tailleTab);
-<<<<<<<< HEAD:plateau.h
-========
 char stateDisplay(int state);
->>>>>>>> master:src/plateau.h
 
 /*******************************
  *      Classe plateau permettant d'afficher un tableau de jeu dynamique   *
@@ -31,10 +28,6 @@ class Plateau_t {
     protected:
         int taille;
         Case_t grid[10][10];
-<<<<<<<< HEAD:plateau.h
-========
-        Bateau_t flotte[5];
->>>>>>>> master:src/plateau.h
 
     /*******************************
      *       Public methods        *
@@ -52,11 +45,8 @@ class Plateau_t {
         bool setCase(Case_t);
 
         //Méthodes
-        void display();
-<<<<<<<< HEAD:plateau.h
-========
-        void displayShip();
->>>>>>>> master:src/plateau.h
+        void display() const;
+        Bateau_t addBateau(int);
         bool addBateau(Bateau_t);
 };
 

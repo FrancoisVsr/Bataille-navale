@@ -37,6 +37,61 @@
  */
 
 /**
+ * @brief       Constructeur d'un objet Joueur pour l'IA
+ * @details     Le constructeur de la classe joueur créé et initialise les plateaux et bateaux
+ */
+Joueur_t::Joueur_t() {
+    int x;
+    int y;
+    char dir;
+
+    this->name = "IA";
+    this->vie = true;
+
+    Plateau_t plateau_allie;
+    this->plateau_allie = plateau_allie;
+
+    Plateau_t plateau_ennemi;
+    this->plateau_allie = plateau_ennemi;
+
+
+    for(int i = 0; i < 5; i++) {
+        do {
+            srand(time(NULL));
+            x = (rand() % 10) + 1;
+            y = (rand() % 10) + 1;
+            dir = (rand() % 4);
+            if(dir == 0) dir = 'g';
+            else if(dir == 1) dir = 'b';
+            else if(dir == 2) dir = 'd';
+            else dir = 'h';
+
+            Bateau_t new_bateau(i, x, y, dir);
+        } while(1);
+
+        switch(i) {
+            case nom_bateau::porte_avion:
+                this->porte_avion = new_bateau;
+                break;
+            case nom_bateau::croiseur:
+                this->croiseur = new_bateau;
+                break;
+            case nom_bateau::contre_torpilleur_1:
+                this->contre_torpilleurs_1 = new_bateau;
+                break;
+            case nom_bateau::contre_torpilleur_2:
+                this->contre_torpilleurs_2 = new_bateau;
+                break;
+            case nom_bateau::torpilleur:
+                this->torpilleur = new_bateau;
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+/**
  * @brief       Constructeur d'un objet Joueur
  * @details     Le constructeur de la classe joueur créé et initialise les plateaux et bateaux
  */
@@ -58,7 +113,7 @@ Joueur_t::Joueur_t(std::string name_p) {
     Bateau_t contre_torpilleurs_1(nom_bateau::contre_torpilleur_1);
     this->contre_torpilleurs_1 = contre_torpilleurs_1;
     Bateau_t contre_torpilleurs_2(nom_bateau::contre_torpilleur_2);
-    this->contre_torpilleurs_1 = contre_torpilleurs_2;
+    this->contre_torpilleurs_2 = contre_torpilleurs_2;
     Bateau_t torpilleur(nom_bateau::torpilleur);
     this->torpilleur = torpilleur;
     this->add_flotte();
@@ -118,7 +173,6 @@ Bateau_t Joueur_t::get_bateau(int nb) const {
             break;
         default:
             return bateau_vide;
-            return 0;
     }
 }
 

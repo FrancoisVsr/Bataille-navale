@@ -48,6 +48,7 @@ class Joueur_t {
 
     public:
       	//Constructeur
+        Joueur_t();
   	    Joueur_t(std::string);
 
     	//getters
@@ -66,6 +67,7 @@ class Joueur_t {
         void display();
         void saisie_tir(int*, int*);
         void update_vie();
+        Bateau_t newBoat(int);
         void add_flotte();
   
   	    //Destructeur 
