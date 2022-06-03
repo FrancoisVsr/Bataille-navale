@@ -1,0 +1,9 @@
+.vscode/
+build/main.o
+build/bataille_naval.exe
+build/game.o
+build/joueur.o
+build/plateau.o
+build/bateau.o
+build/case.o
+build/prgm.exe
