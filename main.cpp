@@ -13,12 +13,11 @@ int main() {
     //plateau1.setCase(3, 3, 4);
 
     Bateau_t porte_avion = plateau1.addBateau(nom_bateau::porte_avion);
-
-    //Bateau_t bateau0(0, plateau1); //La saisie des valeurs se fait directement lors de l'appelle du constructeur
-    //plateau1.addBateau(bateau0);
     plateau1.display();
-
-
+    Bateau_t contre_torpilleur_1 = plateau1.addBateau(nom_bateau::contre_torpilleur_1);
+    plateau1.display();
+    Bateau_t contre_torpilleur_2 = plateau1.addBateau(nom_bateau::contre_torpilleur_2);
+    plateau1.display();
 
     return 0;
 }
