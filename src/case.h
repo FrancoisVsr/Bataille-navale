@@ -8,7 +8,8 @@ enum etat_t {
     rate = 1,
     touche = 2,
     bateau = 3,
-    coule = 4
+    coule = 4,
+    incorrect = 5
 };
 
 class Case_t {
@@ -33,6 +34,7 @@ class Case_t {
         void setX(int x) { this->x = x;}
         void setY(int y) { this->y = y;}
         void setState(int state) { this->state = state;}
+        void setCase(Case_t&);
 };
 
 #endif
