@@ -18,6 +18,8 @@
 #include "plateau.h"
 #include "case.h"
 
+int letter_to_int(std::string str);
+
 /*******************************
  *       Public methods        *
  *******************************/
@@ -59,14 +61,10 @@ class Joueur_t {
 
         //methodes
         bool tir(Joueur_t*, int, int);
-        bool check_bateau();
         void display();
         void saisie_tir(int*, int*);
         void update_vie();
         void add_flotte();
-  
-  	    //Destructeur 
-  	    ~Joueur_t();
 };
 
 #endif /*JOUEUR_HPP*/
