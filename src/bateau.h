@@ -56,7 +56,7 @@ class Bateau_t {
 
         //Constructeur 
         Bateau_t(); // For IA
-        Bateau_t(int, Plateau_t);
+        Bateau_t(int);
 
 	    //Accesseurs
 	    std::string getNom_Bateau() const {return nom_bateau;}
@@ -73,7 +73,7 @@ class Bateau_t {
         void setVivant(bool v) {this->vie = v;}
 
 	    //Méthodes
-        void input_coordinate(Plateau_t);
+        void input_coordinate();
         void input_direction(void);
 
 };

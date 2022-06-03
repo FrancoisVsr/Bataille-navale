@@ -12,10 +12,7 @@
  *          Includes           *
  *******************************/
 #include <iostream>
-//#include <stdlib.h>
-//#include <stdio.h>
 #include <string>
-//#include <stdbool.h>
 #include <assert.h>
 #include "bateau.h"
 #include "plateau.h"

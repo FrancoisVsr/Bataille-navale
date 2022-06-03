@@ -65,7 +65,7 @@ Bateau_t::Bateau_t() {
     
 }
 //constructeur par defaut pour un bateau auquel on donne le nom
-Bateau_t::Bateau_t(int _nom_bateau, Plateau_t plateau) {
+Bateau_t::Bateau_t(int _nom_bateau) {
 
     // attributs set de base
     this->vie = true;   //par defaut en vie
@@ -96,11 +96,11 @@ Bateau_t::Bateau_t(int _nom_bateau, Plateau_t plateau) {
         break;
     }
 
-    input_coordinate(plateau);
+    input_coordinate();
     input_direction();
 }
 
-void Bateau_t::input_coordinate(Plateau_t plateau) {
+void Bateau_t::input_coordinate() {
     int coordX;
     int coordY;
     // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
@@ -129,51 +129,52 @@ void Bateau_t::input_coordinate(Plateau_t plateau) {
             std::cin >> choixUserY;
         } while(!(choixUserY >= 1 && choixUserY <= 10));   
     }
-    //On vérifie que le point d'origine est sur une case vide
-    else if (!(plateau.getCase(coordX, choixUserY).getState() == 0)) {
-        do {
-            std::cout << "Incorrect, la case est deja prise par un autre bateau" << std::endl;
-            std::cout << "X : " << plateau.getCase(coordX, choixUserY).getX();
-            std::cout << "Y : " << plateau.getCase(coordX, choixUserY).getY();
-            std::cout << "Etat : " << plateau.getCase(coordX, choixUserY).getState();
-            std::cin >> choixUserY;
-        } while((plateau.getCase(coordX, choixUserY).getState() == 0));
-    }
-    //On vérifie qu'il n'y a pas d'autres bateaux à proximité du pt d'origine
-    else if ((plateau.getCase(coordX+1, choixUserY).getState() != 0) ||
-             (plateau.getCase(coordX+1, choixUserY+1).getState() != 0) ||
-             (plateau.getCase(coordX, choixUserY+1).getState() != 0) ||
-             (plateau.getCase(coordX-1, choixUserY+1).getState() != 0) ||
-             (plateau.getCase(coordX-1, choixUserY).getState() != 0) ||
-             (plateau.getCase(coordX-1, choixUserY-1).getState() != 0) ||
-             (plateau.getCase(coordX, choixUserY-1).getState() != 0) ||
-             (plateau.getCase(coordX+1, choixUserY-1).getState() != 0)) {
-        do {
-            std::cout << "Incorrect, bateau a moins d'une case de celle ciblee, ressaisissez Y :" << std::endl;
-            std::cout << "X : " << coordX << ", Y : " << choixUserY << std::endl; 
-            std::cin >> choixUserY;
-        } while((plateau.getCase(coordX+1, choixUserY).getState() != 0) ||
-             (plateau.getCase(coordX+1, choixUserY+1).getState() != 0) ||
-             (plateau.getCase(coordX, choixUserY+1).getState() != 0) ||
-             (plateau.getCase(coordX-1, choixUserY+1).getState() != 0) ||
-             (plateau.getCase(coordX-1, choixUserY).getState() != 0) ||
-             (plateau.getCase(coordX-1, choixUserY-1).getState() != 0) ||
-             (plateau.getCase(coordX, choixUserY-1).getState() != 0) ||
-             (plateau.getCase(coordX+1, choixUserY-1).getState() != 0));
-    }
-    //Si tout est ok on prend la coordonnée
     else {
         coordY = choixUserY;
     }
     coordY = choixUserY;
+    //On vérifie que le point d'origine est sur une case vide
+    // else if (!(plateau.getCase(coordX, choixUserY).getState() == 0)) {
+    //     do {
+    //         std::cout << "Incorrect, la case est deja prise par un autre bateau" << std::endl;
+    //         std::cout << "X : " << plateau.getCase(coordX, choixUserY).getX();
+    //         std::cout << "Y : " << plateau.getCase(coordX, choixUserY).getY();
+    //         std::cout << "Etat : " << plateau.getCase(coordX, choixUserY).getState();
+    //         std::cin >> choixUserY;
+    //     } while((plateau.getCase(coordX, choixUserY).getState() == 0));
+    // }
+    // //On vérifie qu'il n'y a pas d'autres bateaux à proximité du pt d'origine
+    // else if ((plateau.getCase(coordX+1, choixUserY).getState() != 0) ||
+    //          (plateau.getCase(coordX+1, choixUserY+1).getState() != 0) ||
+    //          (plateau.getCase(coordX, choixUserY+1).getState() != 0) ||
+    //          (plateau.getCase(coordX-1, choixUserY+1).getState() != 0) ||
+    //          (plateau.getCase(coordX-1, choixUserY).getState() != 0) ||
+    //          (plateau.getCase(coordX-1, choixUserY-1).getState() != 0) ||
+    //          (plateau.getCase(coordX, choixUserY-1).getState() != 0) ||
+    //          (plateau.getCase(coordX+1, choixUserY-1).getState() != 0)) {
+    //     do {
+    //         std::cout << "Incorrect, bateau a moins d'une case de celle ciblee, ressaisissez Y :" << std::endl;
+    //         std::cout << "X : " << coordX << ", Y : " << choixUserY << std::endl; 
+    //         std::cin >> choixUserY;
+    //     } while((plateau.getCase(coordX+1, choixUserY).getState() != 0) ||
+    //          (plateau.getCase(coordX+1, choixUserY+1).getState() != 0) ||
+    //          (plateau.getCase(coordX, choixUserY+1).getState() != 0) ||
+    //          (plateau.getCase(coordX-1, choixUserY+1).getState() != 0) ||
+    //          (plateau.getCase(coordX-1, choixUserY).getState() != 0) ||
+    //          (plateau.getCase(coordX-1, choixUserY-1).getState() != 0) ||
+    //          (plateau.getCase(coordX, choixUserY-1).getState() != 0) ||
+    //          (plateau.getCase(coordX+1, choixUserY-1).getState() != 0));
+    // }
+    //Si tout est ok on prend la coordonnée
+    
 
     this->tab_coord[0].setX(coordX);
     this->tab_coord[0].setY(coordY);
     this->tab_coord[0].setState(etat_t::bateau);
-    std::cout << "cccX : " << coordX;
-    std::cout << "cccY : " << coordY;
-    std::cout << "cccX : " << plateau.getCase(coordX, coordY).getX();
-    std::cout << " cccY : " << plateau.getCase(coordX, coordY).getY() << std::endl;
+    // std::cout << "cccX : " << coordX;
+    // std::cout << "cccY : " << coordY;
+    // std::cout << "cccX : " << plateau.getCase(coordX, coordY).getX();
+    // std::cout << " cccY : " << plateau.getCase(coordX, coordY).getY() << std::endl;
     
 }
 

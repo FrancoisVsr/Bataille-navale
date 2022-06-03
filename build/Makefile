@@ -8,7 +8,7 @@ clean :
 rebuild : clean all
 
 bataille_naval : main.o joueur.o game.o plateau.o bateau.o case.o
-	g++ -o prgm.exe main.o game.o joueur.o plateau.o bateau.o case.o
+	g++ -o bataille_naval.exe main.o game.o joueur.o plateau.o bateau.o case.o
 
 main.o : $(PATH_SRC)main.cpp
 	g++ -o main.o -c $(PATH_SRC)main.cpp

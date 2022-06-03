@@ -50,15 +50,19 @@ Joueur_t::Joueur_t(std::string name_p) {
     Plateau_t plateau_ennemi;
     this->plateau_allie = plateau_ennemi;
 
-
+    std::cout << "Saisie du porteavion : " << std::endl;
     Bateau_t porte_avion(nom_bateau::porte_avion);
     this->porte_avion = porte_avion;
+    std::cout << "Saisie du croiseur : " << std::endl;
     Bateau_t croiseur(nom_bateau::croiseur);
     this->croiseur = croiseur;
+    std::cout << "Saisie du premier contretorpilleur : " << std::endl;
     Bateau_t contre_torpilleurs_1(nom_bateau::contre_torpilleur_1);
     this->contre_torpilleurs_1 = contre_torpilleurs_1;
+    std::cout << "Saisie du deuxieme contre torpilleur : " << std::endl;
     Bateau_t contre_torpilleurs_2(nom_bateau::contre_torpilleur_2);
     this->contre_torpilleurs_1 = contre_torpilleurs_2;
+    std::cout << "Saisie du torpilleur : " << std::endl;
     Bateau_t torpilleur(nom_bateau::torpilleur);
     this->torpilleur = torpilleur;
     this->add_flotte();
