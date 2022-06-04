@@ -10,6 +10,7 @@
  *******************************/
 #include "plateau.h"
 #include <cstdlib>
+#include <typeinfo>
 
  //Affichage d'une ligne de délimitation
 void addLine(int tailleTab) {
@@ -122,7 +123,7 @@ bool Plateau_t::setCase(Case_t new_case) {
 
 
 Bateau_t Plateau_t::addBateau(int type) {
-    int x_in, x_grid, y_in, y_grid, choixUserY;
+    int x_in, x_grid, y_in, y_grid, choixUserY, testInt = 1;
     char choixUserX;
 
     //Saisie de la coordonne X du point d'origine du bateau
@@ -157,20 +158,20 @@ Bateau_t Plateau_t::addBateau(int type) {
         }
 
         //On vérifie si la case ciblée n'est pas déjà prise par un autre bateau
-        else if (this->grid[x_grid][y_grid].getState() != eau) {
+        else if (this->grid[x_grid][y_grid].getState() == bateau) {
             std::cout << "Incorrect, la case est deja prise par un autre bateau" << std::endl;
             check = false;
         }
 
         //On vérifie qu'il n'y a pas de bateau autour de la case ciblée
-        else if ((this->grid[x_grid + 1][y_grid].getState() != eau) ||
-                 (this->grid[x_grid + 1][y_grid + 1].getState() != eau) ||
-                 (this->grid[x_grid][y_grid + 1].getState() != eau) ||
-                 (this->grid[x_grid - 1][y_grid + 1].getState() != eau) ||
-                 (this->grid[x_grid - 1][y_grid].getState() != eau) ||
-                 (this->grid[x_grid - 1][y_grid - 1].getState() != eau) ||
-                 (this->grid[x_grid][y_grid - 1].getState() != eau) ||
-                 (this->grid[x_grid + 1][y_grid - 1].getState() != eau)) {
+        else if ((this->grid[x_grid + 1][y_grid].getState() == bateau) ||
+                 (this->grid[x_grid + 1][y_grid + 1].getState() == bateau) ||
+                 (this->grid[x_grid][y_grid + 1].getState() == bateau) ||
+                 (this->grid[x_grid - 1][y_grid + 1].getState() == bateau) ||
+                 (this->grid[x_grid - 1][y_grid].getState() == bateau) ||
+                 (this->grid[x_grid - 1][y_grid - 1].getState() == bateau) ||
+                 (this->grid[x_grid][y_grid - 1].getState() == bateau) ||
+                 (this->grid[x_grid + 1][y_grid - 1].getState() == bateau)) {
 
             std::cout << "Incorrect, bateau a moins d'une case" << std::endl;
             check = false;
