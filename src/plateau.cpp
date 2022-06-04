@@ -10,6 +10,8 @@
  *******************************/
 #include "plateau.h"
 #include <cstdlib>
+#include <typeinfo>
+#include <time.h>
 
 //Affichage d'une ligne de délimitation
 void addLine(int tailleTab) {
@@ -163,20 +165,20 @@ Bateau_t Plateau_t::addBateau(int type) {
         }
 
         //On vérifie si la case ciblée n'est pas déjà prise par un autre bateau
-        else if (this->grid[x_grid][y_grid].getState() != eau) {
+        else if (this->grid[x_grid][y_grid].getState() == bateau) {
             std::cout << "Incorrect, la case est deja prise par un autre bateau" << std::endl;
             check = false;
         }
 
         //On vérifie qu'il n'y a pas de bateau autour de la case ciblée
-        else if ((this->grid[x_grid + 1][y_grid].getState() != eau) ||
-                 (this->grid[x_grid + 1][y_grid + 1].getState() != eau) ||
-                 (this->grid[x_grid][y_grid + 1].getState() != eau) ||
-                 (this->grid[x_grid - 1][y_grid + 1].getState() != eau) ||
-                 (this->grid[x_grid - 1][y_grid].getState() != eau) ||
-                 (this->grid[x_grid - 1][y_grid - 1].getState() != eau) ||
-                 (this->grid[x_grid][y_grid - 1].getState() != eau) ||
-                 (this->grid[x_grid + 1][y_grid - 1].getState() != eau)) {
+        else if ((this->grid[x_grid + 1][y_grid].getState() == bateau) ||
+                 (this->grid[x_grid + 1][y_grid + 1].getState() == bateau) ||
+                 (this->grid[x_grid][y_grid + 1].getState() == bateau) ||
+                 (this->grid[x_grid - 1][y_grid + 1].getState() == bateau) ||
+                 (this->grid[x_grid - 1][y_grid].getState() == bateau) ||
+                 (this->grid[x_grid - 1][y_grid - 1].getState() == bateau) ||
+                 (this->grid[x_grid][y_grid - 1].getState() == bateau) ||
+                 (this->grid[x_grid + 1][y_grid - 1].getState() == bateau)) {
 
             std::cout << "Incorrect, bateau a moins d'une case" << std::endl;
             check = false;
@@ -204,50 +206,59 @@ Bateau_t Plateau_t::addBateau(int type) {
 Bateau_t Plateau_t::addBateauIA(int type) {
     int x_in, x_grid, y_in, y_grid;
     bool check;
-    int dir;
+    int dir, longueur;
+    char direction = ' ';
 
-    //Saisie de la coordonne X du point d'origine du bateau
-    do {
-        srand(time(NULL));
-        x_in = (rand() % 10) + 1;
-    } while(!(x_in >= 1 && x_in <= 10));
-    x_grid = x_in - 1;
+    if(type == 0) longueur = 5;
+    else if(type == 1) longueur = 4;
+    else if((type == 2) || (type == 3)) longueur = 3;
+    else longueur = 2;
 
-    //Saisie de la coordonne Y du point d'origine du bateau
+    //Saisie de la coordonne X et Y du point d'origine du bateau
     do {
         check = true;
         srand(time(NULL));
+        x_in = (rand() % 10) + 1;
         y_in = (rand() % 10) + 1;
+        x_grid = x_in - 1;
         y_grid = y_in - 1;
+        dir = (rand() % 4);
 
         //On vérifie que la coordonnée Y est bien sur la grille
-        if(!(y_in >= 1 && y_in <= 10)) {
+        if((!(y_in >= 1 && y_in <= 10)) || (!(x_in >= 1 && x_in <= 10))) {
             check = false;
         }
-        else if (this->grid[x_grid][y_grid].getState() != eau) { //si la case n'est pas déjà prise par bateau
+        else if (this->grid[x_grid][y_grid].getState() == bateau) { //si la case n'est pas déjà prise par bateau
             check = false;
         }
-        else if ((this->grid[x_grid + 1][y_grid].getState() != eau) ||
-                 (this->grid[x_grid + 1][y_grid + 1].getState() != eau) ||
-                 (this->grid[x_grid][y_grid + 1].getState() != eau) ||
-                 (this->grid[x_grid - 1][y_grid + 1].getState() != eau) ||
-                 (this->grid[x_grid - 1][y_grid].getState() != eau) ||
-                 (this->grid[x_grid - 1][y_grid - 1].getState() != eau) ||
-                 (this->grid[x_grid][y_grid - 1].getState() != eau) ||
-                 (this->grid[x_grid + 1][y_grid - 1].getState() != eau)) { //pas de bateau autour de la case
+        else if ((this->grid[x_grid + 1][y_grid].getState() == bateau) ||
+                 (this->grid[x_grid + 1][y_grid + 1].getState() == bateau) ||
+                 (this->grid[x_grid][y_grid + 1].getState() == bateau) ||
+                 (this->grid[x_grid - 1][y_grid + 1].getState() == bateau) ||
+                 (this->grid[x_grid - 1][y_grid].getState() == bateau) ||
+                 (this->grid[x_grid - 1][y_grid - 1].getState() == bateau) ||
+                 (this->grid[x_grid][y_grid - 1].getState() == bateau) ||
+                 (this->grid[x_grid + 1][y_grid - 1].getState() == bateau)) { //pas de bateau autour de la case
             check = false;
         }
 
+        if(dir == 0) {
+            direction = 'g';
+            if(!((x_in - longueur) >= 1)) check = false;
+        }
+        else if(dir == 1) {
+            direction = 'b';
+            if(!((y_in + longueur) <= 10)) check = false;
+        }
+        else if(dir == 2) {
+            direction = 'd';
+            if(!((x_in + longueur) <= 10)) check = false;
+        }
+        else {
+            direction = 'h';
+            if(!((y_in - longueur) >= 1)) check = false;
+        }
     } while(check == false);
-
-    char direction = ' ';
-
-    srand(time(NULL));
-    dir = (rand() % 4);
-    if(dir == 0) direction = 'g';
-    else if(dir == 1) direction = 'b';
-    else if(dir == 2) direction = 'd';
-    else direction = 'h';
 
     //Creation du bateau après avoir vérifié son emplacement
     Bateau_t bateau0(type, x_grid, y_grid, direction);

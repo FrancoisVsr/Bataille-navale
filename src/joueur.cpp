@@ -40,13 +40,9 @@
  * @brief       Constructeur d'un objet Joueur pour l'IA
  * @details     Le constructeur de la classe joueur créé et initialise les plateaux et bateaux
  */
-Joueur_t::Joueur_t() {
-    int x;
-    int y;
-    char dir;
-
+Joueur_t::Joueur_t(bool vie) {
     this->name = "IA";
-    this->vie = true;
+    this->vie = vie;
 
     Plateau_t plateau_allie;
     this->plateau_allie = plateau_allie;
@@ -64,6 +60,7 @@ Joueur_t::Joueur_t() {
     this->contre_torpilleurs_2 = contre_torp_2;
     Bateau_t torpilleur = plateau_allie.addBateauIA(nom_bateau::torpilleur);
     this->torpilleur = torpilleur;
+    this->add_flotte();
 }
 
 /**
@@ -219,7 +216,34 @@ void Joueur_t::display() {
 }
 
 void Joueur_t::saisie_tir(int* x, int* y) {
-
+    char x_saisie = ' ';
+    std::string y_saisie = "";
+    bool flag = true;
+    do {
+        std::cout << "Saisie des coordonees du tir" << std::endl;
+        std::cout << "Rentrer l abscisse (lettre majuscule entre A et J) : ";
+        std::cin >> x_saisie;
+        while(!(x_saisie >= 'A' && x_saisie <= 'J')) {
+            std::cout << "Incorrecte, ressaisir abscisse (lettre majuscule entre A et J) : ";
+            std::cin >> x_saisie;
+        }
+        *x = ((x_saisie - 'A') + 1);
+        std::cout << "Rentrer l ordonnee (nombre entre 1 et 10) : ";
+        std::cin >> y_saisie;
+        while(y_saisie != "1" && y_saisie != "2" && y_saisie != "3" && y_saisie != "4" && y_saisie != "5" && y_saisie != "6" && y_saisie != "7" && y_saisie != "8" && y_saisie != "9" && y_saisie != "10") {
+            std::cout << "Incorrecte, ressaisir ordonee (nombre entre 1 et 10) : ";
+            std::cin >> y_saisie;
+        }
+        *y = stoi(y_saisie);
+        Case_t case_enemie(plateau_ennemi.getCase(*x, *y));
+        if(case_enemie.getState() != etat_t::eau) {
+            std::cout << "Attention tu as deja tire ici ! Joisie une autre case : " << std::endl;
+            flag = true;
+        }
+        else {
+            flag = false;
+        }
+    }while(flag);
 }
 
 void Joueur_t::update_vie() {

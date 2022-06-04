@@ -113,13 +113,54 @@ bool GameLoop_2_player() {
 }
 
 bool GameLoop_1_player() {
-    /*std::string name_joueur = "";
+    char debug_fin = 'n';
+    std::string name_joueur = "";
     std::cout << "Entrer le nom du joueur : ";
     std::cin >> name_joueur;
-    Joueur_t joueur(name_joueur);*/
-    Joueur_t joueur1();
-    joueur1.display();
-    return true;
+    Joueur_t joueur1(name_joueur);
+    std::cout << "Bateaux du joueur " << joueur1.get_name() << " ok" << std::endl;
+    Joueur_t joueurIA(true);
+    std::cout << "Bateaux de l'" << joueurIA.get_name() << " ok" << std::endl;
+
+    do {
+        std::cout << "A " << joueur1.get_name() << " de jouer, appuyer sur entrer pour afficher les plateaux" << std::endl;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        while(std::cin.get() != '\n'){;}
+        joueur1.display();
+        int x = 0;
+        int y = 0;
+        joueur1.saisie_tir(&x, &y);
+        joueur1.tir(&joueurIA, x, y);
+        joueurIA.update_vie();
+        clean_display();
+        joueur1.display();
+        std::cout << "Fin du tour de " << joueur1.get_name() << ", appuyer sur entrer pour cacher les plateaux" << std::endl;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        while(std::cin.get() != '\n'){;}
+        clean_display();
+        if(joueurIA.get_vie()) {
+            std::cout << "Debut du tour de l'" << joueurIA.get_name() << std::endl;
+            // int x2 = 0;
+            // int y2 = 0;
+            // joueurIA.saisie_tir(&x2, &y2);
+            // joueurIA.tir(&joueur1, x2, y2);
+            // joueur1.update_vie();
+            joueurIA.display();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Fin du tour de l'" << joueurIA.get_name() << ", appuyer sur entrer pour cacher le plateau" << std::endl;
+            while(std::cin.get() != '\n'){;}
+            clean_display();
+        }
+        std::cout << "[DEBUG] fin ? [y/n] : ";
+        std::cin >> debug_fin;
+    }while(joueur1.get_vie() && joueurIA.get_vie() && debug_fin == 'n');
+
+    if(joueur1.get_vie()) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 void clean_display() {

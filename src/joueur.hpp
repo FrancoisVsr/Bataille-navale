@@ -50,7 +50,7 @@ class Joueur_t {
 
     public:
       	//Constructeur
-        Joueur_t();
+        Joueur_t(bool);
   	    Joueur_t(std::string);
 
     	  //getters
