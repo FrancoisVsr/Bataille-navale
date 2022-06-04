@@ -55,8 +55,9 @@ class Bateau_t {
     public:
 
         //Constructeur 
-        Bateau_t(); // For IA
-        Bateau_t(int, int, int, char);
+        Bateau_t();
+        Bateau_t(int);
+        Bateau_t(int, int, int, char); // For IA
 
 	    //Accesseurs
 	    std::string getNom_Bateau() const {return nom_bateau;}
@@ -74,6 +75,7 @@ class Bateau_t {
 
 	    //Méthodes
         void input_coordinate(Plateau_t);
+        void input_coordinate();
         void input_direction(void);
 
 };

@@ -54,41 +54,16 @@ Joueur_t::Joueur_t() {
     Plateau_t plateau_ennemi;
     this->plateau_allie = plateau_ennemi;
 
-
-    for(int i = 0; i < 5; i++) {
-        do {
-            srand(time(NULL));
-            x = (rand() % 10) + 1;
-            y = (rand() % 10) + 1;
-            dir = (rand() % 4);
-            if(dir == 0) dir = 'g';
-            else if(dir == 1) dir = 'b';
-            else if(dir == 2) dir = 'd';
-            else dir = 'h';
-
-            Bateau_t new_bateau(i, x, y, dir);
-        } while(1);
-
-        switch(i) {
-            case nom_bateau::porte_avion:
-                this->porte_avion = new_bateau;
-                break;
-            case nom_bateau::croiseur:
-                this->croiseur = new_bateau;
-                break;
-            case nom_bateau::contre_torpilleur_1:
-                this->contre_torpilleurs_1 = new_bateau;
-                break;
-            case nom_bateau::contre_torpilleur_2:
-                this->contre_torpilleurs_2 = new_bateau;
-                break;
-            case nom_bateau::torpilleur:
-                this->torpilleur = new_bateau;
-                break;
-            default:
-                break;
-        }
-    }
+    Bateau_t porte_avion = plateau_allie.addBateauIA(nom_bateau::porte_avion);
+    this->porte_avion = porte_avion;
+    Bateau_t croiseur = plateau_allie.addBateauIA(nom_bateau::croiseur);
+    this->croiseur = croiseur;
+    Bateau_t contre_torp_1 = plateau_allie.addBateauIA(nom_bateau::contre_torpilleur_1);
+    this->contre_torpilleurs_1 = contre_torp_1;
+    Bateau_t contre_torp_2 = plateau_allie.addBateauIA(nom_bateau::contre_torpilleur_2);
+    this->contre_torpilleurs_2 = contre_torp_2;
+    Bateau_t torpilleur = plateau_allie.addBateauIA(nom_bateau::torpilleur);
+    this->torpilleur = torpilleur;
 }
 
 /**
@@ -105,15 +80,19 @@ Joueur_t::Joueur_t(std::string name_p) {
     Plateau_t plateau_ennemi;
     this->plateau_allie = plateau_ennemi;
 
-
+    std::cout << "Saisie du porte-avion : " << std::endl;
     Bateau_t porte_avion(nom_bateau::porte_avion);
     this->porte_avion = porte_avion;
+    std::cout << "Saisie du croiseur : " << std::endl;
     Bateau_t croiseur(nom_bateau::croiseur);
     this->croiseur = croiseur;
+    std::cout << "Saisie du premier contretorpilleur : " << std::endl;
     Bateau_t contre_torpilleurs_1(nom_bateau::contre_torpilleur_1);
     this->contre_torpilleurs_1 = contre_torpilleurs_1;
+    std::cout << "Saisie du deuxieme contre torpilleur : " << std::endl;
     Bateau_t contre_torpilleurs_2(nom_bateau::contre_torpilleur_2);
     this->contre_torpilleurs_2 = contre_torpilleurs_2;
+    std::cout << "Saisie du torpilleur : " << std::endl;
     Bateau_t torpilleur(nom_bateau::torpilleur);
     this->torpilleur = torpilleur;
     this->add_flotte();
@@ -259,10 +238,6 @@ void Joueur_t::add_flotte() {
     plateau_allie.addBateau(torpilleur);
     plateau_allie.addBateau(contre_torpilleurs_1);
     plateau_allie.addBateau(contre_torpilleurs_2);
-}
-
-bool Joueur_t::check_bateau() {
-    return true;
 }
 
 /**

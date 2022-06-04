@@ -33,6 +33,7 @@ class Case_t {
         void setX(int x) { this->x = x;}
         void setY(int y) { this->y = y;}
         void setState(int state) { this->state = state;}
+        void setCase(Case_t&);
 };
 
 #endif

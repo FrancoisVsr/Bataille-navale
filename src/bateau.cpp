@@ -141,6 +141,80 @@ Bateau_t::Bateau_t(int type, int x, int y, char direction) {
 
 }
 
+//constructeur par defaut pour un bateau auquel on donne le nom
+Bateau_t::Bateau_t(int _nom_bateau) {
+
+    // attributs set de base
+    this->vie = true;   //par defaut en vie
+
+    switch (_nom_bateau) // 0,1,2,3,4
+    {
+        case porte_avion: 
+            this->longueur_bateau = 5;
+            this->nom_bateau = "Porte avion";
+        break;
+        case croiseur:
+            this->longueur_bateau = 4;
+            this->nom_bateau = "croiseur";
+        break;
+        case contre_torpilleur_1: 
+            this->longueur_bateau = 3;
+            this->nom_bateau = "1er Contre torpilleur";
+        break;
+        case contre_torpilleur_2: 
+            this->longueur_bateau = 3;
+            this->nom_bateau = "2eme Contre torpilleur";
+        break;
+        case torpilleur: 
+            this->longueur_bateau = 2;
+            this->nom_bateau = "Torpilleur";
+        break;
+        default:
+        break;
+    }
+
+    input_coordinate();
+    input_direction();
+}
+
+void Bateau_t::input_coordinate() {
+    int coordX;
+    int coordY;
+    // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
+    std::cout << "Saisir l'extremite X du bateau (entre A et J) : " << std::endl; 
+    char choixUserX;
+    std::cin >> choixUserX;
+
+    //On vérifie que la case ciblée est bien sur la grille
+    if(!(choixUserX >= 'A' && choixUserX <= 'J')) {
+        do {
+            std::cout << "Incorrect, saisir une lettre majuscule entre A et J" << std::endl;
+            std::cin >> choixUserX;
+        } while(!(choixUserX >= 'A' && choixUserX <= 'J'));
+    }
+    else {
+        coordX = (choixUserX - 'A') + 1;
+    }
+    
+    std::cout << "Saisir l'extremite Y du bateau (entre 1 et 10) : " << std::endl; 
+    int choixUserY;
+    std::cin >> choixUserY;
+    //On vérifie que la case ciblée est bien sur la grille
+    if(!(choixUserY >= 1 && choixUserY <= 10)) {
+        do {
+            std::cout << "Incorrect, saisir un nombre entre 1 et 10" << std::endl;
+            std::cin >> choixUserY;
+        } while(!(choixUserY >= 1 && choixUserY <= 10));   
+    }
+    else {
+        coordY = choixUserY;
+    }
+    coordY = choixUserY;
+    this->tab_coord[0].setX(coordX);
+    this->tab_coord[0].setY(coordY);
+    this->tab_coord[0].setState(etat_t::bateau);    
+}
+
 void Bateau_t::input_coordinate(Plateau_t plateau) {
     int coordX;
     int coordY;

@@ -62,39 +62,48 @@ bool GameLoop_2_player() {
     std::cout << "Entrer le nom du premier joueur : ";
     std::cin >> name_joueur1;
     Joueur_t joueur1(name_joueur1);
+    clean_display();
+    std::cout << "Bateaux du joueur " << joueur1.get_name() << " ok" << std::endl;
     std::cout << "Entrer le nom du deuxieme joueur : ";
     std::cin >> name_joueur2;
     Joueur_t joueur2(name_joueur2);
+    clean_display();
+    std::cout << "Bateaux du joueur " << joueur2.get_name() << " ok" << std::endl;
     do {
         std::cout << "A " << joueur1.get_name() << " de jouer, appuyer sur entrer pour afficher les plateaux" << std::endl;
         //std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cin.get();
+        while(std::cin.get() != '\n'){;}
         joueur1.display();
         int x = 0;
         int y = 0;
         joueur1.saisie_tir(&x, &y);
         joueur1.tir(&joueur2, x, y);
         joueur2.update_vie();
+        joueur1.display();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Fin du tour de " << joueur1.get_name() << ", appuyer sur entrer pour cacher les plateaux" << std::endl;
-        std::cin.get();
+        while(std::cin.get() != '\n'){;}
         clean_display();
         if(joueur2.get_vie()) {
             std::cout << "A " << joueur2.get_name() << " de jouer, appuyer sur entrer pour afficher les plateaux" << std::endl;
-            std::cin.get();
+            while(std::cin.get() != '\n'){;}
             joueur2.display();
             int x2 = 0;
             int y2 = 0;
             joueur2.saisie_tir(&x2, &y2);
             joueur2.tir(&joueur1, x2, y2);
             joueur1.update_vie();
+            joueur2.display();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "Fin du tour de " << joueur2.get_name() << ", appuyer sur entrer pour cacher les plateaux" << std::endl;
-            std::cin.get();
+            while(std::cin.get() != '\n'){;}
             clean_display();
         }
         std::cout << "[DEBUG] fin ? [y/n] : ";
         std::cin >> debug_fin;
     }while(joueur1.get_vie() && joueur2.get_vie() && debug_fin == 'n');
+
     if(joueur1.get_vie()) {
         return true;
     }
@@ -104,10 +113,12 @@ bool GameLoop_2_player() {
 }
 
 bool GameLoop_1_player() {
-    std::string name_joueur = "";
+    /*std::string name_joueur = "";
     std::cout << "Entrer le nom du joueur : ";
     std::cin >> name_joueur;
-    Joueur_t joueur(name_joueur);
+    Joueur_t joueur(name_joueur);*/
+    Joueur_t joueur1();
+    joueur1.display();
     return true;
 }
 

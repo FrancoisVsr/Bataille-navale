@@ -54,7 +54,7 @@ Plateau_t::Plateau_t() {
 /*******************************
  *       Public methods        *
  *******************************/
-void Plateau_t::display() const {
+void Plateau_t::display() {
 
     //Gestion affichage grille vide
     std::cout << "Affichage de la grille" << std::endl;
@@ -96,17 +96,6 @@ void Plateau_t::display() const {
         }
 }
 
-bool Plateau_t::setCase(Case_t new_case) {
-    if (1 <= new_case.getX() && new_case.getX() <= 10 && 1 <= new_case.getY() && new_case.getY() <= 10) {
-        this->grid[new_case.getX() - 1][new_case.getY() - 1].setState(new_case.getState());
-        return true;
-    }
-    else {
-        std::cout <<"ERREUR Coordonnes : Case non modifiee";
-        return false;
-    }
-}
-
 bool Plateau_t::setCase(int x, int y, int state) {
     if (1 <= x && x <= 10 && 1 <= y && y <= 10) {
         this->grid[x - 1][y - 1].setState(state);
@@ -118,8 +107,28 @@ bool Plateau_t::setCase(int x, int y, int state) {
     }
 }
 
+bool Plateau_t::setCase(Case_t new_case) {
+    if (1 <= new_case.getX() && new_case.getX() <= 10 && 1 <= new_case.getY() && new_case.getY() <= 10) {
+        this->grid[new_case.getX() - 1][new_case.getY() - 1].setState(new_case.getState());
+        return true;
+    }
+    else {
+        std::cout <<"ERREUR Coordonnes : Case non modifiee";
+        return false;
+    }
+}
+
+bool Plateau_t::addBateau(Bateau_t bateau) {
+    for(int i = 0; i < bateau.getLength(); i++) {
+        if(!(this->setCase(bateau.getCase(i)))) {
+            return false;
+        }
+    }
+    return true;
+}
+
 Bateau_t Plateau_t::addBateau(int type) {
-    int x, y, choixUserY;
+    int x_in, x_grid, y_in, y_grid, choixUserY;
     char choixUserX;
 
     //Saisie de la coordonne X du point d'origine du bateau
@@ -133,22 +142,47 @@ Bateau_t Plateau_t::addBateau(int type) {
         }
 
     } while(!(choixUserX >= 'A' && choixUserX <= 'J'));
-    x = (choixUserX - 'A') + 1;
+    x_in = (choixUserX - 'A') + 1;
+    x_grid = x_in - 1;
 
 
     //Saisie de la coordonne Y du point d'origine du bateau
+    bool check = true;
     do {
         std::cout << "Saisir la coordonne d'origine Y du bateau (entre 1 et 10) : " << std::endl; 
         std::cin >> choixUserY;
+        y_in = choixUserY;
+        y_grid = y_in - 1;
+        check = true;
 
         //On vérifie que la coordonnée Y est bien sur la grille
         if(!(choixUserY >= 1 && choixUserY <= 10)) {
             std::cout << "Y : " << choixUserY << std::endl;
             std::cout << "Incorrect, saisir un nombre entre 1 et 10" << std::endl;
+            check = false;
         }
 
-    } while(!(choixUserY >= 1 && choixUserY <= 10));
-    y = choixUserY;
+        //On vérifie si la case ciblée n'est pas déjà prise par un autre bateau
+        else if (this->grid[x_grid][y_grid].getState() != eau) {
+            std::cout << "Incorrect, la case est deja prise par un autre bateau" << std::endl;
+            check = false;
+        }
+
+        //On vérifie qu'il n'y a pas de bateau autour de la case ciblée
+        else if ((this->grid[x_grid + 1][y_grid].getState() != eau) ||
+                 (this->grid[x_grid + 1][y_grid + 1].getState() != eau) ||
+                 (this->grid[x_grid][y_grid + 1].getState() != eau) ||
+                 (this->grid[x_grid - 1][y_grid + 1].getState() != eau) ||
+                 (this->grid[x_grid - 1][y_grid].getState() != eau) ||
+                 (this->grid[x_grid - 1][y_grid - 1].getState() != eau) ||
+                 (this->grid[x_grid][y_grid - 1].getState() != eau) ||
+                 (this->grid[x_grid + 1][y_grid - 1].getState() != eau)) {
+
+            std::cout << "Incorrect, bateau a moins d'une case" << std::endl;
+            check = false;
+        }
+
+    } while(check == false);
 
 
     //Saisie de la direction du bateau à partir du point d'origine
@@ -156,13 +190,114 @@ Bateau_t Plateau_t::addBateau(int type) {
     char direction = ' ';
     std::cin >> direction;
 
-    //Creation du bateau
-    Bateau_t bateau0(type, x, y, direction);
+    //Creation du bateau après avoir vérifié son emplacement
+    Bateau_t bateau0(type, x_grid, y_grid, direction);
 
     //On Maj la grille en fonction du bateau
     for(int i = 0; i < bateau0.getLength(); i++) {
-        this->grid[bateau0.getCase(i).getX()-1][bateau0.getCase(i).getY()-1].setState(bateau);
+        this->grid[bateau0.getCase(i).getX()][bateau0.getCase(i).getY()].setState(bateau);
     }
 
     return bateau0;
+}
+
+Bateau_t Plateau_t::addBateauIA(int type) {
+    int x_in, x_grid, y_in, y_grid;
+    bool check;
+    int dir;
+
+    //Saisie de la coordonne X du point d'origine du bateau
+    do {
+        srand(time(NULL));
+        x_in = (rand() % 10) + 1;
+    } while(!(x_in >= 1 && x_in <= 10));
+    x_grid = x_in - 1;
+
+    //Saisie de la coordonne Y du point d'origine du bateau
+    do {
+        check = true;
+        srand(time(NULL));
+        y_in = (rand() % 10) + 1;
+        y_grid = y_in - 1;
+
+        //On vérifie que la coordonnée Y est bien sur la grille
+        if(!(y_in >= 1 && y_in <= 10)) {
+            check = false;
+        }
+        else if (this->grid[x_grid][y_grid].getState() != eau) { //si la case n'est pas déjà prise par bateau
+            check = false;
+        }
+        else if ((this->grid[x_grid + 1][y_grid].getState() != eau) ||
+                 (this->grid[x_grid + 1][y_grid + 1].getState() != eau) ||
+                 (this->grid[x_grid][y_grid + 1].getState() != eau) ||
+                 (this->grid[x_grid - 1][y_grid + 1].getState() != eau) ||
+                 (this->grid[x_grid - 1][y_grid].getState() != eau) ||
+                 (this->grid[x_grid - 1][y_grid - 1].getState() != eau) ||
+                 (this->grid[x_grid][y_grid - 1].getState() != eau) ||
+                 (this->grid[x_grid + 1][y_grid - 1].getState() != eau)) { //pas de bateau autour de la case
+            check = false;
+        }
+
+    } while(check == false);
+
+    char direction = ' ';
+
+    srand(time(NULL));
+    dir = (rand() % 4);
+    if(dir == 0) direction = 'g';
+    else if(dir == 1) direction = 'b';
+    else if(dir == 2) direction = 'd';
+    else direction = 'h';
+
+    //Creation du bateau après avoir vérifié son emplacement
+    Bateau_t bateau0(type, x_grid, y_grid, direction);
+
+    //On Maj la grille en fonction du bateau
+    for(int i = 0; i < bateau0.getLength(); i++) {
+        this->grid[bateau0.getCase(i).getX()][bateau0.getCase(i).getY()].setState(bateau);
+    }
+
+    return bateau0;
+}
+
+void Plateau_t::displayShip() {
+
+    //Gestion affichage grille vide
+    std::cout << "Affichage de la grille" << std::endl;
+    addLine(this->taille);
+    for(int line = 0; line < this->taille + 1; line++) {   
+            for (int row = 0; row < this->taille + 1; row++) {  
+
+                //Gestion affichage numéro colonnes
+                if((line == 0) && (row != 0)) {
+                    //Gestion affichage lettres avec decalage pour récupérer tablea ASCII (A=65)
+                    std::cout << "|" << char(row + 64) << "   "; 
+                }
+               
+                else {
+                    //Gestion affichage numéro ligne
+                    if ((row == 0) and (line >= 0)) {
+                        if (line == 0){
+                            std::cout << "|GRID"; 
+                        }
+                        else if (line < 10){
+                            std::cout << "|" << line << "   ";
+                        } 
+                        else {
+                            std::cout << "|" << line << "  ";
+                        }
+                    } 
+                    else {
+                        //Affichage du délimiteur + du contenu de la case
+                        std::cout <<"| " << stateDisplay(this->grid[row-1][line-1].getState()) << "  ";
+                    } 
+                }
+
+                //Gestion fin de ligne et insertion ligne
+                if (row == this->taille) {
+                    std::cout <<"|\n";
+                    addLine(this->taille);
+                }  
+            }
+        }
 }

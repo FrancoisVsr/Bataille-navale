@@ -21,6 +21,8 @@
 #include "plateau.h"
 #include "case.h"
 
+int letter_to_int(std::string str);
+
 /*******************************
  *       Public methods        *
  *******************************/
@@ -36,7 +38,7 @@
  */
 class Joueur_t {
     private:
-		Plateau_t plateau_allie;
+		    Plateau_t plateau_allie;
         Plateau_t plateau_ennemi;
         Bateau_t porte_avion;
         Bateau_t croiseur;
@@ -51,19 +53,18 @@ class Joueur_t {
         Joueur_t();
   	    Joueur_t(std::string);
 
-    	//getters
-	    bool get_vie() const;
+    	  //getters
+	      bool get_vie() const;
         Plateau_t get_plateau(int) const;
         Bateau_t get_bateau(int) const;
         std::string get_name()const {return name;}
 
         //setters
-	    void set_vie(bool vie);
+	      void set_vie(bool vie);
         void set_case_allie(int, int, int);
 
         //methodes
         bool tir(Joueur_t*, int, int);
-        bool check_bateau();
         void display();
         void saisie_tir(int*, int*);
         void update_vie();

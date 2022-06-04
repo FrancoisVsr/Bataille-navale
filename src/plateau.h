@@ -28,6 +28,7 @@ class Plateau_t {
     protected:
         int taille;
         Case_t grid[10][10];
+        Bateau_t flotte[5];
 
     /*******************************
      *       Public methods        *
@@ -45,9 +46,11 @@ class Plateau_t {
         bool setCase(Case_t);
 
         //Méthodes
-        void display() const;
-        Bateau_t addBateau(int);
+        void display();
+        void displayShip();
         bool addBateau(Bateau_t);
+        Bateau_t addBateau(int);
+        Bateau_t addBateauIA(int);
 };
 
 
