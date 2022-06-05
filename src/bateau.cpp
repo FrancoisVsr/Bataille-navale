@@ -64,13 +64,14 @@ Bateau_t::Bateau_t() {
     this->longueur_bateau = 0;
     
 }
-//constructeur par defaut pour un bateau auquel on donne le nom
-Bateau_t::Bateau_t(int _nom_bateau) {
+
+//Constructeur appelé dans laméthode addBateau() de plateau
+Bateau_t::Bateau_t(int type, int x, int y, char direction) {
 
     // attributs set de base
     this->vie = true;   //par defaut en vie
 
-    switch (_nom_bateau) // 0,1,2,3,4
+    switch (type) // 0,1,2,3,4
     {
         case porte_avion: 
             this->longueur_bateau = 5;
@@ -96,105 +97,21 @@ Bateau_t::Bateau_t(int _nom_bateau) {
         break;
     }
 
-    input_coordinate();
-    input_direction();
-}
-
-void Bateau_t::input_coordinate() {
-    int coordX;
-    int coordY;
-    // Message lorsque le joueur souhaite mettre les coordonnees de son porte avion
-    std::cout << "Saisir l'extremite X du bateau (entre A et J) : " << std::endl; 
-    char choixUserX;
-    std::cin >> choixUserX;
-
-    //On vérifie que la case ciblée est bien sur la grille
-    if(!(choixUserX >= 'A' && choixUserX <= 'J')) {
-        do {
-            std::cout << "Incorrect, saisir une lettre majuscule entre A et J" << std::endl;
-            std::cin >> choixUserX;
-        } while(!(choixUserX >= 'A' && choixUserX <= 'J'));
-    }
-    else {
-        coordX = (choixUserX - 'A') + 1;
-    }
-    
-    std::cout << "Saisir l'extremite Y du bateau (entre 1 et 10) : " << std::endl; 
-    int choixUserY;
-    std::cin >> choixUserY;
-    //On vérifie que la case ciblée est bien sur la grille
-    if(!(choixUserY >= 1 && choixUserY <= 10)) {
-        do {
-            std::cout << "Incorrect, saisir un nombre entre 1 et 10" << std::endl;
-            std::cin >> choixUserY;
-        } while(!(choixUserY >= 1 && choixUserY <= 10));   
-    }
-    else {
-        coordY = choixUserY;
-    }
-    coordY = choixUserY;
-    //On vérifie que le point d'origine est sur une case vide
-    // else if (!(plateau.getCase(coordX, choixUserY).getState() == 0)) {
-    //     do {
-    //         std::cout << "Incorrect, la case est deja prise par un autre bateau" << std::endl;
-    //         std::cout << "X : " << plateau.getCase(coordX, choixUserY).getX();
-    //         std::cout << "Y : " << plateau.getCase(coordX, choixUserY).getY();
-    //         std::cout << "Etat : " << plateau.getCase(coordX, choixUserY).getState();
-    //         std::cin >> choixUserY;
-    //     } while((plateau.getCase(coordX, choixUserY).getState() == 0));
-    // }
-    // //On vérifie qu'il n'y a pas d'autres bateaux à proximité du pt d'origine
-    // else if ((plateau.getCase(coordX+1, choixUserY).getState() != 0) ||
-    //          (plateau.getCase(coordX+1, choixUserY+1).getState() != 0) ||
-    //          (plateau.getCase(coordX, choixUserY+1).getState() != 0) ||
-    //          (plateau.getCase(coordX-1, choixUserY+1).getState() != 0) ||
-    //          (plateau.getCase(coordX-1, choixUserY).getState() != 0) ||
-    //          (plateau.getCase(coordX-1, choixUserY-1).getState() != 0) ||
-    //          (plateau.getCase(coordX, choixUserY-1).getState() != 0) ||
-    //          (plateau.getCase(coordX+1, choixUserY-1).getState() != 0)) {
-    //     do {
-    //         std::cout << "Incorrect, bateau a moins d'une case de celle ciblee, ressaisissez Y :" << std::endl;
-    //         std::cout << "X : " << coordX << ", Y : " << choixUserY << std::endl; 
-    //         std::cin >> choixUserY;
-    //     } while((plateau.getCase(coordX+1, choixUserY).getState() != 0) ||
-    //          (plateau.getCase(coordX+1, choixUserY+1).getState() != 0) ||
-    //          (plateau.getCase(coordX, choixUserY+1).getState() != 0) ||
-    //          (plateau.getCase(coordX-1, choixUserY+1).getState() != 0) ||
-    //          (plateau.getCase(coordX-1, choixUserY).getState() != 0) ||
-    //          (plateau.getCase(coordX-1, choixUserY-1).getState() != 0) ||
-    //          (plateau.getCase(coordX, choixUserY-1).getState() != 0) ||
-    //          (plateau.getCase(coordX+1, choixUserY-1).getState() != 0));
-    // }
-    //Si tout est ok on prend la coordonnée
-    
-
-    this->tab_coord[0].setX(coordX);
-    this->tab_coord[0].setY(coordY);
+    this->tab_coord[0].setX(x);
+    this->tab_coord[0].setY(y);
     this->tab_coord[0].setState(etat_t::bateau);
-    // std::cout << "cccX : " << coordX;
-    // std::cout << "cccY : " << coordY;
-    // std::cout << "cccX : " << plateau.getCase(coordX, coordY).getX();
-    // std::cout << " cccY : " << plateau.getCase(coordX, coordY).getY() << std::endl;
-    
-}
 
-
-void Bateau_t::input_direction(void) {
-    //Message utilisateur
-    std::cout << "Saisir la direction de votre bateau (d, g, b, h) :" << std::endl;
-
-    std::string direction = "";
-    std::cin >> direction;
-    if(direction == "g") //gauche
+    //Maj des cases du bateau en fonction de la direction choisi
+    if(direction == 'g') //gauche
     {
-        for (int i = 1; i < longueur_bateau; i++)
+        for (int i = 1; i < this->longueur_bateau; i++)
         {
             this->tab_coord[i].setState(etat_t::bateau);
             this->tab_coord[i].setX(this->tab_coord[i-1].getX() - 1);
             this->tab_coord[i].setY(this->tab_coord[i-1].getY());
         }
     }
-    else if(direction == "b") //bas 
+    else if(direction == 'b') //bas 
     {
         for (int i = 1; i < longueur_bateau; i++)
         {
@@ -203,7 +120,7 @@ void Bateau_t::input_direction(void) {
             this->tab_coord[i].setY(this->tab_coord[i-1].getY() + 1);
         }
     }
-    else if(direction == "d") //droite
+    else if(direction == 'd') //droite
     {
         for (int i = 1; i < longueur_bateau; i++)
         {
@@ -212,7 +129,7 @@ void Bateau_t::input_direction(void) {
             this->tab_coord[i].setY(this->tab_coord[i-1].getY());
         }
     }
-    else if(direction == "h") //haut
+    else if(direction == 'h') //haut
     {
         for (int i = 1; i < longueur_bateau; i++)
         {
@@ -222,3 +139,20 @@ void Bateau_t::input_direction(void) {
         }
     }
 }
+
+void Bateau_t::setBateau(Bateau_t bateau) {
+    this->longueur_bateau = bateau.getLength();
+    this->vie = bateau.getVivant();
+    this->nom_bateau = bateau.getNom_Bateau();
+    for(int i = 0; i < this->longueur_bateau; i++) {
+        Case_t temp(bateau.getCase(i));
+        this->tab_coord[i].setX(temp.getX());
+        this->tab_coord[i].setY(temp.getY());
+        this->tab_coord[i].setState(temp.getState());
+    }
+}
+
+void Bateau_t::setState(int position, int state) {
+    this->tab_coord[position].setState(state);
+}
+

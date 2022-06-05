@@ -60,11 +60,13 @@ class Joueur_t {
         void set_case_allie(int, int, int);
 
         //methodes
-        bool tir(Joueur_t*, int, int);
+        void tir(Joueur_t*, int, int);
         void display();
         void saisie_tir(int*, int*);
         void update_vie();
         void add_flotte();
+        int check_tir(int, int);
+        bool check_bateau(int);
 };
 
 #endif /*JOUEUR_HPP*/

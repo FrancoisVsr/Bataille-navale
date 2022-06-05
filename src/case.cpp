@@ -20,7 +20,7 @@ Case_t::Case_t(int x, int y, int state) {
     this->state = state;
 }
 
-void Case_t::setCase(Case_t& new_case) {
+void Case_t::setCase(const Case_t& new_case) {
     this->x = new_case.getX();
     this->y = new_case.getY();
     this->state = new_case.getState();

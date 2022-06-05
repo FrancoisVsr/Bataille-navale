@@ -44,28 +44,22 @@ Joueur_t::Joueur_t(std::string name_p) {
     this->name = name_p;
     this->vie = true;
 
-    Plateau_t plateau_allie;
-    this->plateau_allie = plateau_allie;
-
-    Plateau_t plateau_ennemi;
-    this->plateau_allie = plateau_ennemi;
-
     std::cout << "Saisie du porte-avion : " << std::endl;
-    Bateau_t porte_avion(nom_bateau::porte_avion);
-    this->porte_avion = porte_avion;
+    Bateau_t B1(plateau_allie.addBateau(nom_bateau::porte_avion));
+    this->porte_avion.setBateau(B1);
     std::cout << "Saisie du croiseur : " << std::endl;
-    Bateau_t croiseur(nom_bateau::croiseur);
-    this->croiseur = croiseur;
+    Bateau_t B2(plateau_allie.addBateau(nom_bateau::croiseur));
+    this->croiseur.setBateau(B2);
     std::cout << "Saisie du premier contretorpilleur : " << std::endl;
-    Bateau_t contre_torpilleurs_1(nom_bateau::contre_torpilleur_1);
-    this->contre_torpilleurs_1 = contre_torpilleurs_1;
+    Bateau_t B3(plateau_allie.addBateau(nom_bateau::contre_torpilleur_1));
+    this->contre_torpilleurs_1.setBateau(B3);
     std::cout << "Saisie du deuxieme contre torpilleur : " << std::endl;
-    Bateau_t contre_torpilleurs_2(nom_bateau::contre_torpilleur_2);
-    this->contre_torpilleurs_2 = contre_torpilleurs_2;
+    Bateau_t B4(plateau_allie.addBateau(nom_bateau::contre_torpilleur_2));
+    this->contre_torpilleurs_2.setBateau(B4);
     std::cout << "Saisie du torpilleur : " << std::endl;
-    Bateau_t torpilleur(nom_bateau::torpilleur);
-    this->torpilleur = torpilleur;
-    this->add_flotte();
+    Bateau_t B5(plateau_allie.addBateau(nom_bateau::torpilleur));
+    this->torpilleur.setBateau(B5);
+    // this->add_flotte();
 }
 
 /**
@@ -137,29 +131,43 @@ void Joueur_t::set_case_allie(int x, int y, int etat) {
     plateau_allie.setCase(x, y, etat);
 }
 
-
-bool Joueur_t::tir(Joueur_t *j, int x, int y) {
-    Plateau_t plateau_vise(j->get_plateau(0));
-    Case_t case_vise(plateau_vise.getCase(x, y));
-    Case_t case_enemie(plateau_ennemi.getCase(x, y));
-    switch(case_vise.getState())
-    {
-        case etat_t::bateau:
-            std::cout << "Un bateau a été touché !" << std::endl << std::endl;
-            plateau_ennemi.setCase(x, y, etat_t::touche);
-            j->set_case_allie(x, y, etat_t::touche);
-            std::cout << "Un bateau a été coulé !" << std::endl << std::endl;
-            break;
-        case etat_t::eau:
-            std::cout << "Sheh ! Essaie encore !" << std::endl << std::endl;
-            plateau_ennemi.setCase(x, y, etat_t::rate);
-            j->set_case_allie(x, y, etat_t::rate);
-            break;
-        default:
-            std::cerr << "error in state case, x = " << x << "\ty = " << y << std::endl;
-            break;
+void Joueur_t::tir(Joueur_t *j, int x, int y) {
+    int result = j->check_tir(x, y);
+    if(result == 5) {
+        std::cout << "Rate !" << std::endl;
+        plateau_ennemi.setCase(x, y, etat_t::rate);
+        j->set_case_allie(x, y, etat_t::rate);
     }
-    return true;
+    else {
+        std::cout << "Touche !" << std::endl;
+        plateau_ennemi.setCase(x, y, etat_t::touche);
+        j->set_case_allie(x, y, etat_t::touche);
+        if(j->check_bateau(result)) {
+            std::cout << "Coule !" << std::endl;
+            plateau_ennemi.addBateau(j->get_bateau(result));
+            j->plateau_allie.addBateau(j->get_bateau(result));
+        }
+    }
+    // Plateau_t plateau_vise(j->get_plateau(0));
+    // Case_t case_vise(plateau_vise.getCase(x, y));
+    // Case_t case_enemie(plateau_ennemi.getCase(x, y));
+    // switch(case_vise.getState())
+    // {
+    //     case etat_t::bateau:
+    //         std::cout << "Un bateau a été touché !" << std::endl << std::endl;
+    //         plateau_ennemi.setCase(x, y, etat_t::touche);
+    //         j->set_case_allie(x, y, etat_t::touche);
+    //         std::cout << "Un bateau a été coulé !" << std::endl << std::endl;
+    //         break;
+    //     case etat_t::eau:
+    //         std::cout << "Sheh ! Essaie encore !" << std::endl << std::endl;
+    //         plateau_ennemi.setCase(x, y, etat_t::rate);
+    //         j->set_case_allie(x, y, etat_t::rate);
+    //         break;
+    //     default:
+    //         std::cerr << "error in state case, x = " << x << "\ty = " << y << std::endl;
+    //         break;
+    // }
 }
 
 void Joueur_t::display() {
@@ -211,9 +219,127 @@ void Joueur_t::update_vie() {
 }
 
 void Joueur_t::add_flotte() {
-    plateau_allie.addBateau(porte_avion);
-    plateau_allie.addBateau(croiseur);
-    plateau_allie.addBateau(torpilleur);
-    plateau_allie.addBateau(contre_torpilleurs_1);
-    plateau_allie.addBateau(contre_torpilleurs_2);
+    // plateau_allie.addBateau(porte_avion);
+    // plateau_allie.addBateau(croiseur);
+    // plateau_allie.addBateau(torpilleur);
+    // plateau_allie.addBateau(contre_torpilleurs_1);
+    // plateau_allie.addBateau(contre_torpilleurs_2);
+}
+
+int Joueur_t::check_tir(int x, int y) {
+    for(int i = 0; i < porte_avion.getLength(); i++) {
+        Case_t temp(porte_avion.getCase(i));
+        if(temp.getX() == x && temp.getY() == y) {
+            porte_avion.setState(i, etat_t::touche);
+            return nom_bateau::porte_avion;
+        }
+    }
+    for(int i = 0; i < croiseur.getLength(); i++) {
+        Case_t temp(croiseur.getCase(i));
+        if(temp.getX() == x && temp.getY() == y) {
+            croiseur.setState(i, etat_t::touche);
+            return nom_bateau::croiseur;
+        }
+    }
+    for(int i = 0; i < contre_torpilleurs_1.getLength(); i++) {
+        Case_t temp(contre_torpilleurs_1.getCase(i));
+        if(temp.getX() == x && temp.getY() == y) {
+            contre_torpilleurs_1.setState(i, etat_t::touche);
+            return nom_bateau::contre_torpilleur_1;
+        }
+    }
+    for(int i = 0; i < contre_torpilleurs_2.getLength(); i++) {
+        Case_t temp(contre_torpilleurs_2.getCase(i));
+        if(temp.getX() == x && temp.getY() == y) {
+            contre_torpilleurs_2.setState(i, etat_t::touche);
+            return nom_bateau::contre_torpilleur_2;
+        }
+    }
+    for(int i = 0; i < torpilleur.getLength(); i++) {
+        Case_t temp(torpilleur.getCase(i));
+        if(temp.getX() == x && temp.getY() == y) {
+            torpilleur.setState(i, etat_t::touche);
+            return nom_bateau::torpilleur;
+        }
+    }
+    return 5;
+}
+
+bool Joueur_t::check_bateau(int type) {
+    bool flag = true;
+    switch (type) {
+    case nom_bateau::porte_avion:
+        for(int i = 0; i < porte_avion.getLength(); i++) {
+            Case_t temp(porte_avion.getCase(i));
+            if(temp.getState() == etat_t::bateau) {
+                flag = false;
+                i = 10;
+            }
+        }
+        if(flag) {
+            for(int i = 0; i < porte_avion.getLength(); i++) {
+                porte_avion.setState(i, etat_t::coule);
+            }
+        }
+        break;
+    case nom_bateau::croiseur:
+        for(int i = 0; i < croiseur.getLength(); i++) {
+            Case_t temp(croiseur.getCase(i));
+            if(temp.getState() == etat_t::bateau) {
+                flag = false;
+                i = 10;
+            }
+        }
+        if(flag) {
+            for(int i = 0; i < croiseur.getLength(); i++) {
+                croiseur.setState(i, etat_t::coule);
+            }
+        }
+        break;
+    case nom_bateau::contre_torpilleur_1:
+        for(int i = 0; i < contre_torpilleurs_1.getLength(); i++) {
+            Case_t temp(contre_torpilleurs_1.getCase(i));
+            if(temp.getState() == etat_t::bateau) {
+                flag = false;
+                i = 10;
+            }
+        }
+        if(flag) {
+            for(int i = 0; i < contre_torpilleurs_1.getLength(); i++) {
+                contre_torpilleurs_1.setState(i, etat_t::coule);
+            }
+        }
+        break;
+    case nom_bateau::contre_torpilleur_2:
+        for(int i = 0; i < contre_torpilleurs_2.getLength(); i++) {
+            Case_t temp(contre_torpilleurs_2.getCase(i));
+            if(temp.getState() == etat_t::bateau) {
+                flag = false;
+                i = 10;
+            }
+        }
+        if(flag) {
+            for(int i = 0; i < contre_torpilleurs_2.getLength(); i++) {
+                contre_torpilleurs_2.setState(i, etat_t::coule);
+            }
+        }
+        break;
+    case nom_bateau::torpilleur:
+        for(int i = 0; i < torpilleur.getLength(); i++) {
+            Case_t temp(torpilleur.getCase(i));
+            if(temp.getState() == etat_t::bateau) {
+                flag = false;
+                i = 10;
+            }
+        }
+        if(flag) {
+            for(int i = 0; i < torpilleur.getLength(); i++) {
+                torpilleur.setState(i, etat_t::coule);
+            }
+        }
+        break;
+    default:
+        break;
+    }
+    return flag;
 }
