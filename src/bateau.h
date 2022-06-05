@@ -17,18 +17,15 @@
 #include <cassert>
 #include <cstdio>
 #include "case.h"
-//#include "plateau.h"
 class Plateau_t;
 
 /*******************************
- *       Public methods        *
+ *      Global definitions     *
  *******************************/
-
 /**
  * @enum        nom_bateau
  * @brief       Il s'agit des noms des différents bateaux à disposer sur le plateau, il y en 5 différents avec chacun leurs taille
  */
-
 enum nom_bateau { //enumeration des nom de bateau sous forme de int
     porte_avion = 0,
     croiseur = 1,
@@ -37,16 +34,32 @@ enum nom_bateau { //enumeration des nom de bateau sous forme de int
     torpilleur = 4
 };
 
-//structure coordonnees d'un bateau sur plateau
+/**
+ * @struct      coordinate
+ * @brief       Elle contient une chaine pour la valeur en X et un entier pour la valeur en Y
+ */
 struct coordinate { 
     std::string coordX; // de A a J
     int coordY;         // de 1 a 10
 };
 
+
+/*******************************
+ *       Public methods        *
+ *******************************/
+
+/**
+ * @class       Bateau_t
+ * @brief       classe bateau avec ses caracteristiques
+ * @version     0.1
+ * @date        2022
+ * @pre         Initialisez d'abord le système
+ * @post        L'objet est initialisé ou pas 
+ * @warning     Une mauvaise utilisation peut faire planter votre application (attention au placement du bateau sur le plateau)
+ */
 class Bateau_t { 
 
     private:
-
         int longueur_bateau;        //en fonction du bateau que lon choisit de placer
         bool vie;                   //sert a savoir si le bateau est coule ou pas 
         Case_t tab_coord[5];        //tableau des coord des cases occupees par le bateau
@@ -80,4 +93,4 @@ class Bateau_t {
 
 };
 
-#endif //BATEAU_HPP
+#endif /*BATEAU_HPP*/

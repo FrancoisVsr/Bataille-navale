@@ -1,7 +1,7 @@
 /**
  * @file        joueur.cpp
  * @brief       Fichier contenant la classe Joueur et ses fonctions
- * @author      Vasseur
+ * @author      Vasseur, Auffray, Gauthier, Fave
  * @date        20/05/2022
  * @version     v0.01
  */
@@ -12,33 +12,12 @@
 #include "joueur.hpp"
 
 /*******************************
- *      Global definitions     *
- *******************************/
-
-
-/*******************************
  *       Public methods        *
  *******************************/
 
-
-/*******************************
- *       Private methods       *
- *******************************/
-
-
-/**
- * @enum        nom de l'enum
- * @brief       Description de l'enum
- */
-
-/**
- * @struct      nom de la structure
- * @brief       Description de la structure
- */
-
 /**
  * @brief       Constructeur d'un objet Joueur pour l'IA
- * @details     Le constructeur de la classe joueur créé et initialise les plateaux et bateaux
+ * @details     Le constructeur de la classe joueur créé et initialise les plateaux et bateaux, il ajoute aussi les bateaux à la grille
  */
 Joueur_t::Joueur_t(bool vie) {
     this->name = "IA";
@@ -65,7 +44,7 @@ Joueur_t::Joueur_t(bool vie) {
 
 /**
  * @brief       Constructeur d'un objet Joueur
- * @details     Le constructeur de la classe joueur créé et initialise les plateaux et bateaux
+ * @details     Le constructeur de la classe joueur créé et initialise les plateaux et bateaux, il ajoute aussi les bateaux à la grille
  */
 Joueur_t::Joueur_t(std::string name_p) {
     this->name = name_p;
@@ -105,7 +84,7 @@ bool Joueur_t::get_vie() const {
 
 /**
  * @brief       Accesseur pour les plateaux de l'objet Joueur
- * @param       int plateau (0 allie, 1 ennemi, autre plateau vide)
+ * @param[in]   int plateau (0 allie, 1 ennemi, autre plateau vide)
  * @return      Plateau_t
  */
 Plateau_t Joueur_t::get_plateau(int plateau) const {
@@ -126,6 +105,7 @@ Plateau_t Joueur_t::get_plateau(int plateau) const {
 
 /**
  * @brief       Accesseur pour les bateaux de l'objet Joueur
+ * @param[in]   int nb  
  * @return      Bateau_t
  */
 Bateau_t Joueur_t::get_bateau(int nb) const {
@@ -154,16 +134,26 @@ Bateau_t Joueur_t::get_bateau(int nb) const {
 
 /**
  * @brief       Setter pour la vie de l'objet Joueur
- * @return
+ * @param[in]   bool life
  */
 void Joueur_t::set_vie(bool life) {
     this->vie = life;
 }
+
+/**
+ * @brief       Setter pour une case du plateau allie du joueur
+ * @param[in]   int x,y,etat
+ */
 void Joueur_t::set_case_allie(int x, int y, int etat) {
     plateau_allie.setCase(x, y, etat);
 }
 
-
+/**
+ * @brief       Méthode pour tirer sur un joueur à partir de coordonnées
+ * @param[in]   Joueur_t
+ * @param[in]   int x,y
+ * @return      bool si les coordonnées sont valides donc si tir
+ */
 bool Joueur_t::tir(Joueur_t *j, int x, int y) {
     Plateau_t plateau_vise(j->get_plateau(0));
     Case_t case_vise(plateau_vise.getCase(x, y));
@@ -208,6 +198,57 @@ bool Joueur_t::tir(Joueur_t *j, int x, int y) {
     }
 }
 
+/**
+ * @brief       Méthode pour tirer sur un joueur pour l'IA
+ * @details     Les coordonnées sont générées aléatoirement par l'ordinateur
+ * @param[in]   Joueur_t
+ */
+void Joueur_t::tir(Joueur_t *j) {
+    int x,y;
+    int state = etat_t::bateau;
+
+    do {
+        do {
+            srand(time(NULL));
+            x = (rand() % 10) + 1;
+            y = (rand() % 10) + 1;
+        } while((!(y >= 1 && y <= 10)) || (!(x >= 1 && x <= 10)));
+        x-=1;
+        y-=1;
+        Case_t case_ennemi(plateau_ennemi.getCase(x,y));
+        state = case_ennemi.getState();
+    } while (state != etat_t::eau);
+
+    std::cout << "L'" << this->get_name() << " tire en " << (char)(x + 65) << y << std::endl << std::endl;
+
+    Plateau_t plateau_vise(j->get_plateau(0));
+    Case_t case_vise(plateau_vise.getCase(x, y));
+    Case_t case_enemie(plateau_ennemi.getCase(x, y));
+
+    switch(case_vise.getState())
+    {
+        case etat_t::bateau:
+            std::cout << "Un bateau a été touché !" << std::endl << std::endl;
+            plateau_ennemi.setCase(x, y, etat_t::touche);
+            j->set_case_allie(x, y, etat_t::touche);
+            std::cout << "Un bateau a été coulé !" << std::endl << std::endl;
+            break;
+        case etat_t::eau:
+            std::cout << "Sheh ! Essaie encore !" << std::endl << std::endl;
+            plateau_ennemi.setCase(x, y, etat_t::rate);
+            j->set_case_allie(x, y, etat_t::rate);
+            break;
+        default:
+            std::cerr << "error in state case, x = " << x << "\ty = " << y << std::endl;
+            break;
+    }
+    std::cout << std::endl;
+}
+
+/**
+ * @brief       Méthode pour afficher les plateaux alliés et ennemis d'un joueur
+ * @details     Pour afficher, appel du display de chaque plateau
+ */
 void Joueur_t::display() {
     std::cout << "Plateau de " << this->name << " : " << std::endl;
     plateau_allie.display();
@@ -215,6 +256,28 @@ void Joueur_t::display() {
     plateau_ennemi.display();
 }
 
+/**
+ * @brief       Méthode pour afficher un ou deux plateaux de l'IA
+ * @param[in]   int choix (0 pour ennemi et 1 pour les deux)
+ */
+void Joueur_t::displayIA(int choix) {
+    if(choix == 1) {
+       std::cout << std::endl << "Plateau de l adversaire : " << std::endl;
+    plateau_ennemi.display(); 
+    }
+    else {
+        std::cout << "Plateau de " << this->name << " : " << std::endl;
+    plateau_allie.display();
+        std::cout << std::endl << "Plateau de l adversaire : " << std::endl;
+    plateau_ennemi.display();
+    }
+}
+
+/**
+ * @brief       Méthode pour saisir les coordonnées des tirs
+ * @details     La méthode permet de vérifier que les coordonnées sont bien valides
+ * @param[in]   int *x,y
+ */
 void Joueur_t::saisie_tir(int* x, int* y) {
     char x_saisie = ' ';
     std::string y_saisie = "";
@@ -246,6 +309,10 @@ void Joueur_t::saisie_tir(int* x, int* y) {
     }while(flag);
 }
 
+/**
+ * @brief       Méthode pour mettre à jour la vie d'un joueur
+ * @details     MAJ de la vie si tous les bateaux ne sont plus vivants, pour cela bateau.getVivant()
+ */
 void Joueur_t::update_vie() {
     if(porte_avion.getVivant() || croiseur.getVivant() || torpilleur.getVivant() || contre_torpilleurs_1.getVivant() || contre_torpilleurs_2.getVivant()) {
         return;
@@ -256,6 +323,10 @@ void Joueur_t::update_vie() {
     }
 }
 
+/**
+ * @brief       Méthode pour ajouter les bateaux sur le plateau allié
+ * @details     Pour cela, utilisation de la méthode de plateau addBateau()
+ */
 void Joueur_t::add_flotte() {
     plateau_allie.addBateau(porte_avion);
     plateau_allie.addBateau(croiseur);

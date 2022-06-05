@@ -1,10 +1,8 @@
 /**
- * @file
- * @brief    
- * @details
- * @author      Vasseur, Gauthier, Auffray, Fave
- * @date        XX/XX/XXXX
+ * @author      Gauthier, Vasseur, Auffray, Fave
+ * @date        20/05/2022
  * @version     v0.01
+ * @brief       
  */
 
 #ifndef PLATEAU_H
@@ -17,22 +15,30 @@
 #include "case.h"
 #include <vector>
 
+/*******************************
+ *      Global definitions     *
+ *******************************/
 void addLine(int tailleTab);
 char stateDisplay(int state);
 
 /*******************************
- *      Classe plateau permettant d'afficher un tableau de jeu dynamique   *
+ *       Public methods        *
  *******************************/
+/**
+ * @class       Plateau_t
+ * @brief       classe plateau avec ses caracteristiques
+ * @version     0.1
+ * @date        2022
+ * @pre         Initialisez d'abord le système
+ * @post        L'objet est initialisé ou pas 
+ * @warning     Une mauvaise utilisation peut faire planter votre application
+ */
 class Plateau_t {
-
     protected:
         int taille;
         Case_t grid[10][10];
         Bateau_t flotte[5];
 
-    /*******************************
-     *       Public methods        *
-     *******************************/
     public:
         //Constructeur
         Plateau_t();
@@ -51,42 +57,7 @@ class Plateau_t {
         bool addBateau(Bateau_t);
         Bateau_t addBateau(int);
         Bateau_t addBateauIA(int);
+        bool checkBateau(int, int, char, int);
 };
 
-
-#endif
-
-
-
-
-
-
-
-
-/**
- * @enum        nom de l'enum
- * @brief       Description de l'enum
- */
-
-/**
- * @struct      nom de la structure
- * @brief       Description de la structure
- */
-
-/**
- * @class       nom de la classe
- * @brief       Description de la classe
- * @details     details
- * @version     0.1
- * @date        2020
- * @pre         Initialisez d'abord le système
- * @post        L'objet est initialisé ou pas 
- * @warning     Une mauvaise utilisation peut faire planter votre application (c'est votre faute)
- */
-
-/**
- * @brief
- * @details
- * @param[in,out]   
- * @return 
- */
+#endif /*PLATEAU_H*/

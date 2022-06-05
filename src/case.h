@@ -1,8 +1,22 @@
+/**
+ * @author      Vasseur, Gauthier, Auffray, Fave
+ * @date        20/05/2022
+ * @version     v0.01
+ * @brief       
+ */
+
 #ifndef CASE_H
 #define CASE_H
 
+/*******************************
+ *          Includes           *
+ *******************************/
 #include <string>
 
+/**
+ * @enum        etat_t
+ * @brief       Etat de la case actuelle (eau, rate, touche, bateau, coule)
+ */
 enum etat_t { 
     eau = 0,
     rate = 1,
@@ -11,6 +25,15 @@ enum etat_t {
     coule = 4
 };
 
+/**
+ * @class       Case_t
+ * @brief       classe case avec ses caracteristiques
+ * @version     0.1
+ * @date        2022
+ * @pre         Initialisez d'abord le système
+ * @post        L'objet est initialisé ou pas 
+ * @warning     Une mauvaise utilisation peut faire planter votre application
+ */
 class Case_t {
 
     protected:
@@ -36,4 +59,4 @@ class Case_t {
         void setCase(Case_t&);
 };
 
-#endif
+#endif /*CASE_H*/

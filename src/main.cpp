@@ -1,6 +1,22 @@
+/**
+ * @file        main.cpp
+ * @brief       Fonction principale de notre jeu de bataille navale
+ * @author      Auffray, Vasseur, Fave, Gauthier
+ * @date        20/05/2022
+ * @version     v0.01
+ */
+
+/*******************************
+ *          Includes           *
+ *******************************/
 #include <iostream>
 #include "game.h"
 
+/**
+ * @fn int main()
+ * @brief Fonction pour jouer utilisant game.cpp
+ * @return int 0
+ */
 int main() {
     char choice = 'n';
     do {

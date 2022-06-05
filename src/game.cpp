@@ -1,7 +1,7 @@
 /**
  * @file        game.cpp
  * @brief       Fichier contenant les fonctions qui gèrent le déroulement d'une partie
- * @author      Auffray
+ * @author      Auffray, Vasseur, Fave, Gauthier
  * @date        25/05/2022
  * @version     v0.01
  */
@@ -20,7 +20,7 @@
 /**
  * @fn void start()
  * @brief affiche le nom du jeu au lancement
- * */
+ */
 void start() {
     std::cout << "*****************************" << std::endl;
     std::cout << "****** Bataille Navale ******" << std::endl;
@@ -30,9 +30,8 @@ void start() {
 /**
  * @fn int menu()
  * @brief affiche le menu du jeu pour le choix du mode
- * 
  * @return choix de l'utilisateur, entier 1 pour un joueur ou 2 pour deux joueurs
- * */
+ */
 int menu() {
     int choix = 0;
     char saisie = ' ';
@@ -55,6 +54,11 @@ int menu() {
     return choix;
 }
 
+/**
+ * @fn bool GameLoop_2_player()
+ * @brief boucle de jeu pour 2 joueurs
+ * @return gagnant de la partie (joueur1 ou joueur2)
+ */
 bool GameLoop_2_player() {
     char debug_fin = 'n';
     std::string name_joueur1 = "";
@@ -112,6 +116,11 @@ bool GameLoop_2_player() {
     }
 }
 
+/**
+ * @fn bool GameLoop_1_player()
+ * @brief boucle de jeu pour jouer contre l'ordinateur
+ * @return gagnant de la partie (joueur1 ou IA)
+ */
 bool GameLoop_1_player() {
     char debug_fin = 'n';
     std::string name_joueur = "";
@@ -121,6 +130,7 @@ bool GameLoop_1_player() {
     std::cout << "Bateaux du joueur " << joueur1.get_name() << " ok" << std::endl;
     Joueur_t joueurIA(true);
     std::cout << "Bateaux de l'" << joueurIA.get_name() << " ok" << std::endl;
+    joueurIA.displayIA(2);
 
     do {
         std::cout << "A " << joueur1.get_name() << " de jouer, appuyer sur entrer pour afficher les plateaux" << std::endl;
@@ -140,19 +150,14 @@ bool GameLoop_1_player() {
         clean_display();
         if(joueurIA.get_vie()) {
             std::cout << "Debut du tour de l'" << joueurIA.get_name() << std::endl;
-            // int x2 = 0;
-            // int y2 = 0;
-            // joueurIA.saisie_tir(&x2, &y2);
-            // joueurIA.tir(&joueur1, x2, y2);
-            // joueur1.update_vie();
-            joueurIA.display();
+            joueurIA.tir(&joueur1);
+            joueur1.update_vie();
+            joueurIA.displayIA(1);
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "Fin du tour de l'" << joueurIA.get_name() << ", appuyer sur entrer pour cacher le plateau" << std::endl;
             while(std::cin.get() != '\n'){;}
             clean_display();
         }
-        std::cout << "[DEBUG] fin ? [y/n] : ";
-        std::cin >> debug_fin;
     }while(joueur1.get_vie() && joueurIA.get_vie() && debug_fin == 'n');
 
     if(joueur1.get_vie()) {
@@ -163,6 +168,10 @@ bool GameLoop_1_player() {
     }
 }
 
+/**
+ * @fn void clean_display()
+ * @brief permet de clean le terminal pour l'affichage
+ */
 void clean_display() {
     #ifdef __linux__ 
         system("clear");

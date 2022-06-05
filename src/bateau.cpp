@@ -2,7 +2,7 @@
  * @file        bateau.cpp
  * @brief       Class bateau a disposer sur nos plateaux
  * @details     on veut sa taille, ses coordonnees, savoir s il est en vie ou non, savoir s il est touche ou non
- * @author      Fave
+ * @author      Fave, Vasseur, Auffray, Gauthier
  * @date        20/05/2022
  * @version     v0.01
  */
@@ -13,59 +13,24 @@
 #include "bateau.h"
 #include "plateau.h"
 
-
-/*******************************
- *      Global definitions     *
- *******************************/
-
-
 /*******************************
  *       Public methods        *
  *******************************/
-
-
-/*******************************
- *       Private methods       *
- *******************************/
-
-
 /**
- * @enum        nom de l'enum
- * @brief       Description de l'enum
+ * @brief Constructeur par défaut de la class Bateau_t
+ * @details Set la vie à true et la longueur à 0
  */
-
-/**
- * @struct      nom de la structure
- * @brief       Description de la structure
- */
-
-/**
- * @class       Bateau_t
- * @brief       classe bateau avec ses caracteristiques
- * @details     fichier cpp
- * @version     0.1
- * @date        2022
- * @pre         Initialisez d'abord le système
- * @post        L'objet est initialisé ou pas 
- * @warning     Une mauvaise utilisation peut faire planter votre application (attention au placement du bateau sur le plateau)
- */
-
-/**
- * @brief
- * @details
- * @param[in,out]   
- * @return 
- */
-
-
-/*code pour la class bateau*/
 Bateau_t::Bateau_t() {
     this->vie = true;
-    this->longueur_bateau = 0;
-    
+    this->longueur_bateau = 0;   
 }
 
-//constructeur par defaut pour un bateau auquel on donne le nom
+/**
+ * @brief Constructeur utilisé pour l'IA
+ * @details Set la vie à true et les différents paramètres d'un bateau
+ * @param[in] int type,x,y
+ * @param[in] char direction
+ */
 Bateau_t::Bateau_t(int type, int x, int y, char direction) {
 
     // attributs set de base
@@ -141,7 +106,11 @@ Bateau_t::Bateau_t(int type, int x, int y, char direction) {
 
 }
 
-//constructeur par defaut pour un bateau auquel on donne le nom
+/**
+ * @brief Constructeur pour les joueurs
+ * @details Set la vie à true et les différents paramètres d'un bateau
+ * @param[in] int nom_bateau
+ */
 Bateau_t::Bateau_t(int _nom_bateau) {
 
     // attributs set de base
@@ -177,6 +146,10 @@ Bateau_t::Bateau_t(int _nom_bateau) {
     input_direction();
 }
 
+/**
+ * @brief Méthode de Bateau_t pour rentrer les coordonnées
+ * @details Cette méthode permet de rentrer les coordonnées et de vérifier si elles sont valides
+ */
 void Bateau_t::input_coordinate() {
     int coordX;
     int coordY;
@@ -215,6 +188,11 @@ void Bateau_t::input_coordinate() {
     this->tab_coord[0].setState(etat_t::bateau);    
 }
 
+/**
+ * @brief Méthode de Bateau_t pour rentrer les coordonnées
+ * @details Cette méthode permet de rentrer les coordonnées et de vérifier si elles sont valides
+ * @param[in] Plateau_t
+ */
 void Bateau_t::input_coordinate(Plateau_t plateau) {
     int coordX;
     int coordY;
@@ -292,7 +270,10 @@ void Bateau_t::input_coordinate(Plateau_t plateau) {
     
 }
 
-
+/**
+ * @brief Méthode de Bateau_t pour rentrer la direction
+ * @details Cette méthode permet de rentrer la direction et de vérifier les conditions qui y sont liées
+ */
 void Bateau_t::input_direction(void) {
     //Message utilisateur
     std::cout << "Saisir la direction de votre bateau (d, g, b, h) :" << std::endl;

@@ -1,5 +1,5 @@
 /**
- * @author      Vasseur
+ * @author      Vasseur, Auffray, Gauthier, Fave
  * @date        20/05/2022
  * @version     v0.01
  * @brief       Librairie pour la classe joueur
@@ -12,21 +12,20 @@
  *          Includes           *
  *******************************/
 #include <iostream>
-//#include <stdlib.h>
-//#include <stdio.h>
 #include <string>
-//#include <stdbool.h>
 #include <assert.h>
 #include "bateau.h"
 #include "plateau.h"
 #include "case.h"
 
+/*******************************
+ *      Global definitions     *
+ *******************************/
 int letter_to_int(std::string str);
 
 /*******************************
  *       Public methods        *
  *******************************/
-
 /**
  * @class       Joueur_t
  * @brief       Classe pour gérer la création et les jeux des joueurs
@@ -65,7 +64,9 @@ class Joueur_t {
 
         //methodes
         bool tir(Joueur_t*, int, int);
+        void tir(Joueur_t*);
         void display();
+        void displayIA(int);
         void saisie_tir(int*, int*);
         void update_vie();
         Bateau_t newBoat(int);

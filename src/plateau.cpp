@@ -1,8 +1,9 @@
 /**
- * @author      Vasseur, Gauthier, Auffray, Fave
+ * @file        plateau.cpp
+ * @brief       Class plateau
+ * @author      Gauthier, Vasseur, Auffray, Fave
  * @date        20/05/2022
  * @version     v0.01
- * @brief       
  */
 
 /*******************************
@@ -13,7 +14,14 @@
 #include <typeinfo>
 #include <time.h>
 
-//Affichage d'une ligne de délimitation
+/*******************************
+ *       Public methods        *
+ *******************************/
+
+/**
+ * @fn void addLine(int tailleTab)
+ * @brief Affichage d'une ligne de délimitation
+ */
 void addLine(int tailleTab) {
     for(int i = 0; i < tailleTab + 1; i++){
         std::cout << "|----";
@@ -21,7 +29,10 @@ void addLine(int tailleTab) {
     std::cout << "|" << std::endl;;
 }
 
-//Traduction de l'affichage des cases en fonction de leur état
+/**
+ * @fn char stateDisplay(int state)
+ * @brief Traduction de l'affichage des cases en fonction de leur état
+ */
 char stateDisplay(int state){
     char caseContent = ' ';
     switch (state)
@@ -48,16 +59,19 @@ char stateDisplay(int state){
     return caseContent;
 }
 
-//Constructeurs
+/**
+ * @brief Constructeur par défaut de plateau
+ * @details Set la taille du tableau à 10
+ */
 Plateau_t::Plateau_t() {
     this->taille = 10;
 }
 
-/*******************************
- *       Public methods        *
- *******************************/
+/**
+ * @brief Méthode de Plateau_t pour afficher la grille de l'objet
+ * @details Cette méthode permet d'afficher la grille avec les bateaux et l'état de toutes les cases
+ */
 void Plateau_t::display() {
-
     //Gestion affichage grille vide
     std::cout << "Affichage de la grille" << std::endl;
     addLine(this->taille);
@@ -98,6 +112,12 @@ void Plateau_t::display() {
         }
 }
 
+/**
+ * @brief Méthode de Plateau_t pour set une case
+ * @details Cette méthode permet de set une case du plateau à partir de coordonnées et du nouvel état
+ * @param[in] int x,y,state
+ * @return bool true si la case a été set
+ */
 bool Plateau_t::setCase(int x, int y, int state) {
     if (1 <= x && x <= 10 && 1 <= y && y <= 10) {
         this->grid[x - 1][y - 1].setState(state);
@@ -109,6 +129,12 @@ bool Plateau_t::setCase(int x, int y, int state) {
     }
 }
 
+/**
+ * @brief Méthode de Plateau_t pour set une case
+ * @details Cette méthode permet de set une case du plateau à partir d'une nouvelle case
+ * @param[in] Case_t
+ * @return bool true si la case a été set
+ */
 bool Plateau_t::setCase(Case_t new_case) {
     if (1 <= new_case.getX() && new_case.getX() <= 10 && 1 <= new_case.getY() && new_case.getY() <= 10) {
         this->grid[new_case.getX() - 1][new_case.getY() - 1].setState(new_case.getState());
@@ -120,6 +146,12 @@ bool Plateau_t::setCase(Case_t new_case) {
     }
 }
 
+/**
+ * @brief Méthode de Plateau_t pour ajouter un bateau
+ * @details Cette méthode permet d'ajouter un bateau au plateau
+ * @param[in] Bateau_t
+ * @return bool si le bateau a été ajouté
+ */
 bool Plateau_t::addBateau(Bateau_t bateau) {
     for(int i = 0; i < bateau.getLength(); i++) {
         if(!(this->setCase(bateau.getCase(i)))) {
@@ -129,6 +161,12 @@ bool Plateau_t::addBateau(Bateau_t bateau) {
     return true;
 }
 
+/**
+ * @brief Méthode de Plateau_t pour créer et ajouter un bateau au plateau
+ * @details Cette méthode permet de créer un bateau en vérifiant si les coordonnées sont valides 
+ * @param[in] int type
+ * @return Bateau_t 
+ */
 Bateau_t Plateau_t::addBateau(int type) {
     int x_in, x_grid, y_in, y_grid, choixUserY;
     char choixUserX;
@@ -203,8 +241,14 @@ Bateau_t Plateau_t::addBateau(int type) {
     return bateau0;
 }
 
+/**
+ * @brief Méthode de Plateau_t pour créer par l'IA un bateau et l'ajouter au plateau
+ * @details Cette méthode permet de créer un bateau automatiquement
+ * @param[in] int type
+ * @return Bateau_t 
+ */
 Bateau_t Plateau_t::addBateauIA(int type) {
-    int x_in, x_grid, y_in, y_grid;
+    int x_in, y_in;
     bool check;
     int dir, longueur;
     char direction = ' ';
@@ -220,25 +264,10 @@ Bateau_t Plateau_t::addBateauIA(int type) {
         srand(time(NULL));
         x_in = (rand() % 10) + 1;
         y_in = (rand() % 10) + 1;
-        x_grid = x_in - 1;
-        y_grid = y_in - 1;
         dir = (rand() % 4);
 
         //On vérifie que la coordonnée Y est bien sur la grille
         if((!(y_in >= 1 && y_in <= 10)) || (!(x_in >= 1 && x_in <= 10))) {
-            check = false;
-        }
-        else if (this->grid[x_grid][y_grid].getState() == bateau) { //si la case n'est pas déjà prise par bateau
-            check = false;
-        }
-        else if ((this->grid[x_grid + 1][y_grid].getState() == bateau) ||
-                 (this->grid[x_grid + 1][y_grid + 1].getState() == bateau) ||
-                 (this->grid[x_grid][y_grid + 1].getState() == bateau) ||
-                 (this->grid[x_grid - 1][y_grid + 1].getState() == bateau) ||
-                 (this->grid[x_grid - 1][y_grid].getState() == bateau) ||
-                 (this->grid[x_grid - 1][y_grid - 1].getState() == bateau) ||
-                 (this->grid[x_grid][y_grid - 1].getState() == bateau) ||
-                 (this->grid[x_grid + 1][y_grid - 1].getState() == bateau)) { //pas de bateau autour de la case
             check = false;
         }
 
@@ -258,10 +287,15 @@ Bateau_t Plateau_t::addBateauIA(int type) {
             direction = 'h';
             if(!((y_in - longueur) >= 1)) check = false;
         }
+
+        if (this->checkBateau(x_in, y_in, direction, longueur)) { //si le bateau ne sera pas entourée par un autre
+            check = false;
+        }
+
     } while(check == false);
 
     //Creation du bateau après avoir vérifié son emplacement
-    Bateau_t bateau0(type, x_grid, y_grid, direction);
+    Bateau_t bateau0(type, x_in, y_in, direction);
 
     //On Maj la grille en fonction du bateau
     for(int i = 0; i < bateau0.getLength(); i++) {
@@ -271,8 +305,11 @@ Bateau_t Plateau_t::addBateauIA(int type) {
     return bateau0;
 }
 
+/**
+ * @brief Méthode de Plateau_t pour afficher le plateau
+ * @details ?
+ */
 void Plateau_t::displayShip() {
-
     //Gestion affichage grille vide
     std::cout << "Affichage de la grille" << std::endl;
     addLine(this->taille);
@@ -311,4 +348,62 @@ void Plateau_t::displayShip() {
                 }  
             }
         }
+}
+
+/**
+ * @brief       Méthode checkBateau de la classe plateau
+ * @details     Vérifie si lors de l'ajout d'un bateau celui ci ne sera pas collé ou proche d'un autre bateau
+ * @param[in]   int x,y,longueur
+ * @param[in]   char direction
+ * @return      bool true si proche d'un autre bateau
+ */
+bool Plateau_t::checkBateau(int x, int y, char direction, int longueur) {
+    if(this->grid[x][y].getState() == bateau) {
+        return true;
+    }
+    else if((this->grid[x + 1][y].getState() == bateau) ||
+            (this->grid[x + 1][y + 1].getState() == bateau) ||
+            (this->grid[x][y + 1].getState() == bateau) ||
+            (this->grid[x - 1][y + 1].getState() == bateau) ||
+            (this->grid[x - 1][y].getState() == bateau) ||
+            (this->grid[x - 1][y - 1].getState() == bateau) ||
+            (this->grid[x][y - 1].getState() == bateau) ||
+            (this->grid[x + 1][y - 1].getState() == bateau)) {
+        return true;
+    }
+    else {
+        if(direction == 'g') {
+            for(int i = 0; i < longueur; i++) {
+                if((x - i) == 0) break;
+                if((this->grid[x - i - 1][y].getState() == bateau) ||
+                   (this->grid[x - i - 1][y + 1].getState() == bateau) ||
+                   (this->grid[x - i - 1][y - 1].getState() == bateau)) return true;
+            }
+        }
+        else if(direction == 'b') {
+            for(int i = 0; i < longueur; i++) {
+                if((y + i) == 9) break;
+                if((this->grid[x][y + i + 1].getState() == bateau) ||
+                   (this->grid[x - 1][y + i + 1].getState() == bateau) ||
+                   (this->grid[x + 1][y + i + 1].getState() == bateau)) return true;
+            }
+        }
+        else if(direction == 'd') {
+            for(int i = 0; i < longueur; i++) {
+                if((x + i) == 9) break;
+                if((this->grid[x + i + 1][y].getState() == bateau) ||
+                   (this->grid[x + i + 1][y + 1].getState() == bateau) ||
+                   (this->grid[x + i + 1][y - 1].getState() == bateau)) return true;
+            }
+        }
+        else if(direction == 'h'){
+            for(int i = 0; i < longueur; i++) {
+                if((y - i) == 0) break;
+                if((this->grid[x][y - i - 1].getState() == bateau) ||
+                   (this->grid[x - 1][y - i - 1].getState() == bateau) ||
+                   (this->grid[x + 1][y - i - 1].getState() == bateau)) return true;
+            }
+        }
+    }
+    return false;
 }
