@@ -13,32 +13,6 @@
 #include "bateau.h"
 #include "plateau.h"
 
-
-/*******************************
- *      Global definitions     *
- *******************************/
-
-
-/*******************************
- *       Public methods        *
- *******************************/
-
-
-/*******************************
- *       Private methods       *
- *******************************/
-
-
-/**
- * @enum        nom de l'enum
- * @brief       Description de l'enum
- */
-
-/**
- * @struct      nom de la structure
- * @brief       Description de la structure
- */
-
 /**
  * @class       Bateau_t
  * @brief       classe bateau avec ses caracteristiques
@@ -50,22 +24,13 @@
  * @warning     Une mauvaise utilisation peut faire planter votre application (attention au placement du bateau sur le plateau)
  */
 
-/**
- * @brief
- * @details
- * @param[in,out]   
- * @return 
- */
-
-
-/*code pour la class bateau*/
+/*code pour la classe bateau*/
 Bateau_t::Bateau_t() {
     this->vie = true;
     this->longueur_bateau = 0;
-    
 }
 
-//Constructeur appelé dans laméthode addBateau() de plateau
+//Constructeur appelé dans la méthode addBateau() de plateau
 Bateau_t::Bateau_t(int type, int x, int y, char direction) {
 
     // attributs set de base
@@ -138,7 +103,6 @@ Bateau_t::Bateau_t(int type, int x, int y, char direction) {
             this->tab_coord[i].setY(this->tab_coord[i-1].getY() - 1);
         }
     }
-
 }
 
 

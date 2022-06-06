@@ -20,9 +20,16 @@
 void addLine(int tailleTab);
 char stateDisplay(int state);
 
-/*******************************
- *      Classe plateau permettant d'afficher un tableau de jeu dynamique   *
- *******************************/
+/**
+ * @class       Plateau_t
+ * @brief       Instancie un plateau appartenant à un joueur
+ * @details     Le plateau contient une grille de case dont les états sont modifiés au fil de la partie
+ * @version     0.1
+ * @date        2022
+ * @pre         Le constructeur n'a pas besoin de paramètre. La grille est vide par défaut.
+ * @post        L'objet est initialisé ou pas 
+ * @warning     Une mauvaise utilisation peut faire planter votre application (attention au placement du bateau sur le plateau)
+ */
 class Plateau_t {
 
     protected:

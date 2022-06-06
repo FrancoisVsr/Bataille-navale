@@ -11,6 +11,16 @@ enum etat_t {
     coule = 4
 };
 
+/**
+ * @class       Case_t
+ * @brief       Instancie un case contenant des coordonnees et un etat parmi 5 possibles.
+ * @details     Les cases structure la grille du plateau et les bateaux
+ * @version     0.1
+ * @date        2022
+ * @pre         Saisir X, Y et l'état
+ * @post        Renvoie l'objet qui peut êtr emodifié via les setteurs
+ * @warning     les coordonées sont bornée par la taille de la grille et il existe 5 états
+ */
 class Case_t {
 
     protected:

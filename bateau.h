@@ -28,7 +28,6 @@ class Plateau_t;
  * @enum        nom_bateau
  * @brief       Il s'agit des noms des différents bateaux à disposer sur le plateau, il y en 5 différents avec chacun leurs taille
  */
-
 enum nom_bateau { //enumeration des nom de bateau sous forme de int
     porte_avion = 0,
     croiseur = 1,
@@ -43,6 +42,16 @@ struct coordinate {
     int coordY;         // de 1 a 10
 };
 
+/**
+ * @class       Bateau_t
+ * @brief       Instancie un bateau qui correspond à un tableau de case d'état "bateau"
+ * @details     Instanciation via son constructeur en fonction de sa taille, sa coordonnée d'oigine et la direction choisie.
+ * @version     0.1
+ * @date        2022
+ * @pre         Saisir le type, X, Y et la direction dans le constructeur
+ * @post        Le constructeur est appelé dans la la méthode addBateau() de plateau
+ * @warning     Une mauvaise utilisation peut faire planter votre application (attention au placement du bateau sur le plateau)
+ */
 class Bateau_t { 
 
     private:

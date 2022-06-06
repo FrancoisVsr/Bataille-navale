@@ -1,3 +1,11 @@
+/**
+ * @file        case.cpp
+ * @author      Vasseur, Gauthier, Auffray, Fave
+ * @date        20/05/2022
+ * @version     v0.01
+ * @brief       
+ */
+
 #include <cstdlib>
 #include <iostream>
 #include "case.h"

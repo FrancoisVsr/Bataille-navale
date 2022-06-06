@@ -1,4 +1,5 @@
 /**
+ * @file        plateau.cpp
  * @author      Vasseur, Gauthier, Auffray, Fave
  * @date        20/05/2022
  * @version     v0.01
@@ -56,6 +57,7 @@ Plateau_t::Plateau_t() {
 /*******************************
  *       Public methods        *
  *******************************/
+//Affichage graphique de la grille mise à jour sur le terminal
 void Plateau_t::display() const {
 
     //Gestion affichage grille vide
@@ -120,8 +122,7 @@ bool Plateau_t::setCase(Case_t new_case) {
     }
 }
 
-
-
+//Ajout d'un bateau après avoir vérifié son placement
 Bateau_t Plateau_t::addBateau(int type) {
     int x_in, x_grid, y_in, y_grid, choixUserY, testInt = 1;
     char choixUserX;
