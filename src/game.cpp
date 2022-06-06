@@ -71,7 +71,6 @@ bool GameLoop_2_player() {
     std::cout << "Bateaux du joueur " << joueur2.get_name() << " ok" << std::endl;
     do {
         std::cout << "A " << joueur1.get_name() << " de jouer, appuyer sur entrer pour afficher les plateaux" << std::endl;
-        //std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         while(std::cin.get() != '\n'){;}
         joueur1.display();

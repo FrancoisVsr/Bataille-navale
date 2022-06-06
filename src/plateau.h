@@ -16,6 +16,7 @@
 #include "bateau.h"
 #include "case.h"
 #include <vector>
+#include <string>
 
 void addLine(int tailleTab);
 char stateDisplay(int state);
@@ -38,7 +39,7 @@ class Plateau_t {
 
         //Accesseurs
         int getTaille() const { return this->taille;}
-        Case_t getCase(int x, int y) const { return this->grid[x][y];}
+        Case_t getCase(int x, int y) const {return this->grid[x][y];}
 
         //Setteurs
         bool setCase(int, int, int);

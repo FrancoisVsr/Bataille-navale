@@ -64,7 +64,6 @@ class Joueur_t {
         void display();
         void saisie_tir(int*, int*);
         void update_vie();
-        void add_flotte();
         int check_tir(int, int);
         bool check_bateau(int);
 };
