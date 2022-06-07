@@ -1,5 +1,5 @@
 /**
- * @author      Auffray
+ * @author      Auffray, Vasseur, Fave, Gauthier
  * @date        25/05/2022
  * @version     v0.01
  * @brief       Librairie pour les fonctions de jeux

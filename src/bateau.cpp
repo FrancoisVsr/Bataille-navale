@@ -13,51 +13,13 @@
 #include "bateau.h"
 #include "plateau.h"
 
-
-/*******************************
- *      Global definitions     *
- *******************************/
-
-
 /*******************************
  *       Public methods        *
  *******************************/
-
-
-/*******************************
- *       Private methods       *
- *******************************/
-
-
 /**
- * @enum        nom de l'enum
- * @brief       Description de l'enum
+ * @brief Constructeur par défaut de la class Bateau_t
+ * @details Set la vie à true et la longueur à 0
  */
-
-/**
- * @struct      nom de la structure
- * @brief       Description de la structure
- */
-
-/**
- * @class       Bateau_t
- * @brief       classe bateau avec ses caracteristiques
- * @details     fichier cpp
- * @version     0.1
- * @date        2022
- * @pre         Initialisez d'abord le système
- * @post        L'objet est initialisé ou pas 
- * @warning     Une mauvaise utilisation peut faire planter votre application (attention au placement du bateau sur le plateau)
- */
-
-/**
- * @brief
- * @details
- * @param[in,out]   
- * @return 
- */
-
-
 /*code pour la class bateau*/
 Bateau_t::Bateau_t() {
     this->vie = true;
@@ -65,7 +27,12 @@ Bateau_t::Bateau_t() {
     
 }
 
-//Constructeur appelé dans laméthode addBateau() de plateau
+/**
+ * @brief Constructeur utilisé pour l'IA et pour joueur
+ * @details Set la vie à true et les différents paramètres d'un bateau
+ * @param[in] int type,x,y
+ * @param[in] char direction
+ */
 Bateau_t::Bateau_t(int type, int x, int y, char direction) {
 
     // attributs set de base
