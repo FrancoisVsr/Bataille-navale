@@ -20,7 +20,6 @@
  * @brief Constructeur par défaut de la class Bateau_t
  * @details Set la vie à true et la longueur à 0
  */
-/*code pour la class bateau*/
 Bateau_t::Bateau_t() {
     this->vie = true;
     this->longueur_bateau = 0;
@@ -107,6 +106,10 @@ Bateau_t::Bateau_t(int type, int x, int y, char direction) {
     }
 }
 
+/**
+ * @brief Methode utilisé pour mettre à jour les valeur d'un bateau
+ * @param[in] Bateau_t valeur à set
+ */
 void Bateau_t::setBateau(Bateau_t bateau) {
     this->longueur_bateau = bateau.getLength();
     this->vie = bateau.getVivant();
@@ -119,6 +122,11 @@ void Bateau_t::setBateau(Bateau_t bateau) {
     }
 }
 
+/**
+ * @brief Methode utilisé pour mettre à jour l'état d'une case d'un bateau
+ * @param[in] int position (case du bateau à modifier
+ * @param[in] int state (valeur à set)
+ */
 void Bateau_t::setState(int position, int state) {
     this->tab_coord[position].setState(state);
 }

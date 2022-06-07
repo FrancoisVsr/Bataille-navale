@@ -54,33 +54,28 @@ Joueur_t::Joueur_t(std::string name_p) {
  * @brief       Constructeur d'un objet Joueur pour l'IA
  * @details     Le constructeur de la classe joueur créé et initialise les plateaux et bateaux, il ajoute aussi les bateaux à la grille
  */
-Joueur_t::Joueur_t(bool vie) {
+Joueur_t::Joueur_t(bool _vie) {
     this->name = "IA";
-    this->vie = vie;
+    this->vie = _vie;
 
-    Plateau_t plateau_allie;
-    this->plateau_allie = plateau_allie;
+    // Plateau_t plateau_allie;
+    // this->plateau_allie = plateau_allie;
 
-    Plateau_t plateau_ennemi;
-    this->plateau_allie = plateau_ennemi;
+    // Plateau_t plateau_ennemi;
+    // this->plateau_allie = plateau_ennemi;
 
-    Bateau_t porte_avion = plateau_allie.addBateauIA(nom_bateau::porte_avion);
-    this->porte_avion = porte_avion;
-    Bateau_t croiseur = plateau_allie.addBateauIA(nom_bateau::croiseur);
-    this->croiseur = croiseur;
-    Bateau_t contre_torp_1 = plateau_allie.addBateauIA(nom_bateau::contre_torpilleur_1);
-    this->contre_torpilleurs_1 = contre_torp_1;
-    Bateau_t contre_torp_2 = plateau_allie.addBateauIA(nom_bateau::contre_torpilleur_2);
-    this->contre_torpilleurs_2 = contre_torp_2;
-    Bateau_t torpilleur = plateau_allie.addBateauIA(nom_bateau::torpilleur);
-    this->torpilleur = torpilleur;
+    Bateau_t B1 = plateau_allie.addBateauIA(nom_bateau::porte_avion);
+    this->porte_avion.setBateau(B1);
+    Bateau_t B2 = plateau_allie.addBateauIA(nom_bateau::croiseur);
+    this->croiseur.setBateau(B2);
+    Bateau_t B3 = plateau_allie.addBateauIA(nom_bateau::contre_torpilleur_1);
+    this->contre_torpilleurs_1.setBateau(B3);
+    Bateau_t B4 = plateau_allie.addBateauIA(nom_bateau::contre_torpilleur_2);
+    this->contre_torpilleurs_2.setBateau(B4);
+    Bateau_t B5 = plateau_allie.addBateauIA(nom_bateau::torpilleur);
+    this->torpilleur.setBateau(B5);
     this->add_flotte();
 }
-
-/**
- * @brief       Accesseur pour la vie de l'objet Joueur
- * @return      bool
- */
 
 /**
  * @brief       Accesseur pour les plateaux de l'objet Joueur
@@ -143,17 +138,17 @@ void Joueur_t::saisie_tir(int* x, int* y) {
     bool flag = true;
     do {
         std::cout << "Saisie des coordonees du tir" << std::endl;
-        std::cout << "Rentrer l abscisse (lettre majuscule entre A et J) : ";
+        std::cout << "Rentrer l'abscisse (lettre majuscule entre A et J) : ";
         std::cin >> x_saisie;
         while(!(x_saisie >= 'A' && x_saisie <= 'J')) {
-            std::cout << "Incorrecte, ressaisir abscisse (lettre majuscule entre A et J) : ";
+            std::cout << "Incorrecte, ressaisir l'abscisse (lettre majuscule entre A et J) : ";
             std::cin >> x_saisie;
         }
         *x = ((x_saisie - 'A') + 1);
-        std::cout << "Rentrer l ordonnee (nombre entre 1 et 10) : ";
+        std::cout << "Rentrer l'ordonnee (nombre entre 1 et 10) : ";
         std::cin >> y_saisie;
         while(y_saisie != "1" && y_saisie != "2" && y_saisie != "3" && y_saisie != "4" && y_saisie != "5" && y_saisie != "6" && y_saisie != "7" && y_saisie != "8" && y_saisie != "9" && y_saisie != "10") {
-            std::cout << "Incorrecte, ressaisir ordonee (nombre entre 1 et 10) : ";
+            std::cout << "Incorrecte, ressaisir l'ordonee (nombre entre 1 et 10) : ";
             std::cin >> y_saisie;
         }
         *y = stoi(y_saisie);
@@ -199,45 +194,20 @@ void Joueur_t::tir(Joueur_t *j, int x, int y) {
  * @param[in]   Joueur_t
  */
 void Joueur_t::tir(Joueur_t *j) {
-    int x,y;
-    int state = etat_t::bateau;
-
+    int x = 0, y = 0;
+    Case_t case_ennemi;
     do {
         do {
             srand(time(NULL));
-            x = (rand() % 10) + 1;
-            y = (rand() % 10) + 1;
-        } while((!(y >= 1 && y <= 10)) || (!(x >= 1 && x <= 10)));
-        x-=1;
-        y-=1;
-        Case_t case_ennemi(plateau_ennemi.getCase(x,y));
-        state = case_ennemi.getState();
-    } while (state != etat_t::eau);
+            x = (rand() % 10);
+            y = (rand() % 10);
+        } while(!(y >= 0 && y <= 9 && x >= 0 && x <= 9));
+        case_ennemi.setCase(plateau_ennemi.getCase(x, y));
+    } while(case_ennemi.getState() != etat_t::eau);
 
-    std::cout << "L'" << this->get_name() << " tire en " << (char)(x + 65) << y << std::endl << std::endl;
+    std::cout << "L'" << this->get_name() << " tire en " << (char)(x + 'A') << y + 1 << std::endl << std::endl;
 
-    Plateau_t plateau_vise(j->get_plateau(0));
-    Case_t case_vise(plateau_vise.getCase(x, y));
-    Case_t case_enemie(plateau_ennemi.getCase(x, y));
-
-    switch(case_vise.getState())
-    {
-        case etat_t::bateau:
-            std::cout << "Un bateau a été touché !" << std::endl << std::endl;
-            plateau_ennemi.setCase(x, y, etat_t::touche);
-            j->set_case_allie(x, y, etat_t::touche);
-            std::cout << "Un bateau a été coulé !" << std::endl << std::endl;
-            break;
-        case etat_t::eau:
-            std::cout << "Sheh ! Essaie encore !" << std::endl << std::endl;
-            plateau_ennemi.setCase(x, y, etat_t::rate);
-            j->set_case_allie(x, y, etat_t::rate);
-            break;
-        default:
-            std::cerr << "error in state case, x = " << x << "\ty = " << y << std::endl;
-            break;
-    }
-    std::cout << std::endl;
+    this->tir(j, x + 1, y + 1);
 }
 
 /**
@@ -247,25 +217,8 @@ void Joueur_t::tir(Joueur_t *j) {
 void Joueur_t::display() {
     std::cout << "Plateau de " << this->name << " : " << std::endl;
     plateau_allie.display();
-    std::cout << std::endl << "Plateau de l adversaire : " << std::endl;
+    std::cout << std::endl << "Plateau de l'adversaire : " << std::endl;
     plateau_ennemi.display();
-}
-
-/**
- * @brief       Méthode pour afficher un ou deux plateaux de l'IA
- * @param[in]   int choix (0 pour ennemi et 1 pour les deux)
- */
-void Joueur_t::displayIA(int choix) {
-    if(choix == 1) {
-       std::cout << std::endl << "Plateau de l adversaire : " << std::endl;
-    plateau_ennemi.display(); 
-    }
-    else {
-        std::cout << "Plateau de " << this->name << " : " << std::endl;
-    plateau_allie.display();
-        std::cout << std::endl << "Plateau de l adversaire : " << std::endl;
-    plateau_ennemi.display();
-    }
 }
 
 /**

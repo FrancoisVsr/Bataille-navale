@@ -33,28 +33,49 @@ enum etat_t {
  * @warning     Une mauvaise utilisation peut faire planter votre application
  */
 class Case_t {
+private:
+    int x;
+    int y;
+    int state;
+    
+public:
+    //Constructeurs
+    /**
+     * @brief Constructeur utilisé pour une case
+     * @details Set les coordonnées à 0 et l'état à eau
+     */
+    Case_t();
 
-    protected:
-        int x;
-        int y;
-        int state;
-        
-    public:
-        //Constructeurs
-        Case_t();
-        Case_t(int, int);
-        Case_t(int, int, int);
+    /**
+     * @brief Constructeur utilisé pour une case avec coordonnées
+     * @details Set les coordonnées à x et y et l'état à eau
+     * @param[in] int x,y
+     */
+    Case_t(int, int);
 
-        //Accesseurs
-        int getX() const { return this->x;}
-        int getY() const { return this->y;}
-        int getState() const { return this->state;}
+    /**
+     * @brief Constructeur utilisé pour une case avec coordonnées et état
+     * @details Set les coordonnées à x et y et l'état à state
+     * @param[in] int x,y,state
+     */
+    Case_t(int, int, int);
 
-        //Setteurs
-        void setX(int x) { this->x = x;}
-        void setY(int y) { this->y = y;}
-        void setState(int state) { this->state = state;}
-        void setCase(const Case_t&);
+    //Accesseurs
+    int getX() const { return this->x;}
+    int getY() const { return this->y;}
+    int getState() const { return this->state;}
+
+    //Setteurs
+    void setX(int x) { this->x = x;}
+    void setY(int y) { this->y = y;}
+    void setState(int state) { this->state = state;}
+
+    /**
+     * @brief Méthode de Case_t pour set les attributs avec une nouvelle case
+     * @details Cette méthode permet de setter les attributs d'une case
+     * @param[in] Case_t
+     */
+    void setCase(const Case_t&);
 };
 
 #endif

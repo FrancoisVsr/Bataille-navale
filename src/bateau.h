@@ -65,7 +65,18 @@ private:
 
 public:
     //Constructeur 
-    Bateau_t(); // For IA
+    /**
+     * @brief Constructeur par défaut de la class Bateau_t
+     * @details Set la vie à true et la longueur à 0
+     */
+    Bateau_t();
+
+    /**
+     * @brief Constructeur utilisé pour l'IA et pour joueur
+     * @details Set la vie à true et les différents paramètres d'un bateau
+     * @param[in] int type,x,y
+     * @param[in] char direction
+     */
     Bateau_t(int, int, int, char);
 
     //Accesseurs
@@ -81,7 +92,18 @@ public:
 
     //Mutateurs
     void setVivant(bool v) {this->vie = v;}
+
+    /**
+     * @brief Methode utilisé pour mettre à jour les valeur d'un bateau
+     * @param[in] Bateau_t valeur à set
+     */
     void setBateau(Bateau_t const);
+    
+    /**
+     * @brief Methode utilisé pour mettre à jour l'état d'une case d'un bateau
+     * @param[in] int position (case du bateau à modifier
+     * @param[in] int state (valeur à set)
+     */
     void setState(int, int);
 };
 

@@ -129,13 +129,13 @@ bool GameLoop_1_player() {
     std::cin >> name_joueur;
     Joueur_t joueur1(name_joueur);
     std::cout << "Bateaux du joueur " << joueur1.get_name() << " ok" << std::endl;
+    std::cout << "Patientez pendant la creation des bateaux de l'IA" << std::endl;
     Joueur_t joueurIA(true);
     std::cout << "Bateaux de l'" << joueurIA.get_name() << " ok" << std::endl;
-    std::cout << "Patientez pendant la creation des bateaux de l IA" << std::endl;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     do {
         std::cout << "A " << joueur1.get_name() << " de jouer, appuyer sur entrer pour afficher les plateaux" << std::endl;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         while(std::cin.get() != '\n'){;}
         joueur1.display();
         int x = 0;
@@ -143,23 +143,22 @@ bool GameLoop_1_player() {
         joueur1.saisie_tir(&x, &y);
         joueur1.tir(&joueurIA, x, y);
         joueurIA.update_vie();
-        clean_display();
-        joueur1.display();
+        std::cout << "Resultat plateau ennemi : " << std::endl;
+        joueur1.get_plateau(1).display();
         std::cout << "Fin du tour de " << joueur1.get_name() << ", appuyer sur entrer pour cacher les plateaux" << std::endl;
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         while(std::cin.get() != '\n'){;}
         clean_display();
         if(joueurIA.get_vie()) {
             std::cout << "Debut du tour de l'" << joueurIA.get_name() << std::endl;
+            std::cout << "Patientez pendant que l'IA tir" << std::endl;
             joueurIA.tir(&joueur1);
             joueur1.update_vie();
-            joueurIA.displayIA(1);
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Fin du tour de l'" << joueurIA.get_name() << ", appuyer sur entrer pour cacher le plateau" << std::endl;
-            while(std::cin.get() != '\n'){;}
-            clean_display();
+            std::cout << "Plateau de " << joueur1.get_name() << " vu par l'IA : " << std::endl;
+            joueurIA.get_plateau(1).display();
+            std::cout << "Fin du tour de l'" << joueurIA.get_name() << std::endl;
         }
-    }while(joueur1.get_vie() && joueurIA.get_vie() && debug_fin == 'n');
+    }while(joueur1.get_vie() && joueurIA.get_vie());
 
     if(joueur1.get_vie()) {
         return true;

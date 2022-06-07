@@ -79,7 +79,6 @@ public:
     void tir(Joueur_t*, int, int);
     void tir(Joueur_t*); // Pour l'IA
     void display();
-    void displayIA(int);
     void saisie_tir(int*, int*);
     void update_vie();
     int check_tir(int, int);
