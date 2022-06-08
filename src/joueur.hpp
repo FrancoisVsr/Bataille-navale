@@ -14,6 +14,7 @@
 #include <iostream>
 #include <string>
 #include <assert.h>
+#include <time.h>
 #include "bateau.h"
 #include "plateau.h"
 #include "case.h"

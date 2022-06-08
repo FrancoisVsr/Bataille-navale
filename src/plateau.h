@@ -15,6 +15,7 @@
 #include "case.h"
 #include <vector>
 #include <string>
+#include <time.h>
 
 /*******************************
  *      Global definitions     *
