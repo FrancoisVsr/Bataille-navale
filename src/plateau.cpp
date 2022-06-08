@@ -19,6 +19,7 @@
 /**
  * @fn void addLine(int tailleTab)
  * @brief Affichage d'une ligne de délimitation
+ * @param[in]   int tailletab
  */
 void addLine(int tailleTab) {
     for(int i = 0; i < tailleTab + 1; i++){
@@ -30,6 +31,7 @@ void addLine(int tailleTab) {
 /**
  * @fn char stateDisplay(int state)
  * @brief Traduction de l'affichage des cases en fonction de leur état
+ * @param[in]   int state
  */
 char stateDisplay(int state) {
     char caseContent = ' ';

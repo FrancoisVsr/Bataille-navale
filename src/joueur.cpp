@@ -18,6 +18,7 @@
 /**
  * @brief       Constructeur d'un objet Joueur pour l'IA
  * @details     Le constructeur de la classe joueur créé et initialise les plateaux et bateaux, il ajoute aussi les bateaux à la grille
+ * @param[in]   string name_p
  */
 Joueur_t::Joueur_t(std::string name_p) {
     this->name = name_p;
@@ -53,6 +54,7 @@ Joueur_t::Joueur_t(std::string name_p) {
 /**
  * @brief       Constructeur d'un objet Joueur pour l'IA
  * @details     Le constructeur de la classe joueur créé et initialise les plateaux et bateaux, il ajoute aussi les bateaux à la grille
+ * @param[in]   bool vie
  */
 Joueur_t::Joueur_t(bool _vie) {
     this->name = "IA";
