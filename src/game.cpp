@@ -1,7 +1,7 @@
 /**
  * @file        game.cpp
  * @brief       Fichier contenant les fonctions qui gèrent le déroulement d'une partie
- * @author      Auffray
+ * @author      Auffray, Vasseur
  * @date        25/05/2022
  * @version     v0.01
  */

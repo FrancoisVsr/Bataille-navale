@@ -11,13 +11,14 @@
  *******************************/
 #include <iostream>
 #include "game.h"
+#include "interface.h"
 
 /**
  * @fn int main()
  * @brief Fonction pour jouer utilisant game.cpp
  * @return int 0
  */
-int main() {
+void consolePlay() {
     char choice = 'n';
     do {
         start();
@@ -43,5 +44,26 @@ int main() {
             std::cin >> choice;
         }while(choice != 'n' && choice != 'y');
     }while(choice == 'y');    
+}
+
+int main(int argc, char **argv){
+    if(argc < 2){
+        std::cout << "Need one argument : " << std::endl;
+        std::cout << "-cl for console line, -ihm for graphic interface" << std::endl;
+    }
+    else if((argv[1] != "-cl") && (argv[1] != "-ihm")){
+        std::cout << "Wrong argument !" << std::endl;
+        std::cout << "-cl for console line, -ihm for graphic interface" << std::endl;    
+    }
+    else{
+        if(argv[1] == "-cl"){
+            consolePlay();
+        }
+        /*else{
+            ihmPlay();
+        }*/
+    }
     return 0;
 }
+
+
