@@ -48,20 +48,15 @@ void consolePlay() {
 
 int main(int argc, char **argv){
     if(argc < 2){
-        std::cout << "Need one argument : " << std::endl;
-        std::cout << "-cl for console line, -ihm for graphic interface" << std::endl;
+        mainInterface();
     }
-    else if((argv[1] != "-cl") && (argv[1] != "-ihm")){
-        std::cout << "Wrong argument !" << std::endl;
-        std::cout << "-cl for console line, -ihm for graphic interface" << std::endl;    
+    else if(strcmp(argv[1], "-cl") == 0){
+        consolePlay(); 
     }
     else{
-        if(argv[1] == "-cl"){
-            consolePlay();
-        }
-        /*else{
-            ihmPlay();
-        }*/
+        std::cout << "Wrong argument !" << std::endl;
+        std::cout << "-cl for console line, -ihm for graphic interface" << std::endl;
+        std::cout << argv[1] << std::endl;
     }
     return 0;
 }

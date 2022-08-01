@@ -11,6 +11,16 @@
  *******************************/
 #include "interface.h"
 
+
+#include <iostream>
+
+/*******************************
+ *       Private variable      *
+ *******************************/
+SDL_Rect grid_left[100];
+SDL_Rect grid_middle[100];
+SDL_Rect grid_right[100];
+
 /*******************************
  *       Private methods        *
  *******************************/
@@ -32,13 +42,13 @@ void updateEvent(struct Input *input)
 {
     SDL_Event event;
     while(SDL_PollEvent(&event))
-    {
+    {   
         if(event.type == SDL_QUIT)
             input->quit = SDL_TRUE;
         else if(event.type == SDL_KEYDOWN)
-            input->key[event.key.keysym.sym] = SDL_TRUE;
+            input->key[event.key.keysym.scancode] = SDL_TRUE;
         else if(event.type == SDL_KEYUP)
-            input->key[event.key.keysym.sym] = SDL_FALSE;
+            input->key[event.key.keysym.scancode] = SDL_FALSE;
         else if(event.type == SDL_MOUSEMOTION)
         {
             input->x = event.motion.x;
@@ -172,6 +182,106 @@ int printMenu(SDL_Renderer *renderer)
 	return numero_clique;
 }
 
+int print1Grid(SDL_Renderer *renderer)
+{
+    SDL_Rect zone = {433, 134, 500, 500};
+    SDL_SetRenderDrawColor(renderer, 255, 229, 204, 255);
+    SDL_RenderFillRect(renderer, &zone);
+    size_t i = 0;
+    int column = 0;
+    for(i = 0; i < 100; i++)
+    {
+        if(((i % 10)  == 0) && (i != 0)) column++;
+        grid_middle[i].w = 50;
+        grid_middle[i].h = 50;
+        grid_middle[i].x = 50*(i % 10) + zone.x;
+        grid_middle[i].y = 50*column + zone.y;
+    }
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderDrawRects(renderer, grid_middle, 100);
+    
+    SDL_RenderSetViewport(renderer, NULL);
+    return 0;
+}
+
+int print2Grids(SDL_Renderer *renderer)
+{
+    SDL_Texture *texture = NULL;
+
+    SDL_Rect zone1 = {122, 134, 500, 500};
+    SDL_Rect zone2 = {744, 134, 500, 500};
+    SDL_SetRenderDrawColor(renderer, 255, 229, 204, 255);
+    SDL_RenderFillRect(renderer, &zone1);
+    SDL_RenderFillRect(renderer, &zone2);
+    size_t i = 0;
+    int column = 0;
+    for(i = 0; i < 100; i++)
+    {
+        if(((i % 10)  == 0) && (i != 0)) column++;
+        grid_left[i].w = grid_right[i].w = 50;
+        grid_left[i].h = grid_right[i].h = 50;
+        grid_left[i].x = 50*(i % 10) + zone1.x;
+        grid_right[i].x = 50*(i % 10) + zone2.x;
+        grid_left[i].y = 50*column + zone1.y;
+        grid_right[i].y = 50*column + zone2.y;
+    }
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+    SDL_RenderDrawRects(renderer, grid_left, 100);
+    SDL_RenderDrawRects(renderer, grid_right, 100);
+    return 0;
+}
+
+void transformClicToCoord(int *x, int *y, char *dir)
+{
+    struct Input in;
+	initStruct(&in);
+
+    while(!in.quit)
+    {
+        updateEvent(&in);
+    	if(in.mouse[SDL_BUTTON_LEFT] == SDL_TRUE)
+	    {
+    	    for(int i = 0; i < 100; i++)
+    	    {
+    	        if (in.x >= grid_middle[i].x && in.x <= (grid_middle[i].x + grid_middle[i].w)  
+    	        	&& in.y > grid_middle[i].y && in.y < (grid_middle[i].y + grid_middle[i].h))
+    	        {
+    	            *y = (i / 10) + 1;
+                	*x = (i % 10) + 1;
+                	in.quit = SDL_TRUE;
+                }
+    	    }
+	    } 
+    }
+    in.quit = SDL_FALSE;
+    
+    while(!in.quit)
+    {
+        updateEvent(&in);
+    	if(in.key[SDL_SCANCODE_DOWN] == SDL_TRUE)
+	    {
+            *dir = 'b';
+            in.quit = SDL_TRUE;
+	    }
+	    else if(in.key[SDL_SCANCODE_UP] == SDL_TRUE)
+	    {
+	        *dir = 'h';
+	        in.quit = SDL_TRUE;
+	    }
+	    else if(in.key[SDL_SCANCODE_LEFT] == SDL_TRUE)
+	    {
+	        *dir = 'g';
+	        in.quit = SDL_TRUE;
+	    }
+	    else if(in.key[SDL_SCANCODE_RIGHT] == SDL_TRUE)
+	    {
+	        *dir = 'd';
+	        in.quit = SDL_TRUE;
+	    }
+    }
+    
+}
+
 int printGame(SDL_Renderer *renderer)
 {
 	char PATH_LOGO[80] = "/home/etud/Documents/Bataille-navale/pic_sdl/menu.bmp";
@@ -185,12 +295,14 @@ int printGame(SDL_Renderer *renderer)
 	SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, texture, NULL, NULL);
    	
+   	print1Grid(renderer);
    	SDL_RenderPresent(renderer);
    	
    	if(NULL != texture)	SDL_DestroyTexture(texture);
+   	return 0;
 }
 
-int main(int argc, char *argv[])
+int mainInterface()
 {
 	SDL_Window *window = NULL;
 	SDL_Renderer *renderer = NULL;
