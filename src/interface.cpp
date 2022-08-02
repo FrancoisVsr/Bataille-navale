@@ -10,6 +10,8 @@
  *          Includes           *
  *******************************/
 #include "interface.h"
+#include "plateau.h"
+#include "joueur.hpp"
 
 
 #include <iostream>
@@ -17,9 +19,7 @@
 /*******************************
  *       Private variable      *
  *******************************/
-SDL_Rect grid_left[100];
 SDL_Rect grid_middle[100];
-SDL_Rect grid_right[100];
 
 /*******************************
  *       Private methods        *
@@ -184,6 +184,7 @@ int printMenu(SDL_Renderer *renderer)
 
 int print1Grid(SDL_Renderer *renderer)
 {
+    SDL_printFond(renderer);
     SDL_Rect zone = {433, 134, 500, 500};
     SDL_SetRenderDrawColor(renderer, 255, 229, 204, 255);
     SDL_RenderFillRect(renderer, &zone);
@@ -201,37 +202,11 @@ int print1Grid(SDL_Renderer *renderer)
     SDL_RenderDrawRects(renderer, grid_middle, 100);
     
     SDL_RenderSetViewport(renderer, NULL);
+    SDL_RenderPresent(renderer);
     return 0;
 }
 
-int print2Grids(SDL_Renderer *renderer)
-{
-    SDL_Texture *texture = NULL;
-
-    SDL_Rect zone1 = {122, 134, 500, 500};
-    SDL_Rect zone2 = {744, 134, 500, 500};
-    SDL_SetRenderDrawColor(renderer, 255, 229, 204, 255);
-    SDL_RenderFillRect(renderer, &zone1);
-    SDL_RenderFillRect(renderer, &zone2);
-    size_t i = 0;
-    int column = 0;
-    for(i = 0; i < 100; i++)
-    {
-        if(((i % 10)  == 0) && (i != 0)) column++;
-        grid_left[i].w = grid_right[i].w = 50;
-        grid_left[i].h = grid_right[i].h = 50;
-        grid_left[i].x = 50*(i % 10) + zone1.x;
-        grid_right[i].x = 50*(i % 10) + zone2.x;
-        grid_left[i].y = 50*column + zone1.y;
-        grid_right[i].y = 50*column + zone2.y;
-    }
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-    SDL_RenderDrawRects(renderer, grid_left, 100);
-    SDL_RenderDrawRects(renderer, grid_right, 100);
-    return 0;
-}
-
-void transformClicToCoord(int *x, int *y, char *dir)
+void transformClicToCoordandDir(int *x, int *y, char *dir)
 {
     struct Input in;
 	initStruct(&in);
@@ -246,8 +221,8 @@ void transformClicToCoord(int *x, int *y, char *dir)
     	        if (in.x >= grid_middle[i].x && in.x <= (grid_middle[i].x + grid_middle[i].w)  
     	        	&& in.y > grid_middle[i].y && in.y < (grid_middle[i].y + grid_middle[i].h))
     	        {
-    	            *y = (i / 10) + 1;
-                	*x = (i % 10) + 1;
+    	            *y = (i / 10);
+                	*x = (i % 10);
                 	in.quit = SDL_TRUE;
                 }
     	    }
@@ -278,11 +253,34 @@ void transformClicToCoord(int *x, int *y, char *dir)
 	        *dir = 'd';
 	        in.quit = SDL_TRUE;
 	    }
-    }
-    
+    }   
 }
 
-int printGame(SDL_Renderer *renderer)
+void transformClicToCoord(int *x, int *y)
+{
+    struct Input in;
+	initStruct(&in);
+
+    while(!in.quit)
+    {
+        updateEvent(&in);
+    	if(in.mouse[SDL_BUTTON_LEFT] == SDL_TRUE)
+	    {
+    	    for(int i = 0; i < 100; i++)
+    	    {
+    	        if (in.x >= grid_middle[i].x && in.x <= (grid_middle[i].x + grid_middle[i].w)  
+    	        	&& in.y > grid_middle[i].y && in.y < (grid_middle[i].y + grid_middle[i].h))
+    	        {
+    	            *y = (i / 10);
+                	*x = (i % 10);
+                	in.quit = SDL_TRUE;
+                }
+    	    }
+	    } 
+    } 
+}
+
+int SDL_printFond(SDL_Renderer *renderer)
 {
 	char PATH_LOGO[80] = "/home/etud/Documents/Bataille-navale/pic_sdl/menu.bmp";
 	SDL_Texture *texture = NULL;
@@ -294,12 +292,58 @@ int printGame(SDL_Renderer *renderer)
 	texture = loadImage(PATH_LOGO, renderer);
 	SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, texture, NULL, NULL);
-   	
-   	print1Grid(renderer);
    	SDL_RenderPresent(renderer);
    	
    	if(NULL != texture)	SDL_DestroyTexture(texture);
    	return 0;
+}
+
+bool GameLoop_2_playerSDL(SDL_Renderer *renderer) {
+    Joueur_t joueur1(renderer);
+    Joueur_t joueur2(renderer);
+    /*do {
+        std::cout << "A " << joueur1.get_name() << " de jouer, appuyer sur entrer pour afficher les plateaux" << std::endl;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        while(std::cin.get() != '\n'){;}
+        joueur1.display();
+        int x = 0;
+        int y = 0;
+        joueur1.saisie_tir(&x, &y);
+        joueur1.tir(&joueur2, x, y);
+        joueur2.update_vie();
+        std::cout << "Resultat plateau ennemi : " << std::endl;
+        joueur1.get_plateau(1).display();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Fin du tour de " << joueur1.get_name() << ", appuyer sur entrer pour cacher les plateaux" << std::endl;
+        while(std::cin.get() != '\n'){;}
+        clean_display();
+        if(joueur2.get_vie()) {
+            std::cout << "A " << joueur2.get_name() << " de jouer, appuyer sur entrer pour afficher les plateaux" << std::endl;
+            while(std::cin.get() != '\n'){;}
+            joueur2.display();
+            int x2 = 0;
+            int y2 = 0;
+            joueur2.saisie_tir(&x2, &y2);
+            joueur2.tir(&joueur1, x2, y2);
+            joueur1.update_vie();
+            std::cout << "Resultat plateau ennemi : " << std::endl;
+            joueur2.get_plateau(1).display();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Fin du tour de " << joueur2.get_name() << ", appuyer sur entrer pour cacher les plateaux" << std::endl;
+            while(std::cin.get() != '\n'){;}
+            clean_display();
+        }
+        std::cout << "[DEBUG] fin ? [y/n] : ";
+        std::cin >> debug_fin;
+    }while(joueur1.get_vie() && joueur2.get_vie() && debug_fin == 'n');
+
+    if(joueur1.get_vie()) {
+        return true;
+    }
+    else {
+        return false;
+    }*/
+    return true;
 }
 
 int mainInterface()
@@ -331,7 +375,9 @@ Start:
     	}  	
     }
     
-    printGame(renderer);
+    print1Grid(renderer);
+    
+    GameLoop_2_playerSDL(renderer);
     
     while(!in.quit)
 	{

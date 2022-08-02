@@ -10,13 +10,67 @@
  *          Includes           *
  *******************************/
 #include "joueur.hpp"
+#include "interface.h"
+
+
+SDL_Rect middle = {433, 134, 500, 500};
+SDL_Rect zone1 = {122, 134, 500, 500};
+SDL_Rect zone2 = {744, 134, 500, 500};
 
 /*******************************
  *       Public methods        *
  *******************************/
+/**
+ * @brief       Constructeur d'un objet Joueur pour la sdl
+ * @details     Le constructeur de la classe joueur créé et initialise les plateaux et bateaux, il ajoute aussi les bateaux à la grille
+ * @param[in]   string name_p
+ */
+Joueur_t::Joueur_t(SDL_Renderer *renderer) {
+    
+    /*todo interface graphique en gtk pour le nom et les infos pour placer ses bateaux*/
+    //this->name = ;
+    this->vie = true;
+    
+    size_t i = 0;
+    int column = 0;
+    for(i = 0; i < 100; i++)
+    {
+        if(((i % 10)  == 0) && (i != 0)) column++;
+        this->grid_allie[i].w = this->grid_ennemi[i].w = this->grid_middle[i].w = 50;
+        this->grid_allie[i].h = this->grid_ennemi[i].h = this->grid_middle[i].h = 50;
+        this->grid_allie[i].x = 50*(i % 10) + zone1.x;
+        this->grid_ennemi[i].x = 50*(i % 10) + zone2.x;
+        this->grid_middle[i].x = 50*(i % 10) + middle.x;
+        this->grid_allie[i].y = 50*column + zone1.y;
+        this->grid_ennemi[i].y = 50*column + zone2.y;
+        this->grid_middle[i].y = 50*column + middle.y;
+        
+    }
+    
+    Bateau_t B1(plateau_allie.addBateauSDL(nom_bateau::porte_avion));
+    this->porte_avion.setBateau(B1);
+    this->add_BoatSDL(renderer, B1);
+    plateau_allie.display();
+    Bateau_t B2(plateau_allie.addBateauSDL(nom_bateau::croiseur));
+    this->croiseur.setBateau(B2);
+    this->add_BoatSDL(renderer, B2);
+    plateau_allie.display();
+    Bateau_t B3(plateau_allie.addBateauSDL(nom_bateau::contre_torpilleur_1));
+    this->contre_torpilleurs_1.setBateau(B3);
+    this->add_BoatSDL(renderer, B3);
+    plateau_allie.display();
+    Bateau_t B4(plateau_allie.addBateauSDL(nom_bateau::contre_torpilleur_2));
+    this->contre_torpilleurs_2.setBateau(B4);
+    this->add_BoatSDL(renderer, B4);
+    plateau_allie.display();
+    Bateau_t B5(plateau_allie.addBateauSDL(nom_bateau::torpilleur));
+    this->torpilleur.setBateau(B5);
+    this->add_BoatSDL(renderer, B5);
+    plateau_allie.display();
+}
 
 /**
- * @brief       Constructeur d'un objet Joueur pour l'IA
+ * @brief       Constructeur d'un objet Joueur
  * @details     Le constructeur de la classe joueur créé et initialise les plateaux et bateaux, il ajoute aussi les bateaux à la grille
  * @param[in]   string name_p
  */
@@ -59,12 +113,6 @@ Joueur_t::Joueur_t(std::string name_p) {
 Joueur_t::Joueur_t(bool _vie) {
     this->name = "IA";
     this->vie = _vie;
-
-    // Plateau_t plateau_allie;
-    // this->plateau_allie = plateau_allie;
-
-    // Plateau_t plateau_ennemi;
-    // this->plateau_allie = plateau_ennemi;
 
     Bateau_t B1 = plateau_allie.addBateauIA(nom_bateau::porte_avion);
     this->porte_avion.setBateau(B1);
@@ -221,6 +269,25 @@ void Joueur_t::display() {
     plateau_allie.display();
     std::cout << std::endl << "Plateau de l'adversaire : " << std::endl;
     plateau_ennemi.display();
+}
+
+void Joueur_t::displaySDL(SDL_Renderer *renderer, int nb)
+{
+    SDL_printFond(renderer);
+    SDL_SetRenderDrawColor(renderer, 255, 229, 204, 255);
+    
+    if(nb == 1){
+        SDL_RenderFillRect(renderer, &middle);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+        SDL_RenderDrawRects(renderer, this->grid_middle, 100); /*à revoir*/    
+    }
+    else {
+        SDL_RenderFillRect(renderer, &zone1);
+        SDL_RenderFillRect(renderer, &zone2);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+        SDL_RenderDrawRects(renderer, this->grid_allie, 100);
+        SDL_RenderDrawRects(renderer, this->grid_ennemi, 100);
+    }
 }
 
 /**
@@ -381,3 +448,71 @@ void Joueur_t::add_flotte() {
     plateau_allie.addBateau(contre_torpilleurs_1);
     plateau_allie.addBateau(contre_torpilleurs_2);
 }
+
+
+void Joueur_t::add_BoatSDL(SDL_Renderer *renderer, Bateau_t b)
+{
+    int xStart = 0, yStart = 0, xEnd = 0, yEnd = 0;
+    
+    xStart = b.getCase1().getX();
+    yStart = b.getCase1().getY();
+        
+    if(b.getNom_Bateau() == "porte_avion")
+    {    
+        xEnd = b.getCase5().getX();
+        yEnd = b.getCase5().getY();   
+    }
+    else if(b.getNom_Bateau() == "croiseur")
+    {    
+        xEnd = b.getCase4().getX();
+        yEnd = b.getCase4().getY();   
+    }
+    else if((b.getNom_Bateau() == "contre_torpilleur_1") || (b.getNom_Bateau() == "contre_torpilleur_2"))
+    {    
+        xEnd = b.getCase3().getX();
+        yEnd = b.getCase3().getY();   
+    }
+    else if(b.getNom_Bateau() == "torpilleur")
+    {    
+        xEnd = b.getCase5().getX();
+        yEnd = b.getCase5().getY();   
+    }
+    
+    if(xStart == xEnd)
+    {
+        for(int i = yStart; i <= yEnd; i++)
+        {
+            this->setCaseSDL(renderer, xStart, i, b.getNom_Bateau(), 'v');
+        }
+    }
+    else
+    {
+        for(int i = xStart; i <= xEnd; i++)
+        {
+            this->setCaseSDL(renderer, i, yStart, b.getNom_Bateau(), 'h');
+        }
+    }
+}
+
+void Joueur_t::setCaseSDL(SDL_Renderer *renderer, int x, int y, std::string name, char sens)
+{
+    char PATH[80] = "/home/etud/Documents/Bataille-navale/boat_sdl/vertical/croiseur1.bmp";
+    SDL_Texture *texture = NULL;
+    int num_rect = 0;
+    
+    /*if(sens == 'v') PATH = "/home/etud/Documents/Bataille-navale/boat_sdl/vertical/croiseur1.bmp";
+    else PATH =  "/home/etud/Documents/Bataille-navale/boat_sdl/horizontal/croiseur1.bmp";*/
+    
+    texture = loadImage(PATH, renderer);
+    num_rect = y * 10 + x;
+    SDL_RenderSetViewport(renderer, &(this->grid_middle[num_rect]));
+    
+    SDL_RenderCopy(renderer, texture, NULL, NULL);
+    //SDL_RenderPresent(renderer);
+    
+    SDL_RenderSetViewport(renderer, NULL);
+    if(NULL != texture)	SDL_DestroyTexture(texture);
+}
+
+
+

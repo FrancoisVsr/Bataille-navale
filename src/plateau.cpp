@@ -10,6 +10,7 @@
  *          Includes           *
  *******************************/
 #include "plateau.h"
+#include "interface.h"
 #include <cstdlib>
 #include <typeinfo>
 
@@ -343,6 +344,52 @@ Bateau_t Plateau_t::addBateau(int type) {
 
     return bateau0;
 }
+
+
+/**
+ * @brief Méthode de Plateau_t pour créer et ajouter un bateau au plateau avec sdl
+ * @details Cette méthode permet de créer un bateau en vérifiant si les coordonnées sont valides 
+ * @param[in] int type
+ * @return Bateau_t 
+ */
+Bateau_t Plateau_t::addBateauSDL(int type) {
+    int x_grid, y_grid;
+    char direction = ' ';
+    bool checkBateau = true;
+    
+    int longueur_bateau = 0;
+    switch (type) /*0,1,2,3,4*/
+    {
+        case porte_avion: 
+            longueur_bateau = 5; break;
+        case croiseur:
+            longueur_bateau = 4; break;
+        case contre_torpilleur_1: 
+            longueur_bateau = 3; break;
+        case contre_torpilleur_2: 
+            longueur_bateau = 3; break;
+        case torpilleur: 
+            longueur_bateau = 2; break;
+        default: 
+            longueur_bateau = 3; break;
+    }
+
+    do{
+        transformClicToCoordandDir(&x_grid, &y_grid, &direction);
+        checkBateau = this->checkBateau(x_grid, y_grid, direction, longueur_bateau);
+    } while(checkBateau == true);
+
+    /*Creation du bateau après avoir vérifié son emplacement*/
+    Bateau_t bateau0(type, (x_grid+1), (y_grid+1), direction);
+
+    /*On Maj la grille en fonction du bateau*/
+    for(int i = 0; i < bateau0.getLength(); i++) {
+        this->grid[bateau0.getCase(i).getX() - 1][bateau0.getCase(i).getY() -1].setState(bateau);
+    }
+    
+    return bateau0;
+}
+
 
 /**
  * @brief Méthode de Plateau_t pour ajouter un bateau

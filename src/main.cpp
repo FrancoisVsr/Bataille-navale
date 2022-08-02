@@ -46,9 +46,13 @@ void consolePlay() {
     }while(choice == 'y');    
 }
 
+void sdlPlay(){
+    mainInterface();
+}
+
 int main(int argc, char **argv){
     if(argc < 2){
-        mainInterface();
+        sdlPlay();
     }
     else if(strcmp(argv[1], "-cl") == 0){
         consolePlay(); 

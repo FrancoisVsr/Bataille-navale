@@ -18,6 +18,7 @@
 #include "bateau.h"
 #include "plateau.h"
 #include "case.h"
+#include <SDL2/SDL.h>
 
 /*******************************
  *      Global definitions     *
@@ -40,6 +41,9 @@ int letter_to_int(std::string str);
 class Joueur_t {
 private:
 	Plateau_t plateau_allie;
+	SDL_Rect grid_allie[100];
+    SDL_Rect grid_ennemi[100];
+    SDL_Rect grid_middle[100];
     Plateau_t plateau_ennemi;
     Bateau_t porte_avion;
     Bateau_t croiseur;
@@ -51,6 +55,7 @@ private:
 
 public:
     //Constructeur
+    Joueur_t(SDL_Renderer*); /*Pour la sdl*/
     Joueur_t(bool); // Pour l'IA
   	Joueur_t(std::string);
 
@@ -80,11 +85,14 @@ public:
     void tir(Joueur_t*, int, int);
     void tir(Joueur_t*); // Pour l'IA
     void display();
+    void displaySDL(SDL_Renderer*, int);
     void saisie_tir(int*, int*);
     void update_vie();
     int check_tir(int, int);
     bool check_bateau(int);
 	void add_flotte();
+	void add_BoatSDL(SDL_Renderer*, Bateau_t);
+	void setCaseSDL(SDL_Renderer*, int, int, std::string, char);
 };
 
 #endif /*JOUEUR_HPP*/

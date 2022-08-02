@@ -55,6 +55,7 @@ public:
     //Méthodes
     void display() const;
     Bateau_t addBateau(int);
+    Bateau_t addBateauSDL(int);
     void addBateau(Bateau_t);
     Bateau_t addBateauIA(int);
     bool checkBateau(int, int, char, int);

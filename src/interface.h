@@ -56,4 +56,10 @@ struct carre {
  */
 int mainInterface();
 
+SDL_Texture *loadImage(const char path[], SDL_Renderer *renderer);
+
+void transformClicToCoordandDir(int *x, int *y, char *dir);
+
+int SDL_printFond(SDL_Renderer *renderer);
+
 #endif /* INTERFACE_H */
