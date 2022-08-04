@@ -84,6 +84,9 @@ public:
     // methodes
     void tir(Joueur_t*, int, int);
     void tir(Joueur_t*); // Pour l'IA
+    void tirSDL(SDL_Renderer *renderer, Joueur_t *j, int x, int y);
+    void tirSDL(SDL_Renderer *renderer, Joueur_t *j); //pour IA
+    void SaisieTirSDL(int*, int*);
     void display();
     void displaySDL(SDL_Renderer*, int);
     void saisie_tir(int*, int*);
@@ -91,8 +94,9 @@ public:
     int check_tir(int, int);
     bool check_bateau(int);
 	void add_flotte();
-	void add_BoatSDL(SDL_Renderer*, Bateau_t);
-	void setCaseSDL(SDL_Renderer*, int, int, std::string, char);
+	void add_BoatSDL(SDL_Renderer*, Bateau_t, int);
+	void setCaseSDL(SDL_Renderer*, int, int, std::string, char, int, int);
+	void changeCaseSDL(SDL_Renderer*, int, int, etat_t);
 };
 
 #endif /*JOUEUR_HPP*/

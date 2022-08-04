@@ -125,7 +125,7 @@ bool Plateau_t::setCase(int x, int y, int state) {
         return true;
     }
     else {
-        std::cout <<"ERREUR Coordonnes : Case non modifiee";
+        std::cout << __func__ << __LINE__ <<"ERREUR Coordonnes : Case non modifiee";
         return false;
     }
 }
@@ -142,7 +142,7 @@ bool Plateau_t::setCase(Case_t new_case) {
         return true;
     }
     else {
-        std::cout <<"ERREUR Coordonnes : Case non modifiee";
+        std::cout << __func__ << __LINE__ <<"ERREUR Coordonnes : Case non modifiee";
         return false;
     }
 }
@@ -376,11 +376,11 @@ Bateau_t Plateau_t::addBateauSDL(int type) {
 
     do{
         transformClicToCoordandDir(&x_grid, &y_grid, &direction);
-        checkBateau = this->checkBateau(x_grid, y_grid, direction, longueur_bateau);
+        checkBateau = this->checkBateau((x_grid-1), (y_grid-1), direction, longueur_bateau);
     } while(checkBateau == true);
 
     /*Creation du bateau après avoir vérifié son emplacement*/
-    Bateau_t bateau0(type, (x_grid+1), (y_grid+1), direction);
+    Bateau_t bateau0(type, x_grid, y_grid, direction);
 
     /*On Maj la grille en fonction du bateau*/
     for(int i = 0; i < bateau0.getLength(); i++) {
@@ -416,13 +416,24 @@ void Plateau_t::addBateau(Bateau_t bateau) {
 Bateau_t Plateau_t::addBateauIA(int type) {
     int x_in, y_in;
     bool check;
-    int dir, longueur;
+    int dir, longueur_bateau;
     char direction = ' ';
 
-    if(type == 0) longueur = 5;
-    else if(type == 1) longueur = 4;
-    else if((type == 2) || (type == 3)) longueur = 3;
-    else longueur = 2;
+    switch (type) /*0,1,2,3,4*/
+    {
+        case porte_avion: 
+            longueur_bateau = 5; break;
+        case croiseur:
+            longueur_bateau = 4; break;
+        case contre_torpilleur_1: 
+            longueur_bateau = 3; break;
+        case contre_torpilleur_2: 
+            longueur_bateau = 3; break;
+        case torpilleur: 
+            longueur_bateau = 2; break;
+        default: 
+            longueur_bateau = 3; break;
+    }
 
     //Saisie de la coordonne X et Y du point d'origine du bateau
     do {
@@ -432,27 +443,22 @@ Bateau_t Plateau_t::addBateauIA(int type) {
         y_in = (rand() % 10) + 1;
         dir = (rand() % 4);
 
-        //On vérifie que la coordonnée Y est bien sur la grille
-        if((!(y_in >= 1 && y_in <= 10)) || (!(x_in >= 1 && x_in <= 10))) {
-            check = false;
-        }
-        if(dir == 0) {
-            direction = 'g';
-            if(!((x_in - longueur) >= 1)) check = false;
-        }
-        else if(dir == 1) {
-            direction = 'b';
-            if(!((y_in + longueur) <= 10)) check = false;
-        }
-        else if(dir == 2) {
-            direction = 'd';
-            if(!((x_in + longueur) <= 10)) check = false;
-        }
-        else {
-            direction = 'h';
-            if(!((y_in - longueur) >= 1)) check = false;
-        }
-        if (this->checkBateau(x_in, y_in, direction, longueur)) { //si le bateau ne sera pas entourée par un autre
+        switch(dir){
+            case 0:
+                direction = 'h';
+                break;
+            case 1:
+                direction = 'b';
+                break;
+            case 2:
+                direction = 'g';
+                break;
+            case 3:
+                direction = 'd';
+                break;
+        }        
+        
+        if (this->checkBateau((x_in-1), (y_in-1), direction, longueur_bateau)) { //si le bateau ne sera pas entourée par un autre
             check = false;
         }
 
@@ -463,7 +469,7 @@ Bateau_t Plateau_t::addBateauIA(int type) {
 
     //On Maj la grille en fonction du bateau
     for(int i = 0; i < bateau0.getLength(); i++) {
-        this->grid[bateau0.getCase(i).getX()][bateau0.getCase(i).getY()].setState(bateau);
+        this->grid[bateau0.getCase(i).getX()-1][bateau0.getCase(i).getY()-1].setState(bateau);
     }
     return bateau0;
 }
@@ -476,52 +482,119 @@ Bateau_t Plateau_t::addBateauIA(int type) {
  * @return      bool true si proche d'un autre bateau
  */
 bool Plateau_t::checkBateau(int x, int y, char direction, int longueur) {
-    if(this->grid[x][y].getState() == bateau) {
-        return true;
+    if((0 <= x <= 9) && (0 <= y <= 9)){    
+        if(this->grid[x][y].getState() == bateau) {
+            return true;
+        }
     }
-    else if((this->grid[x + 1][y].getState() == bateau) ||
-            (this->grid[x + 1][y + 1].getState() == bateau) ||
-            (this->grid[x][y + 1].getState() == bateau) ||
-            (this->grid[x - 1][y + 1].getState() == bateau) ||
-            (this->grid[x - 1][y].getState() == bateau) ||
-            (this->grid[x - 1][y - 1].getState() == bateau) ||
-            (this->grid[x][y - 1].getState() == bateau) ||
-            (this->grid[x + 1][y - 1].getState() == bateau)) {
-        return true;
-    }
-    else {
-        if(direction == 'g') {
-            for(int i = 0; i < longueur; i++) {
-                if((x - i) == 0) break;
-                if((this->grid[x - i - 1][y].getState() == bateau) ||
-                   (this->grid[x - i - 1][y + 1].getState() == bateau) ||
-                   (this->grid[x - i - 1][y - 1].getState() == bateau)) return true;
+    
+    if(x == 9){
+        if(y == 9){
+            if((this->grid[x - 1][y].getState() == bateau) ||
+               (this->grid[x - 1][y - 1].getState() == bateau) ||
+               (this->grid[x][y - 1].getState() == bateau)){
+                return true;
             }
         }
-        else if(direction == 'b') {
-            for(int i = 0; i < longueur; i++) {
-                if((y + i) == 9) break;
-                if((this->grid[x][y + i + 1].getState() == bateau) ||
-                   (this->grid[x - 1][y + i + 1].getState() == bateau) ||
-                   (this->grid[x + 1][y + i + 1].getState() == bateau)) return true;
+        else if(y == 0){
+            if((this->grid[x - 1][y].getState() == bateau) ||
+               (this->grid[x - 1][y + 1].getState() == bateau) ||
+               (this->grid[x][y + 1].getState() == bateau)){
+                return true;
             }
         }
-        else if(direction == 'd') {
-            for(int i = 0; i < longueur; i++) {
-                if((x + i) == 9) break;
-                if((this->grid[x + i + 1][y].getState() == bateau) ||
-                   (this->grid[x + i + 1][y + 1].getState() == bateau) ||
-                   (this->grid[x + i + 1][y - 1].getState() == bateau)) return true;
-            }
-        }
-        else if(direction == 'h'){
-            for(int i = 0; i < longueur; i++) {
-                if((y - i) == 0) break;
-                if((this->grid[x][y - i - 1].getState() == bateau) ||
-                   (this->grid[x - 1][y - i - 1].getState() == bateau) ||
-                   (this->grid[x + 1][y - i - 1].getState() == bateau)) return true;
+        else{
+            if((this->grid[x][y + 1].getState() == bateau) ||
+               (this->grid[x - 1][y + 1].getState() == bateau) ||
+               (this->grid[x - 1][y].getState() == bateau) ||
+               (this->grid[x - 1][y - 1].getState() == bateau) ||
+               (this->grid[x][y - 1].getState() == bateau)){
+                return true;
             }
         }
     }
+    else if(x == 0){
+        if(y == 9){
+            if((this->grid[x + 1][y].getState() == bateau) ||
+               (this->grid[x + 1][y - 1].getState() == bateau) ||
+               (this->grid[x][y - 1].getState() == bateau)){
+                return true;
+            }
+        }
+        else if(y == 0){
+            if((this->grid[x + 1][y].getState() == bateau) ||
+               (this->grid[x + 1][y + 1].getState() == bateau) ||
+               (this->grid[x][y + 1].getState() == bateau)){
+                return true;
+            }
+        }
+        else{
+            if((this->grid[x][y + 1].getState() == bateau) ||
+               (this->grid[x + 1][y + 1].getState() == bateau) ||
+               (this->grid[x + 1][y].getState() == bateau) ||
+               (this->grid[x + 1][y - 1].getState() == bateau) ||
+               (this->grid[x][y - 1].getState() == bateau)){
+                return true;
+            }
+        }
+    }
+    else{
+        if(y == 9){
+            if((this->grid[x + 1][y].getState() == bateau) ||
+               (this->grid[x - 1][y].getState() == bateau) ||
+               (this->grid[x - 1][y - 1].getState() == bateau) ||
+               (this->grid[x][y - 1].getState() == bateau) ||
+               (this->grid[x + 1][y - 1].getState() == bateau)){
+                return true;
+            }
+        }
+        else if(y == 0){
+            if((this->grid[x + 1][y].getState() == bateau) ||
+               (this->grid[x + 1][y + 1].getState() == bateau) ||
+               (this->grid[x][y + 1].getState() == bateau) ||
+               (this->grid[x - 1][y + 1].getState() == bateau) ||
+               (this->grid[x - 1][y].getState() == bateau)){
+                return true;
+            }
+        }
+        else{
+            if((this->grid[x + 1][y].getState() == bateau) ||
+               (this->grid[x + 1][y + 1].getState() == bateau) ||
+               (this->grid[x][y + 1].getState() == bateau) ||
+               (this->grid[x - 1][y + 1].getState() == bateau) ||
+               (this->grid[x - 1][y].getState() == bateau) ||
+               (this->grid[x - 1][y - 1].getState() == bateau) ||
+               (this->grid[x][y - 1].getState() == bateau) ||
+               (this->grid[x + 1][y - 1].getState() == bateau)){
+                return true;
+            }
+        }
+    }     
+
+    if(direction == 'g') {
+        if((x - longueur) < 0) return true;
+        if(longueur != 1){
+            if(checkBateau((x - 1), y, direction, (longueur - 1))) return true;
+        }
+    }
+    else if(direction == 'b') {
+        if((y + longueur) > 9) return true;
+        if(longueur != 1){
+            if(checkBateau(x, (y + 1), direction, (longueur - 1))) return true;
+        }
+    }
+    else if(direction == 'd') {
+        if((x + longueur) > 9) return true;
+        if(longueur != 1){
+            if(checkBateau((x + 1), y, direction, (longueur - 1))) return true;
+        }
+    }
+    else if(direction == 'h'){
+        if((y - longueur) < 0) return true;
+        if(longueur != 1){
+            if(checkBateau(x, (y - 1), direction, (longueur - 1))) return true;
+        }
+    }
+
     return false;
 }

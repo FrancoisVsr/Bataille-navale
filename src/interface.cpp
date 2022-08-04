@@ -115,9 +115,9 @@ SDL_Texture *loadImage(const char path[], SDL_Renderer *renderer)
 
 int printMenu(SDL_Renderer *renderer)
 {
-	char PATH_LOGO[80] = "/home/etud/Documents/Bataille-navale/pic_sdl/menu.bmp";
-	char PATH_TITLE[80] = "/home/etud/Documents/Bataille-navale/pic_sdl/title.bmp";
-	char PATH_CHOICE[80] = "/home/etud/Documents/Bataille-navale/pic_sdl/choice.bmp";
+	char PATH_LOGO[80] = "../pic_sdl/menu.bmp";
+	char PATH_TITLE[80] = "../pic_sdl/title.bmp";
+	char PATH_CHOICE[80] = "../pic_sdl/choice.bmp";
 	SDL_Texture *texture = NULL;
 	SDL_Rect menu = {433, 200, 500, 468};
 	SDL_Rect title = {133, 50, 1100, 100};
@@ -131,6 +131,7 @@ int printMenu(SDL_Renderer *renderer)
 	/* fond d'écran du menu */
 	texture = loadImage(PATH_LOGO, renderer);
 	SDL_RenderClear(renderer);
+	SDL_SetRenderDrawColor(renderer, 42, 42, 42, 255);
 	SDL_RenderCopy(renderer, texture, NULL, NULL);
 	SDL_RenderSetViewport(renderer, &title);
 	texture = loadImage(PATH_TITLE, renderer);
@@ -221,8 +222,8 @@ void transformClicToCoordandDir(int *x, int *y, char *dir)
     	        if (in.x >= grid_middle[i].x && in.x <= (grid_middle[i].x + grid_middle[i].w)  
     	        	&& in.y > grid_middle[i].y && in.y < (grid_middle[i].y + grid_middle[i].h))
     	        {
-    	            *y = (i / 10);
-                	*x = (i % 10);
+    	            *y = (i / 10) + 1;
+                	*x = (i % 10) + 1;
                 	in.quit = SDL_TRUE;
                 }
     	    }
@@ -282,7 +283,7 @@ void transformClicToCoord(int *x, int *y)
 
 int SDL_printFond(SDL_Renderer *renderer)
 {
-	char PATH_LOGO[80] = "/home/etud/Documents/Bataille-navale/pic_sdl/menu.bmp";
+	char PATH_LOGO[80] = "../pic_sdl/menu.bmp";
 	SDL_Texture *texture = NULL;
 	
 	struct Input in;
@@ -298,51 +299,85 @@ int SDL_printFond(SDL_Renderer *renderer)
    	return 0;
 }
 
-bool GameLoop_2_playerSDL(SDL_Renderer *renderer) {
+void GameLoop_1_playerSDL(SDL_Renderer *renderer) {
+    std::string name_joueur = "";
     Joueur_t joueur1(renderer);
-    Joueur_t joueur2(renderer);
-    /*do {
-        std::cout << "A " << joueur1.get_name() << " de jouer, appuyer sur entrer pour afficher les plateaux" << std::endl;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        while(std::cin.get() != '\n'){;}
-        joueur1.display();
+    
+    std::cout << "Patientez pendant la creation des bateaux de l'IA" << std::endl;
+    Joueur_t joueurIA(true);
+    std::cout << "Bateaux de l'" << joueurIA.get_name() << " ok" << std::endl;
+    do {
         int x = 0;
         int y = 0;
-        joueur1.saisie_tir(&x, &y);
-        joueur1.tir(&joueur2, x, y);
-        joueur2.update_vie();
-        std::cout << "Resultat plateau ennemi : " << std::endl;
-        joueur1.get_plateau(1).display();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Fin du tour de " << joueur1.get_name() << ", appuyer sur entrer pour cacher les plateaux" << std::endl;
-        while(std::cin.get() != '\n'){;}
-        clean_display();
-        if(joueur2.get_vie()) {
-            std::cout << "A " << joueur2.get_name() << " de jouer, appuyer sur entrer pour afficher les plateaux" << std::endl;
-            while(std::cin.get() != '\n'){;}
-            joueur2.display();
-            int x2 = 0;
-            int y2 = 0;
-            joueur2.saisie_tir(&x2, &y2);
-            joueur2.tir(&joueur1, x2, y2);
+        joueur1.SaisieTirSDL(&x, &y);
+        joueur1.tirSDL(renderer, &joueurIA, x, y);
+        joueurIA.update_vie();
+        if(joueurIA.get_vie()) {
+            joueurIA.tirSDL(renderer, &joueur1);
             joueur1.update_vie();
-            std::cout << "Resultat plateau ennemi : " << std::endl;
-            joueur2.get_plateau(1).display();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Fin du tour de " << joueur2.get_name() << ", appuyer sur entrer pour cacher les plateaux" << std::endl;
-            while(std::cin.get() != '\n'){;}
-            clean_display();
         }
-        std::cout << "[DEBUG] fin ? [y/n] : ";
-        std::cin >> debug_fin;
-    }while(joueur1.get_vie() && joueur2.get_vie() && debug_fin == 'n');
+    }while(joueur1.get_vie() && joueurIA.get_vie());
 
     if(joueur1.get_vie()) {
-        return true;
+        std::cout << "Victoire du joueur " << joueur1.get_name() << std::endl;
     }
     else {
-        return false;
-    }*/
+        std::cout << "Victoire de l'" << joueurIA.get_name() << std::endl;
+    }
+}
+
+
+bool GameLoop_2_playerSDL(SDL_Renderer *renderer, SDL_Window* window) {
+    SDL_Window *window_j2 = NULL;
+	SDL_Renderer *renderer_j2 = NULL;
+	SDL_Surface *Icon = NULL;
+	
+	if(0 != init(&window_j2, &renderer_j2, 1366, 768))
+    {
+    	fprintf(stderr, "Erreur init : %s", SDL_GetError());
+    	return false;
+    }
+    else
+    {
+	    Icon = SDL_LoadBMP("../pic_sdl/icon.bmp");	        
+    	SDL_SetWindowTitle(window_j2, "Bataille navale v0.1");
+    	SDL_SetWindowIcon(window_j2, Icon);
+    	print1Grid(renderer_j2);
+    	
+        Joueur_t joueur1(renderer);
+        
+        SDL_RaiseWindow(window_j2);
+        Joueur_t joueur2(renderer_j2);
+        
+        do{
+            SDL_RaiseWindow(window);
+            int x = 0;
+            int y = 0;
+            joueur1.SaisieTirSDL(&x, &y);
+            joueur1.tirSDL(renderer, &joueur2, x, y);
+            joueur2.update_vie();
+            if(joueur2.get_vie()){
+                SDL_RaiseWindow(window_j2);
+                int x2 = 0;
+                int y2 = 0;
+                joueur2.SaisieTirSDL(&x, &y);
+                joueur2.tirSDL(renderer_j2, &joueur1, x, y);
+                joueur1.update_vie();
+            }
+        }while(joueur1.get_vie() && joueur2.get_vie());
+        
+        if(joueur1.get_vie()) {
+            std::cout << "Victoire du joueur " << joueur1.get_name() << std::endl;
+        }
+        else {
+            std::cout << "Victoire du joueur " << joueur2.get_name() << std::endl;
+        }   
+    }
+    
+    if(NULL != renderer_j2)
+        SDL_DestroyRenderer(renderer_j2);
+    if(NULL != window_j2)
+        SDL_DestroyWindow(window_j2);
     return true;
 }
 
@@ -363,28 +398,29 @@ int mainInterface()
     }
     else
     {
-	    Icon = SDL_LoadBMP("/home/etud/Documents/Bataille-navale/pic_sdl/icon.bmp");	        
+	    Icon = SDL_LoadBMP("../pic_sdl/icon.bmp");	        
     	SDL_SetWindowTitle(window, "Bataille navale v0.1");
     	SDL_SetWindowIcon(window, Icon);
 Start:
 		initStruct(&in);
-    	if(printMenu(renderer) == 2)
+    	if(printMenu(renderer) == 0)
+    	{
+    	    print1Grid(renderer);
+    	    GameLoop_1_playerSDL(renderer);
+    	}
+    	else if(printMenu(renderer) == 1)
+    	{
+    	    print1Grid(renderer);
+    	    GameLoop_2_playerSDL(renderer, window);
+    	}
+    	else if(printMenu(renderer) == 2)
     	{
     		status = EXIT_SUCCESS;
     		goto Quit;
-    	}  	
+    	}
+    	goto Start;
     }
-    
-    print1Grid(renderer);
-    
-    GameLoop_2_playerSDL(renderer);
-    
-    while(!in.quit)
-	{
-    	updateEvent(&in);
-    	if(in.mouse[SDL_BUTTON_MIDDLE] == SDL_TRUE) goto Start;
-	} 
-    
+
     status = EXIT_SUCCESS;
 Quit:
     if(NULL != renderer)

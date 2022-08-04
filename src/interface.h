@@ -62,4 +62,8 @@ void transformClicToCoordandDir(int *x, int *y, char *dir);
 
 int SDL_printFond(SDL_Renderer *renderer);
 
+void initStruct(struct Input *input);
+
+void updateEvent(struct Input *input);
+
 #endif /* INTERFACE_H */

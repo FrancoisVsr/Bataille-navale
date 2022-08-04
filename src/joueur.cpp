@@ -49,24 +49,26 @@ Joueur_t::Joueur_t(SDL_Renderer *renderer) {
     
     Bateau_t B1(plateau_allie.addBateauSDL(nom_bateau::porte_avion));
     this->porte_avion.setBateau(B1);
-    this->add_BoatSDL(renderer, B1);
-    plateau_allie.display();
+    this->add_BoatSDL(renderer, B1, 0);
     Bateau_t B2(plateau_allie.addBateauSDL(nom_bateau::croiseur));
     this->croiseur.setBateau(B2);
-    this->add_BoatSDL(renderer, B2);
-    plateau_allie.display();
+    this->add_BoatSDL(renderer, B2, 0);
     Bateau_t B3(plateau_allie.addBateauSDL(nom_bateau::contre_torpilleur_1));
     this->contre_torpilleurs_1.setBateau(B3);
-    this->add_BoatSDL(renderer, B3);
-    plateau_allie.display();
+    this->add_BoatSDL(renderer, B3, 0);
     Bateau_t B4(plateau_allie.addBateauSDL(nom_bateau::contre_torpilleur_2));
     this->contre_torpilleurs_2.setBateau(B4);
-    this->add_BoatSDL(renderer, B4);
-    plateau_allie.display();
+    this->add_BoatSDL(renderer, B4, 0);
     Bateau_t B5(plateau_allie.addBateauSDL(nom_bateau::torpilleur));
     this->torpilleur.setBateau(B5);
-    this->add_BoatSDL(renderer, B5);
-    plateau_allie.display();
+    this->add_BoatSDL(renderer, B5, 0);
+    
+    this->displaySDL(renderer, 1);
+    this->add_BoatSDL(renderer, B1, 1);
+    this->add_BoatSDL(renderer, B2, 1);
+    this->add_BoatSDL(renderer, B3, 1);
+    this->add_BoatSDL(renderer, B4, 1);
+    this->add_BoatSDL(renderer, B5, 1);
 }
 
 /**
@@ -124,7 +126,7 @@ Joueur_t::Joueur_t(bool _vie) {
     this->contre_torpilleurs_2.setBateau(B4);
     Bateau_t B5 = plateau_allie.addBateauIA(nom_bateau::torpilleur);
     this->torpilleur.setBateau(B5);
-    this->add_flotte();
+    this->plateau_allie.display();
 }
 
 /**
@@ -213,6 +215,32 @@ void Joueur_t::saisie_tir(int* x, int* y) {
     }while(flag);
 }
 
+void Joueur_t::SaisieTirSDL(int *x, int *y)
+{
+    struct Input in;
+	initStruct(&in);
+
+    while(!in.quit)
+    {
+        updateEvent(&in);
+    	if(in.mouse[SDL_BUTTON_LEFT] == SDL_TRUE)
+	    {
+    	    for(int i = 0; i < 100; i++)
+    	    {
+    	        if (in.x >= this->grid_ennemi[i].x && in.x <= (this->grid_ennemi[i].x + this->grid_ennemi[i].w)  
+    	        	&& in.y > this->grid_ennemi[i].y && in.y < (this->grid_ennemi[i].y + this->grid_ennemi[i].h))
+    	        {
+    	            *y = (i / 10) + 1;
+                	*x = (i % 10) + 1;
+                	
+                	Case_t case_enemie(plateau_ennemi.getCase(*x - 1, *y - 1));
+                    if(case_enemie.getState() == etat_t::eau) in.quit = SDL_TRUE;
+                }
+    	    }
+	    } 
+    }
+}
+
 /**
  * @brief       Méthode pour tirer sur un joueur à partir de coordonnées
  * @param[in]   Joueur_t
@@ -226,7 +254,7 @@ void Joueur_t::tir(Joueur_t *j, int x, int y) {
         plateau_ennemi.setCase(x, y, etat_t::rate);
         j->set_case_allie(x, y, etat_t::rate);
     }
-    else {
+    else{
         std::cout << "Touche !" << std::endl;
         plateau_ennemi.setCase(x, y, etat_t::touche);
         j->set_case_allie(x, y, etat_t::touche);
@@ -235,6 +263,25 @@ void Joueur_t::tir(Joueur_t *j, int x, int y) {
             plateau_ennemi.addBateau(j->get_bateau(result));
             j->plateau_allie.addBateau(j->get_bateau(result));
         }
+    }
+}
+
+void Joueur_t::tirSDL(SDL_Renderer *renderer, Joueur_t *j, int x, int y) {
+    int result = j->check_tir(x, y);
+    if(result == 5) {
+        plateau_ennemi.setCase(x, y, etat_t::rate);
+        j->set_case_allie(x, y, etat_t::rate);
+        this->changeCaseSDL(renderer, x, y, etat_t::rate);
+    }
+    else {
+        plateau_ennemi.setCase(x, y, etat_t::touche);
+        j->set_case_allie(x, y, etat_t::touche);
+        if(j->check_bateau(result)) {
+            /*plateau_ennemi.addBateau(j->get_bateau(result));
+            j->plateau_allie.addBateau(j->get_bateau(result));*/
+            this->changeCaseSDL(renderer, x, y, etat_t::coule);
+        }
+        else this->changeCaseSDL(renderer, x, y, etat_t::touche);
     }
 }
 
@@ -259,6 +306,28 @@ void Joueur_t::tir(Joueur_t *j) {
 
     this->tir(j, x + 1, y + 1);
 }
+    
+void Joueur_t::tirSDL(SDL_Renderer *renderer, Joueur_t *j){
+    int x = 0, y = 0;
+    int num_rect = 0;
+    Case_t case_ennemi;
+    do {
+        do {
+            srand(time(NULL));
+            x = (rand() % 10);
+            y = (rand() % 10);
+        } while(!(y >= 0 && y <= 9 && x >= 0 && x <= 9));
+        case_ennemi.setCase(plateau_ennemi.getCase(x, y));
+    } while(case_ennemi.getState() != etat_t::eau);
+    this->tir(j, x + 1, y + 1);
+    
+    num_rect = y * 10 + x;
+    SDL_SetRenderDrawColor(renderer, 119, 136, 153, 100);
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+    SDL_RenderFillRect(renderer, &(j->grid_allie[num_rect]));
+    SDL_RenderPresent(renderer);
+    
+}
 
 /**
  * @brief       Méthode pour afficher les plateaux alliés et ennemis d'un joueur
@@ -276,17 +345,19 @@ void Joueur_t::displaySDL(SDL_Renderer *renderer, int nb)
     SDL_printFond(renderer);
     SDL_SetRenderDrawColor(renderer, 255, 229, 204, 255);
     
-    if(nb == 1){
+    if(nb == 0){
         SDL_RenderFillRect(renderer, &middle);
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-        SDL_RenderDrawRects(renderer, this->grid_middle, 100); /*à revoir*/    
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_RenderDrawRects(renderer, this->grid_middle, 100);
+        SDL_RenderPresent(renderer);  
     }
-    else {
+    else{
         SDL_RenderFillRect(renderer, &zone1);
         SDL_RenderFillRect(renderer, &zone2);
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderDrawRects(renderer, this->grid_allie, 100);
         SDL_RenderDrawRects(renderer, this->grid_ennemi, 100);
+        SDL_RenderPresent(renderer);
     }
 }
 
@@ -450,65 +521,257 @@ void Joueur_t::add_flotte() {
 }
 
 
-void Joueur_t::add_BoatSDL(SDL_Renderer *renderer, Bateau_t b)
+void Joueur_t::add_BoatSDL(SDL_Renderer *renderer, Bateau_t b, int grid)
 {
     int xStart = 0, yStart = 0, xEnd = 0, yEnd = 0;
+    int loop = 0;
     
     xStart = b.getCase1().getX();
     yStart = b.getCase1().getY();
         
-    if(b.getNom_Bateau() == "porte_avion")
-    {    
+    if(b.getNom_Bateau() == "Porte avion")
+    {
         xEnd = b.getCase5().getX();
         yEnd = b.getCase5().getY();   
     }
     else if(b.getNom_Bateau() == "croiseur")
-    {    
+    {
         xEnd = b.getCase4().getX();
         yEnd = b.getCase4().getY();   
     }
-    else if((b.getNom_Bateau() == "contre_torpilleur_1") || (b.getNom_Bateau() == "contre_torpilleur_2"))
-    {    
+    else if((b.getNom_Bateau() == "1er Contre torpilleur") || (b.getNom_Bateau() == "2eme Contre torpilleur"))
+    {
         xEnd = b.getCase3().getX();
         yEnd = b.getCase3().getY();   
     }
-    else if(b.getNom_Bateau() == "torpilleur")
-    {    
-        xEnd = b.getCase5().getX();
-        yEnd = b.getCase5().getY();   
+    else if(b.getNom_Bateau() == "Torpilleur")
+    {
+        xEnd = b.getCase2().getX();
+        yEnd = b.getCase2().getY();        
     }
     
     if(xStart == xEnd)
     {
+        if(yStart > yEnd){
+            int tmp = yStart;
+            yStart = yEnd;
+            yEnd = tmp;
+        }
         for(int i = yStart; i <= yEnd; i++)
         {
-            this->setCaseSDL(renderer, xStart, i, b.getNom_Bateau(), 'v');
+            this->setCaseSDL(renderer, xStart, i, b.getNom_Bateau(), 'v', loop, grid);
+            loop++;
         }
     }
     else
     {
+        if(xStart > xEnd){
+            int tmp = xStart;
+            xStart = xEnd;
+            xEnd = tmp;
+        }
         for(int i = xStart; i <= xEnd; i++)
         {
-            this->setCaseSDL(renderer, i, yStart, b.getNom_Bateau(), 'h');
+            this->setCaseSDL(renderer, i, yStart, b.getNom_Bateau(), 'h', loop, grid);
+            loop++;
         }
     }
 }
 
-void Joueur_t::setCaseSDL(SDL_Renderer *renderer, int x, int y, std::string name, char sens)
+std::string generatePATH(std::string name, char sens, int nb)
 {
-    char PATH[80] = "/home/etud/Documents/Bataille-navale/boat_sdl/vertical/croiseur1.bmp";
+    char PATH[100];
+    if(sens == 'v'){
+        if(name == "Porte avion"){
+            switch(nb){
+                case 0:
+                    strncpy(PATH, "../boat_sdl/vertical/pa1.bmp", 100);
+                    break;
+                case 1:
+                    strncpy(PATH, "../boat_sdl/vertical/pa2.bmp", 100);
+                    break;
+                case 2:
+                    strncpy(PATH, "../boat_sdl/vertical/pa3.bmp", 100);
+                    break;
+                case 3:
+                    strncpy(PATH, "../boat_sdl/vertical/pa4.bmp", 100);
+                    break;
+                case 4:
+                    strncpy(PATH, "../boat_sdl/vertical/pa5.bmp", 100);
+                    break;
+                default:
+                    std::cout << "Error at " << __func__ << ":" << __LINE__ << std::endl;
+            }
+        }
+        else if(name == "croiseur"){
+            switch(nb){
+                case 0:
+                    strncpy(PATH, "../boat_sdl/vertical/croiseur1.bmp", 100);
+                    break;
+                case 1:
+                    strncpy(PATH, "../boat_sdl/vertical/croiseur2.bmp", 100);
+                    break;
+                case 2:
+                    strncpy(PATH, "../boat_sdl/vertical/croiseur3.bmp", 100);
+                    break;
+                case 3:
+                    strncpy(PATH, "../boat_sdl/vertical/croiseur4.bmp", 100);
+                    break;
+                default:
+                    std::cout << "Error at " << __func__ << ":" << __LINE__ << std::endl;
+            }
+        }
+        else if((name == "1er Contre torpilleur") || (name == "2eme Contre torpilleur")){
+            switch(nb){
+                case 0:
+                    strncpy(PATH, "../boat_sdl/vertical/ct1.bmp", 100);
+                    break;
+                case 1:
+                    strncpy(PATH, "../boat_sdl/vertical/ct2.bmp", 100);
+                    break;
+                case 2:
+                    strncpy(PATH, "../boat_sdl/vertical/ct3.bmp", 100);
+                    break;
+                default:
+                    std::cout << "Error at " << __func__ << ":" << __LINE__ << std::endl;
+            }
+        }
+        else if(name == "Torpilleur"){
+            switch(nb){
+                case 0:
+                    strncpy(PATH, "../boat_sdl/vertical/t1.bmp", 100);
+                    break;
+                case 1:
+                    strncpy(PATH, "../boat_sdl/vertical/t2.bmp", 100);
+                    break;
+                default:
+                    std::cout << "Error at " << __func__ << ":" << __LINE__ << std::endl;
+            }
+        }
+    }
+    else{
+        if(name == "Porte avion"){
+            switch(nb){
+                case 0:
+                    strncpy(PATH, "../boat_sdl/horizontal/pa1.bmp", 100);
+                    break;
+                case 1:
+                    strncpy(PATH, "../boat_sdl/horizontal/pa2.bmp", 100);
+                    break;
+                case 2:
+                    strncpy(PATH, "../boat_sdl/horizontal/pa3.bmp", 100);
+                    break;
+                case 3:
+                    strncpy(PATH, "../boat_sdl/horizontal/pa4.bmp", 100);
+                    break;
+                case 4:
+                    strncpy(PATH, "../boat_sdl/horizontal/pa5.bmp", 100);
+                    break;
+                default:
+                    std::cout << "Error at " << __func__ << ":" << __LINE__ << std::endl;
+            }
+        }
+        else if(name == "croiseur"){
+            switch(nb){
+                case 0:
+                    strncpy(PATH, "../boat_sdl/horizontal/croiseur1.bmp", 100);
+                    break;
+                case 1:
+                    strncpy(PATH, "../boat_sdl/horizontal/croiseur2.bmp", 100);
+                    break;
+                case 2:
+                    strncpy(PATH, "../boat_sdl/horizontal/croiseur3.bmp", 100);
+                    break;
+                case 3:
+                    strncpy(PATH, "../boat_sdl/horizontal/croiseur4.bmp", 100);
+                    break;
+                default:
+                    std::cout << "Error at " << __func__ << ":" << __LINE__ << std::endl;
+            }
+        }
+        else if((name == "1er Contre torpilleur") || (name == "2eme Contre torpilleur")){
+            switch(nb){
+                case 0:
+                    strncpy(PATH, "../boat_sdl/horizontal/ct1.bmp", 100);
+                    break;
+                case 1:
+                    strncpy(PATH, "../boat_sdl/horizontal/ct2.bmp", 100);
+                    break;
+                case 2:
+                    strncpy(PATH, "../boat_sdl/horizontal/ct3.bmp", 100);
+                    break;
+                default:
+                    std::cout << "Error at " << __func__ << ":" << __LINE__ << std::endl;
+            }
+        }
+        else if(name == "Torpilleur"){
+            switch(nb){
+                case 0:
+                    strncpy(PATH, "../boat_sdl/horizontal/t1.bmp", 100);
+                    break;
+                case 1:
+                    strncpy(PATH, "../boat_sdl/horizontal/t2.bmp", 100);
+                    break;
+                default:
+                    std::cout << "Error at " << __func__ << ":" << __LINE__ << std::endl;
+            }
+        }
+    }
+    return PATH;
+}
+
+void Joueur_t::setCaseSDL(SDL_Renderer *renderer, int x, int y, std::string name, char sens, int nb, int grid)
+{
+    char PATH[100];
+
     SDL_Texture *texture = NULL;
     int num_rect = 0;
     
-    /*if(sens == 'v') PATH = "/home/etud/Documents/Bataille-navale/boat_sdl/vertical/croiseur1.bmp";
-    else PATH =  "/home/etud/Documents/Bataille-navale/boat_sdl/horizontal/croiseur1.bmp";*/
+    strncpy(PATH, generatePATH(name, sens, nb).c_str(), 100);
     
     texture = loadImage(PATH, renderer);
-    num_rect = y * 10 + x;
-    SDL_RenderSetViewport(renderer, &(this->grid_middle[num_rect]));
+    num_rect = (y-1) * 10 + (x-1);
     
-    SDL_RenderCopy(renderer, texture, NULL, NULL);
-    //SDL_RenderPresent(renderer);
+    if(grid == 0){    
+        SDL_RenderSetViewport(renderer, &(this->grid_middle[num_rect]));
+        SDL_RenderCopy(renderer, texture, NULL, NULL);    
+        SDL_RenderPresent(renderer);
+    }
+    else{
+        SDL_RenderSetViewport(renderer, &(this->grid_allie[num_rect]));
+        SDL_RenderCopy(renderer, texture, NULL, NULL);
+        SDL_RenderPresent(renderer);
+    }
+    
+    SDL_RenderSetViewport(renderer, NULL);
+    if(NULL != texture)	SDL_DestroyTexture(texture);
+}
+
+void Joueur_t::changeCaseSDL(SDL_Renderer *renderer, int x, int y, etat_t etat)
+{
+    int num_rect = (y-1) * 10 + (x-1);
+    SDL_Texture *texture = NULL;
+    
+    if(etat == etat_t::rate){    
+        SDL_SetRenderDrawColor(renderer, 119, 136, 153, 100);
+        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+        SDL_RenderFillRect(renderer, &(this->grid_ennemi[num_rect]));
+        SDL_RenderPresent(renderer);
+    }
+    else if(etat == etat_t::touche){
+        char PATH[100] = "../etat/touche.bmp";
+        texture = loadImage(PATH, renderer);
+        SDL_RenderSetViewport(renderer, &(this->grid_ennemi[num_rect]));
+        SDL_RenderCopy(renderer, texture, NULL, NULL);
+        SDL_RenderPresent(renderer);
+    }
+    else if(etat == etat_t::coule){
+        char PATH[100] = "../etat/coule.bmp";
+        texture = loadImage(PATH, renderer);
+        SDL_RenderSetViewport(renderer, &(this->grid_ennemi[num_rect]));
+        SDL_RenderCopy(renderer, texture, NULL, NULL);
+        SDL_RenderPresent(renderer);
+    }
     
     SDL_RenderSetViewport(renderer, NULL);
     if(NULL != texture)	SDL_DestroyTexture(texture);
