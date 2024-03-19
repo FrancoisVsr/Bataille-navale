@@ -2,7 +2,7 @@
 SEC1 Projet - bataille navale
 
 Réalisé par Corentin GAUTHIER, François VASSEUR, Jonathan FAVE et Jean AUFFRAY
-Ce projet fonctionne de façon optimal sur windows, il fonctionnera aussi sur LINUX.
+Ce projet fonctionne de façon optimal sur windows, il fonctionnera aussi sur LINUX. Il rentre dans le cadre de notre formation d'ingénieur à l'école Centrale de Nantes.
 
 ## Compilation windows
 Pour compiler vous devez avoir intallé préalablement le compilateur g++.
